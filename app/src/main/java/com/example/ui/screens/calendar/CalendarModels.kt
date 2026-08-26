@@ -1,5 +1,7 @@
 package com.example.ui.screens.calendar
 
+import android.content.Context
+import com.example.R
 import com.example.data.models.MilestoneModel
 import com.example.data.models.MilestoneTaskModel
 import com.example.data.models.StoryModel
@@ -17,6 +19,7 @@ data class CalendarEventItem(
   val isAllDay: Boolean = true,
   val timeText: String? = null,
   val badgeText: String? = null,
+  val isCompleted: Boolean = false,
   val originalStory: StoryModel? = null,
   val originalMilestone: MilestoneModel? = null,
   val originalTask: MilestoneTaskModel? = null
@@ -40,7 +43,7 @@ object CalendarDataHelper {
    * Evaluates if a StoryModel occurs on a given target date.
    * Handles both one-time events and recurring annual celebrations (Anniversaries, Birthdays, etc.).
    */
-  fun getStoryEventForDate(story: StoryModel, targetDate: LocalDate): CalendarEventItem? {
+  fun getStoryEventForDate(context: Context, story: StoryModel, targetDate: LocalDate): CalendarEventItem? {
     val storyDate = story.localDate
 
     // Exact match on original date
@@ -56,18 +59,9 @@ object CalendarDataHelper {
     // Determine subtitle & celebratory context
     val yearsElapsed = targetDate.year - storyDate.year
     val subtitle = when {
-      isOriginalDate && story.isPastDate && yearsElapsed == 0 -> "Initial Date"
-      isAnnualMatch && yearsElapsed > 0 -> {
-        val suffix = when {
-          yearsElapsed % 100 in 11..13 -> "th"
-          yearsElapsed % 10 == 1 -> "st"
-          yearsElapsed % 10 == 2 -> "nd"
-          yearsElapsed % 10 == 3 -> "rd"
-          else -> "th"
-        }
-        "$yearsElapsed$suffix Celebration"
-      }
-      else -> "All day"
+      isOriginalDate && story.isPastDate && yearsElapsed == 0 -> context.getString(R.string.calendar_event_initial_date)
+      isAnnualMatch && yearsElapsed > 0 -> context.getString(R.string.calendar_event_anniversary_year, yearsElapsed)
+      else -> context.getString(R.string.calendar_event_all_day)
     }
 
     return CalendarEventItem(
@@ -78,7 +72,7 @@ object CalendarDataHelper {
       categoryName = story.category.defaultTitle,
       date = targetDate,
       isAllDay = true,
-      badgeText = if (yearsElapsed > 0 && isAnnualMatch) "$yearsElapsed yrs" else null,
+      badgeText = if (yearsElapsed > 0 && isAnnualMatch) context.getString(R.string.calendar_badge_yrs, yearsElapsed) else null,
       originalStory = story
     )
   }
@@ -109,6 +103,7 @@ object CalendarDataHelper {
    * Collects all events occurring on a specific date from stories, milestones, and tasks.
    */
   fun getAllEventsForDate(
+    context: Context,
     date: LocalDate,
     stories: List<StoryModel>,
     milestones: List<MilestoneModel>,
@@ -118,7 +113,7 @@ object CalendarDataHelper {
 
     // 1. Stories / Moments
     stories.forEach { story ->
-      getStoryEventForDate(story, date)?.let { result.add(it) }
+      getStoryEventForDate(context, story, date)?.let { result.add(it) }
     }
 
     // 2. Milestones with target dates
@@ -129,12 +124,12 @@ object CalendarDataHelper {
           CalendarEventItem(
             id = "milestone_${milestone.id}",
             title = milestone.title,
-            subtitle = if (milestone.description.isNotBlank()) milestone.description else "Milestone Target Date",
+            subtitle = if (milestone.description.isNotBlank()) milestone.description else context.getString(R.string.calendar_event_milestone_target),
             iconKey = milestone.iconKey,
             categoryName = "Milestone",
             date = date,
             isAllDay = true,
-            badgeText = "Milestone",
+            badgeText = context.getString(R.string.calendar_badge_milestone),
             originalMilestone = milestone
           )
         )
@@ -149,12 +144,13 @@ object CalendarDataHelper {
           CalendarEventItem(
             id = "task_${task.id}",
             title = task.title,
-            subtitle = if (task.isCompleted) "Completed Preparation" else "Preparation Due",
+            subtitle = if (task.isCompleted) context.getString(R.string.calendar_event_task_completed) else context.getString(R.string.calendar_event_task_due),
             iconKey = "checklist",
             categoryName = "Preparation",
             date = date,
             isAllDay = true,
-            badgeText = if (task.isCompleted) "Done" else "Task",
+            badgeText = if (task.isCompleted) context.getString(R.string.calendar_badge_done) else context.getString(R.string.calendar_badge_task),
+            isCompleted = task.isCompleted,
             originalTask = task
           )
         )

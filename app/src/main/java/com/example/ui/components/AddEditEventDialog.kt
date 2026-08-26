@@ -227,9 +227,8 @@ fun AddEditEventDialog(
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // 2. Title Input
         Text(
-          text = "Event Title",
+          text = stringResource(R.string.event_title_label),
           style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Bold),
           color = MaterialTheme.colorScheme.onSurface
         )
@@ -301,7 +300,7 @@ fun AddEditEventDialog(
             }
 
             Text(
-              text = "Change",
+              text = stringResource(R.string.btn_change),
               style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold),
               color = extColors.goldAccent
             )

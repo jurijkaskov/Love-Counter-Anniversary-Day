@@ -31,6 +31,8 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.res.stringResource
+import com.example.R
 import com.example.ui.theme.LocalCherishExtendedColors
 import java.time.format.DateTimeFormatter
 
@@ -55,9 +57,12 @@ fun CalendarDayCell(
 
   val cellContentDesc = buildString {
     append(date.format(DateTimeFormatter.ofPattern("EEEE, MMMM d, yyyy")))
-    if (isToday) append(", Today")
-    if (isSelected) append(", Selected")
-    if (hasEvents) append(", $eventCount moments")
+    if (isToday) append(stringResource(R.string.calendar_content_today))
+    if (isSelected) append(stringResource(R.string.calendar_content_selected))
+    if (hasEvents) {
+      append(", ")
+      append(stringResource(R.string.calendar_moments_count, eventCount))
+    }
   }
 
   Box(

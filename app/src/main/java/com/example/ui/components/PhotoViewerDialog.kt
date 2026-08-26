@@ -456,6 +456,7 @@ fun PhotoViewerDialog(
   if (showShareCardDialog) {
     ShareCardDialog(
       payload = ShareCardPayloadFactory.fromPhoto(
+        context = context,
         photo = currentPhoto,
         associatedStory = associatedStory,
         associatedJournal = associatedJournal

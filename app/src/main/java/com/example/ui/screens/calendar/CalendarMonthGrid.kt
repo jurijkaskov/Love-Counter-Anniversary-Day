@@ -11,6 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.platform.LocalContext
 import com.example.data.models.FirstDayOfWeekOption
 import com.example.data.models.MilestoneModel
 import com.example.data.models.MilestoneTaskModel
@@ -32,6 +33,7 @@ fun CalendarMonthGrid(
   onSelectDate: (LocalDate) -> Unit,
   modifier: Modifier = Modifier
 ) {
+  val context = LocalContext.current
   val today = remember { LocalDate.now() }
 
   // Generate grid days
@@ -63,7 +65,7 @@ fun CalendarMonthGrid(
     val prevMonthLength = prevMonth.lengthOfMonth()
     for (i in (leadingDaysCount - 1) downTo 0) {
       val date = prevMonth.atDay(prevMonthLength - i)
-      val events = CalendarDataHelper.getAllEventsForDate(date, stories, milestones, tasks)
+      val events = CalendarDataHelper.getAllEventsForDate(context, date, stories, milestones, tasks)
       daysList.add(
         CalendarDayUiModel(
           date = date,
@@ -78,7 +80,7 @@ fun CalendarMonthGrid(
     // Days in current month
     for (day in 1..daysInMonth) {
       val date = yearMonth.atDay(day)
-      val events = CalendarDataHelper.getAllEventsForDate(date, stories, milestones, tasks)
+      val events = CalendarDataHelper.getAllEventsForDate(context, date, stories, milestones, tasks)
       daysList.add(
         CalendarDayUiModel(
           date = date,
@@ -95,7 +97,7 @@ fun CalendarMonthGrid(
     val nextMonth = yearMonth.plusMonths(1)
     for (day in 1..remainingCells) {
       val date = nextMonth.atDay(day)
-      val events = CalendarDataHelper.getAllEventsForDate(date, stories, milestones, tasks)
+      val events = CalendarDataHelper.getAllEventsForDate(context, date, stories, milestones, tasks)
       daysList.add(
         CalendarDayUiModel(
           date = date,

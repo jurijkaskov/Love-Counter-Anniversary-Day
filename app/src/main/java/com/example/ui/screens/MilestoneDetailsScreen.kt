@@ -29,6 +29,7 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.AutoAwesome
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Link
+import androidx.compose.material.icons.outlined.Share
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
@@ -62,6 +63,8 @@ import com.example.ui.components.AddEditTaskDialog
 import com.example.ui.components.PrimaryButton
 import com.example.ui.components.TaskItemRow
 import com.example.ui.components.getIconForMilestoneCategory
+import com.example.ui.share.ShareCardDialog
+import com.example.ui.share.ShareCardPayloadFactory
 import com.example.ui.theme.CherishGold
 import com.example.ui.theme.LocalCherishExtendedColors
 
@@ -77,11 +80,13 @@ fun MilestoneDetailsScreen(
   onDeleteTask: (String) -> Unit,
   modifier: Modifier = Modifier
 ) {
+  val context = androidx.compose.ui.platform.LocalContext.current
   val extColors = LocalCherishExtendedColors.current
   val milestone = milestoneWithTasks.milestone
   val tasks = milestoneWithTasks.sortedTasks
 
   var showEditMilestoneDialog by remember { mutableStateOf(false) }
+  var showShareCardDialog by remember { mutableStateOf(false) }
   var showAddTaskDialog by remember { mutableStateOf(false) }
   var taskToEdit by remember { mutableStateOf<MilestoneTaskModel?>(null) }
 
@@ -130,6 +135,17 @@ fun MilestoneDetailsScreen(
             ),
             color = MaterialTheme.colorScheme.onBackground
           )
+
+          IconButton(
+            onClick = { showShareCardDialog = true },
+            modifier = Modifier.testTag("share_milestone_button")
+          ) {
+            Icon(
+              imageVector = Icons.Outlined.Share,
+              contentDescription = stringResource(R.string.share_card_btn_share_moment),
+              tint = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+          }
 
           IconButton(
             onClick = { showEditMilestoneDialog = true },
@@ -229,7 +245,7 @@ fun MilestoneDetailsScreen(
                     modifier = Modifier.size(16.dp)
                   )
                   Text(
-                    text = "Connected to ${story.title}",
+                    text = stringResource(R.string.milestone_connected_to, story.title),
                     style = MaterialTheme.typography.labelMedium.copy(
                       fontWeight = FontWeight.Medium
                     ),
@@ -401,12 +417,12 @@ fun MilestoneDetailsScreen(
               horizontalAlignment = Alignment.CenterHorizontally
             ) {
               Text(
-                text = "No tasks yet",
+                text = stringResource(R.string.milestone_no_tasks),
                 style = MaterialTheme.typography.titleMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
               )
               Text(
-                text = "Add preparation steps to organize this milestone together.",
+                text = stringResource(R.string.milestone_no_tasks_desc),
                 style = MaterialTheme.typography.bodySmall,
                 color = extColors.textMuted,
                 modifier = Modifier.padding(top = 4.dp)
@@ -484,6 +500,13 @@ fun MilestoneDetailsScreen(
         showEditMilestoneDialog = false
         onBack()
       }
+    )
+  }
+
+  if (showShareCardDialog) {
+    ShareCardDialog(
+      payload = ShareCardPayloadFactory.fromMilestone(context, milestoneWithTasks),
+      onDismiss = { showShareCardDialog = false }
     )
   }
 }

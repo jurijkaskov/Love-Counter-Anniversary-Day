@@ -20,7 +20,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.AutoAwesome
-import androidx.compose.material.icons.outlined.Edit
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -47,7 +46,6 @@ import com.example.data.models.TimelineFilterType
 import com.example.data.models.TimelineItem
 import com.example.data.models.TimelineItemType
 import com.example.ui.components.PremiumEmptyState
-import com.example.ui.components.PrimaryButton
 import com.example.ui.components.TimelineNodeItem
 import com.example.ui.theme.LocalCherishExtendedColors
 import java.time.LocalDate
@@ -107,7 +105,7 @@ fun TimelineView(
               dateEpochDay = entry.dateEpochDay,
               title = entry.displayTitle,
               subtitle = entry.previewSnippet,
-              categoryLabel = if (associatedStory != null) "Memory • ${associatedStory.displayTitle}" else "Written Memory",
+              categoryLabel = null, // Logic moved to composable resolution
               iconKey = entry.iconKey,
               accent = entry.moodAccent,
               isFavorite = entry.isFavorite,
@@ -123,7 +121,6 @@ fun TimelineView(
       // 3. Photo Memories
       if (selectedFilter == TimelineFilterType.ALL || selectedFilter == TimelineFilterType.PHOTOS) {
         photos.forEach { photo ->
-          // Only show standalone or featured photo items in timeline
           val associatedStory = stories.find { it.id == photo.associatedStoryId }
           rawItems.add(
             TimelineItem(
@@ -132,7 +129,7 @@ fun TimelineView(
               dateEpochDay = photo.dateEpochDay,
               title = if (photo.caption.isNotBlank()) photo.caption else photo.formattedDate,
               subtitle = if (associatedStory != null) "From ${associatedStory.displayTitle}" else photo.formattedDate,
-              categoryLabel = if (associatedStory != null) "Photo • ${associatedStory.displayTitle}" else "Photo Memory",
+              categoryLabel = null, // Logic moved to composable resolution
               iconKey = "photo",
               accent = "rosewood",
               isFavorite = photo.isFavorite,
@@ -154,8 +151,8 @@ fun TimelineView(
               type = TimelineItemType.MILESTONE,
               dateEpochDay = epochDay,
               title = milestone.title,
-              subtitle = milestone.description.ifBlank { "Journey milestone" },
-              categoryLabel = "Milestone • ${milestone.category.name.lowercase().replaceFirstChar { it.uppercase() }}",
+              subtitle = milestone.description.ifBlank { null },
+              categoryLabel = null, // Logic moved to composable resolution
               iconKey = milestone.iconKey,
               accent = "gold",
               milestoneModel = milestone
@@ -164,10 +161,10 @@ fun TimelineView(
         }
       }
 
-      // Sort chronologically ascending (from earliest beginning to present/future)
+      // Sort chronologically ascending
       val sorted = rawItems.sortedBy { it.dateEpochDay }.toMutableList()
 
-      // Add "Today" ongoing marker if we have items
+      // Add "Today" ongoing marker
       if (sorted.isNotEmpty()) {
         val todayEpochDay = LocalDate.now().toEpochDay()
         val todayMarker = TimelineItem(
@@ -180,13 +177,8 @@ fun TimelineView(
           iconKey = "favorite",
           accent = "rosewood"
         )
-        // Find insert position
         val insertIndex = sorted.indexOfFirst { it.dateEpochDay > todayEpochDay }
-        if (insertIndex >= 0) {
-          sorted.add(insertIndex, todayMarker)
-        } else {
-          sorted.add(todayMarker)
-        }
+        if (insertIndex >= 0) sorted.add(insertIndex, todayMarker) else sorted.add(todayMarker)
       }
 
       sorted
@@ -291,8 +283,31 @@ fun TimelineView(
           val isFirst = index == 0
           val isLast = index == timelineItems.lastIndex
 
+          // Resolve labels dynamically in composable context
+          val resolvedLabel = when (item.type) {
+            TimelineItemType.MEMORY -> {
+              item.associatedStory?.let {
+                stringResource(R.string.timeline_label_memory_story, it.displayTitle)
+              } ?: stringResource(R.string.timeline_type_memory)
+            }
+            TimelineItemType.PHOTO -> {
+              item.associatedStory?.let {
+                stringResource(R.string.timeline_label_photo_story, it.displayTitle)
+              } ?: stringResource(R.string.timeline_type_photo)
+            }
+            TimelineItemType.MILESTONE -> {
+              val catLabel = item.milestoneModel?.category?.name?.lowercase()?.replaceFirstChar { it.uppercase() } ?: ""
+              stringResource(R.string.timeline_label_milestone_cat, catLabel)
+            }
+            else -> item.categoryLabel ?: ""
+          }
+
+          val resolvedSubtitle = item.subtitle ?: if (item.type == TimelineItemType.MILESTONE) {
+            stringResource(R.string.timeline_journey_milestone)
+          } else ""
+
           TimelineNodeItem(
-            item = item,
+            item = item.copy(categoryLabel = resolvedLabel, subtitle = resolvedSubtitle),
             isFirst = isFirst,
             isLast = isLast,
             onClick = {

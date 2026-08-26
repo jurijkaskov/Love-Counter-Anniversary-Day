@@ -143,7 +143,7 @@ fun PhotoGalleryView(
           ) {
             Icon(
               imageVector = Icons.Outlined.AddPhotoAlternate,
-              contentDescription = "Add Photo",
+              contentDescription = stringResource(R.string.photos_add_btn),
               tint = MaterialTheme.colorScheme.onPrimary,
               modifier = Modifier.size(16.dp)
             )

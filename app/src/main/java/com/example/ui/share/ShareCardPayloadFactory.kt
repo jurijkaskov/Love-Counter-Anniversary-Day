@@ -1,5 +1,7 @@
 package com.example.ui.share
 
+import android.content.Context
+import com.example.R
 import com.example.data.models.EventCategory
 import com.example.data.models.JournalEntryModel
 import com.example.data.models.MemoryPhotoModel
@@ -16,7 +18,7 @@ object ShareCardPayloadFactory {
   /**
    * Constructs a ShareCardPayload from a StoryModel (Time Together or Anniversary / Countdown).
    */
-  fun fromStory(story: StoryModel, connectedPhoto: MemoryPhotoModel? = null): ShareCardPayload {
+  fun fromStory(context: Context, story: StoryModel, connectedPhoto: MemoryPhotoModel? = null): ShareCardPayload {
     val isPast = story.isPastDate
     val cardType = if (isPast) {
       if (story.category == EventCategory.WEDDING) ShareCardType.ANNIVERSARY else ShareCardType.TIME_TOGETHER
@@ -25,24 +27,24 @@ object ShareCardPayloadFactory {
     }
 
     val subtitle = if (isPast) {
-      if (cardType == ShareCardType.ANNIVERSARY) "ANNIVERSARY CELEBRATION" else "TOGETHER FOR"
+      if (cardType == ShareCardType.ANNIVERSARY) context.getString(R.string.share_label_anniversary_celebration) else context.getString(R.string.share_label_together_for)
     } else {
-      "COUNTDOWN TO SPECIAL DAY"
+      context.getString(R.string.share_label_countdown_special)
     }
 
     val highlight = if (isPast) {
-      "${String.format("%,d", story.totalDays)} Days"
+      context.getString(R.string.share_days_suffix, String.format("%,d", story.totalDays))
     } else {
-      "In ${story.totalDays} Days"
+      context.getString(R.string.share_days_in_prefix, story.totalDays.toString())
     }
 
     val supportingText = if (isPast) {
       story.formattedPeriodBreakdown
     } else {
-      "Upcoming celebration of our love"
+      context.getString(R.string.share_upcoming_celebration)
     }
 
-    val dateString = if (isPast) "Since ${story.formattedDate}" else story.formattedDate
+    val dateString = if (isPast) context.getString(R.string.share_since_prefix, story.formattedDate) else story.formattedDate
 
     return ShareCardPayload(
       cardType = cardType,
@@ -51,17 +53,16 @@ object ShareCardPayloadFactory {
       mainHighlight = highlight,
       supportingText = supportingText,
       dateString = dateString,
-      quoteOrNote = story.note.ifBlank { "Every day with you is my favorite day." },
+      quoteOrNote = story.note.ifBlank { context.getString(R.string.countdown_quote).replace("“", "").replace("”", "") },
       photoPath = connectedPhoto?.filePath,
       initialsOrIcon = story.displayInitials,
+      watermarkText = context.getString(R.string.share_watermark),
       sourceStoryId = story.id
     )
   }
 
-  /**
-   * Constructs a ShareCardPayload from a MilestoneWithTasks or MilestoneModel.
-   */
   fun fromMilestone(
+    context: Context,
     milestoneWithTasks: MilestoneWithTasks,
     connectedPhoto: MemoryPhotoModel? = null
   ): ShareCardPayload {
@@ -69,12 +70,12 @@ object ShareCardPayloadFactory {
     val isCompleted = milestoneWithTasks.isFullyCompleted
 
     val highlight = if (isCompleted) {
-      "Milestone Complete"
+      context.getString(R.string.share_label_milestone_complete)
     } else {
-      "${milestoneWithTasks.completedTasksCount} of ${milestoneWithTasks.totalTasksCount} Completed"
+      context.getString(R.string.share_milestone_progress, milestoneWithTasks.completedTasksCount, milestoneWithTasks.totalTasksCount)
     }
 
-    val subtitle = "RELATIONSHIP MILESTONE"
+    val subtitle = context.getString(R.string.share_label_relationship_milestone)
     val dateStr = milestone.targetDateEpochDay?.let {
       LocalDate.ofEpochDay(it).format(DateTimeFormatter.ofPattern("MMMM d, yyyy"))
     }
@@ -84,19 +85,18 @@ object ShareCardPayloadFactory {
       title = milestone.title,
       subtitle = subtitle,
       mainHighlight = highlight,
-      supportingText = milestone.description.ifBlank { "Ready for the next chapter of our story." },
+      supportingText = milestone.description.ifBlank { context.getString(R.string.share_milestone_ready_footer) },
       dateString = dateStr,
-      quoteOrNote = if (isCompleted) "Another beautiful chapter written together." else null,
+      quoteOrNote = if (isCompleted) context.getString(R.string.share_milestone_complete_footer) else null,
       photoPath = connectedPhoto?.filePath,
+      watermarkText = context.getString(R.string.share_watermark),
       sourceMilestoneId = milestone.id,
       sourceStoryId = milestone.associatedStoryId
     )
   }
 
-  /**
-   * Constructs a ShareCardPayload from a JournalEntryModel.
-   */
   fun fromJournalEntry(
+    context: Context,
     entry: JournalEntryModel,
     associatedStory: StoryModel? = null,
     connectedPhoto: MemoryPhotoModel? = null
@@ -106,37 +106,37 @@ object ShareCardPayloadFactory {
     return ShareCardPayload(
       cardType = ShareCardType.MEMORY,
       title = entry.title,
-      subtitle = associatedStory?.displayTitle?.uppercase() ?: "WRITTEN MEMORY",
-      mainHighlight = "Cherished Memory",
+      subtitle = associatedStory?.displayTitle?.uppercase() ?: context.getString(R.string.timeline_type_memory).uppercase(),
+      mainHighlight = context.getString(R.string.share_label_cherished_memory),
       supportingText = dateStr,
       dateString = dateStr,
       quoteOrNote = entry.content.take(180),
       photoPath = connectedPhoto?.filePath,
+      watermarkText = context.getString(R.string.share_watermark),
       sourceJournalId = entry.id,
       sourceStoryId = entry.associatedStoryId
     )
   }
 
-  /**
-   * Constructs a ShareCardPayload from a MemoryPhotoModel.
-   */
   fun fromPhoto(
+    context: Context,
     photo: MemoryPhotoModel,
     associatedStory: StoryModel? = null,
     associatedJournal: JournalEntryModel? = null
   ): ShareCardPayload {
     val dateStr = LocalDate.ofEpochDay(photo.dateEpochDay).format(DateTimeFormatter.ofPattern("MMMM d, yyyy"))
-    val title = associatedStory?.displayTitle ?: associatedJournal?.title ?: "Our Precious Moment"
+    val title = associatedStory?.displayTitle ?: associatedJournal?.title ?: context.getString(R.string.share_precious_moment_title)
 
     return ShareCardPayload(
       cardType = ShareCardType.MEMORY,
       title = title,
-      subtitle = "PHOTO MEMORY",
-      mainHighlight = "Captured With Love",
+      subtitle = context.getString(R.string.timeline_type_photo).uppercase(),
+      mainHighlight = context.getString(R.string.share_label_captured_with_love),
       supportingText = dateStr,
       dateString = dateStr,
-      quoteOrNote = photo.caption.ifBlank { associatedJournal?.content?.take(160) ?: "A moment frozen in time forever." },
+      quoteOrNote = photo.caption.ifBlank { associatedJournal?.content?.take(160) ?: context.getString(R.string.share_photo_frozen_moment) },
       photoPath = photo.filePath,
+      watermarkText = context.getString(R.string.share_watermark),
       sourcePhotoId = photo.id,
       sourceStoryId = photo.associatedStoryId,
       sourceJournalId = photo.associatedJournalId

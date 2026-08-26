@@ -129,7 +129,7 @@ fun EventDetailsDialog(
             ) {
               Icon(
                 imageVector = if (event.isFavorite) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
-                contentDescription = if (event.isFavorite) "Favorited" else "Favorite",
+                contentDescription = if (event.isFavorite) stringResource(R.string.milestone_completed_tag) else stringResource(R.string.nav_moments),
                 tint = if (event.isFavorite) MaterialTheme.colorScheme.primary else extColors.textMuted
               )
             }
@@ -140,7 +140,7 @@ fun EventDetailsDialog(
             ) {
               Icon(
                 imageVector = Icons.Outlined.Share,
-                contentDescription = "Share Card",
+                contentDescription = stringResource(R.string.share_card_btn_share_moment),
                 tint = extColors.textMuted
               )
             }
@@ -285,7 +285,7 @@ fun EventDetailsDialog(
               )
               Spacer(modifier = Modifier.height(4.dp))
               Text(
-                text = "Exact Duration",
+                text = stringResource(R.string.event_exact_duration_label),
                 style = MaterialTheme.typography.labelSmall,
                 color = extColors.textMuted
               )
@@ -614,7 +614,7 @@ fun EventDetailsDialog(
 
   if (showShareCardDialog) {
     ShareCardDialog(
-      payload = ShareCardPayloadFactory.fromStory(event, relatedPhotos.firstOrNull()),
+      payload = ShareCardPayloadFactory.fromStory(context, event, relatedPhotos.firstOrNull()),
       onDismiss = { showShareCardDialog = false }
     )
   }

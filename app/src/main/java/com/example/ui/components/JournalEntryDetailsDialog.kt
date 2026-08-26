@@ -470,6 +470,7 @@ fun JournalEntryDetailsDialog(
   if (showShareCardDialog) {
     ShareCardDialog(
       payload = ShareCardPayloadFactory.fromJournalEntry(
+        context = context,
         entry = entry,
         associatedStory = associatedStory,
         connectedPhoto = connectedPhotos.firstOrNull()

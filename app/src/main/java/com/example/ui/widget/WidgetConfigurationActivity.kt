@@ -406,7 +406,7 @@ fun WidgetConfigurationScreen(
                   color = MaterialTheme.colorScheme.onSurface
                 )
                 Text(
-                  text = "Automatically highlights nearest upcoming moment or celebration.",
+                  text = stringResource(R.string.widget_config_auto_next_desc),
                   style = MaterialTheme.typography.bodySmall,
                   color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -469,7 +469,7 @@ fun WidgetConfigurationScreen(
                 color = MaterialTheme.colorScheme.onSurface
               )
               Text(
-                text = "${story.formattedDate} • ${if (story.isPastDate) "${story.totalDays} days together" else "in ${story.totalDays} days"}",
+                text = "${story.formattedDate} • ${if (story.isPastDate) stringResource(R.string.widget_days_together_lower, story.totalDays.toString()) else stringResource(R.string.countdown_next_anniversary_countdown, story.totalDays.toString())}",
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
               )
@@ -597,7 +597,7 @@ private fun WidgetLivePreview(
               modifier = Modifier.weight(1f)
             )
             Text(
-              text = if (selectedStory?.isPastDate == true) "Since ${selectedStory.formattedDate}" else selectedStory?.formattedDate ?: "",
+              text = if (selectedStory?.isPastDate == true) stringResource(R.string.share_since_prefix, selectedStory.formattedDate) else selectedStory?.formattedDate ?: "",
               style = MaterialTheme.typography.bodySmall.copy(fontSize = 11.sp),
               color = textMuted
             )
@@ -625,7 +625,7 @@ private fun WidgetLivePreview(
                 color = rosewoodColor
               )
               Text(
-                text = if (selectedStory?.isPastDate == true) "DAYS TOGETHER" else "DAYS REMAINING",
+                text = if (selectedStory?.isPastDate == true) stringResource(R.string.widget_days_together_caps) else stringResource(R.string.widget_days_left_caps),
                 style = MaterialTheme.typography.labelSmall.copy(
                   fontWeight = FontWeight.Bold,
                   letterSpacing = 1.sp
@@ -655,9 +655,9 @@ private fun WidgetLivePreview(
             Spacer(modifier = Modifier.width(4.dp))
             Text(
               text = if (selectedStory?.isPastDate == true) {
-                "Next: ${selectedStory.nextAnniversaryTitle} in ${selectedStory.daysUntilNextAnniversary} days"
+                stringResource(R.string.widget_footer_next_anniversary, selectedStory.nextAnniversaryTitle, selectedStory.daysUntilNextAnniversary.toInt())
               } else {
-                "In ${selectedStory?.totalDays ?: 0} days"
+                stringResource(R.string.widget_in_days, selectedStory?.totalDays?.toString() ?: "0")
               },
               style = MaterialTheme.typography.bodySmall.copy(
                 fontWeight = FontWeight.Bold,
@@ -693,7 +693,7 @@ private fun WidgetLivePreview(
             )
             Spacer(modifier = Modifier.width(6.dp))
             Text(
-              text = "NEXT MOMENT",
+              text = stringResource(R.string.widget_next_moment_label).uppercase(),
               style = MaterialTheme.typography.labelSmall.copy(
                 fontWeight = FontWeight.Bold,
                 letterSpacing = 1.sp
@@ -781,7 +781,7 @@ private fun WidgetLivePreview(
             color = rosewoodColor
           )
           Text(
-            text = if (selectedStory?.isPastDate == true) "days together" else "days until anniversary",
+            text = if (selectedStory?.isPastDate == true) stringResource(R.string.widget_days_together_lower, selectedStory.totalDays.toString()) else stringResource(R.string.widget_days_until_lower, selectedStory?.totalDays?.toString() ?: "0", selectedStory?.displayTitle?.lowercase() ?: ""),
             style = MaterialTheme.typography.labelSmall.copy(
               fontSize = 11.sp
             ),

@@ -138,9 +138,9 @@ fun SettingsScreen(
     if (isGranted) {
       preferencesManager.setRemindersEnabled(true)
       storyRepository.syncAllAlarms()
-      Toast.makeText(context, "Notifications enabled with love", Toast.LENGTH_SHORT).show()
+      Toast.makeText(context, context.getString(R.string.settings_notification_permission_toast), Toast.LENGTH_SHORT).show()
     } else {
-      Toast.makeText(context, "Notification permission was not granted", Toast.LENGTH_SHORT).show()
+      Toast.makeText(context, context.getString(R.string.settings_notification_permission_denied_toast), Toast.LENGTH_SHORT).show()
     }
   }
 
@@ -183,7 +183,7 @@ fun SettingsScreen(
       // 1. APPEARANCE SECTION
       item {
         SectionTitle(
-          title = "Appearance",
+          title = stringResource(R.string.settings_appearance_header),
           testTag = "settings_appearance_header"
         )
       }
@@ -195,7 +195,7 @@ fun SettingsScreen(
         ) {
           // Theme Mode Selector Cards
           Text(
-            text = "App Theme",
+            text = stringResource(R.string.settings_app_theme),
             style = MaterialTheme.typography.labelMedium.copy(
               fontWeight = FontWeight.SemiBold
             ),
@@ -211,7 +211,7 @@ fun SettingsScreen(
 
           // Accent Palette Selector
           Text(
-            text = "Color Style & Accent",
+            text = stringResource(R.string.settings_color_style),
             style = MaterialTheme.typography.labelMedium.copy(
               fontWeight = FontWeight.SemiBold
             ),
@@ -292,8 +292,8 @@ fun SettingsScreen(
 
           // Reduced Motion / Animations
           ToggleRow(
-            title = "Reduce Animations",
-            subtitle = "Minimize decorative motion and transitions",
+            title = stringResource(R.string.settings_reduce_animations),
+            subtitle = stringResource(R.string.settings_reduce_animations_desc),
             icon = Icons.Outlined.Animation,
             checked = userSettings.reducedAnimations,
             onCheckedChange = { preferencesManager.setReducedAnimations(it) },
@@ -572,7 +572,7 @@ fun SettingsScreen(
 
             Column(modifier = Modifier.weight(1f)) {
               Text(
-                text = "Stored Locally & Privately",
+                text = stringResource(R.string.settings_stored_locally_title),
                 style = MaterialTheme.typography.titleSmall.copy(
                   fontWeight = FontWeight.SemiBold
                 ),
@@ -580,7 +580,7 @@ fun SettingsScreen(
               )
               Spacer(modifier = Modifier.height(2.dp))
               Text(
-                text = "Your memories, countdowns, and love notes are safely preserved only on your personal device.",
+                text = stringResource(R.string.settings_stored_locally_desc),
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
               )
@@ -611,8 +611,8 @@ fun SettingsScreen(
 
           // Reset Application Data
           PreferenceRow(
-            title = "Reset Application Data",
-            subtitle = "Clear all stories, moments, and milestones",
+            title = stringResource(R.string.settings_reset_data_title),
+            subtitle = stringResource(R.string.settings_reset_data_desc),
             icon = Icons.Outlined.DeleteOutline,
             onClick = { showResetDialog = true },
             testTag = "pref_reset_data"
@@ -763,7 +763,7 @@ fun SettingsScreen(
         preferencesManager.resetAllApplicationData(storyRepository, milestoneRepository)
         resolvedJournalRepo.clearAll()
         resolvedPhotoRepo.clearAll()
-        Toast.makeText(context, "All data has been reset", Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, context.getString(R.string.settings_data_reset_toast), Toast.LENGTH_SHORT).show()
       },
       onDismiss = { showResetDialog = false }
     )
@@ -809,7 +809,7 @@ fun SettingsScreen(
 
             Column {
               Text(
-                text = "Privacy & Data Protection",
+                text = stringResource(R.string.settings_privacy_title),
                 style = MaterialTheme.typography.titleLarge.copy(
                   fontFamily = FontFamily.Serif,
                   fontWeight = FontWeight.SemiBold
@@ -817,7 +817,7 @@ fun SettingsScreen(
                 color = MaterialTheme.colorScheme.onSurface
               )
               Text(
-                text = "Built with your privacy at heart",
+                text = stringResource(R.string.settings_privacy_subtitle),
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
               )
@@ -827,7 +827,7 @@ fun SettingsScreen(
           Spacer(modifier = Modifier.height(16.dp))
 
           Text(
-            text = "• All your data is stored locally on your device in secure app storage.\n\n• No accounts, passwords, or personal credentials are required to celebrate your moments.\n\n• You can export your data at any time in portable JSON format, or delete it completely whenever you choose.",
+            text = "${stringResource(R.string.settings_privacy_bullet1)}\n\n${stringResource(R.string.settings_privacy_bullet2)}\n\n${stringResource(R.string.settings_privacy_bullet3)}",
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant
           )
@@ -852,7 +852,7 @@ fun SettingsScreen(
       onConfirm = { h, m ->
         preferencesManager.setDefaultReminderTime(h, m)
         showReminderTimePicker = false
-        Toast.makeText(context, "Default reminder time updated", Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, context.getString(R.string.settings_notification_time_updated_toast), Toast.LENGTH_SHORT).show()
       }
     )
   }
@@ -908,7 +908,7 @@ private fun ProfileHeroCard(
         )
         Spacer(modifier = Modifier.height(2.dp))
         Text(
-          text = if (primaryStory != null) "Together since ${primaryStory.formattedDate}" else stringResource(R.string.settings_profile_subtitle),
+          text = if (primaryStory != null) stringResource(R.string.settings_together_since, primaryStory.formattedDate) else stringResource(R.string.settings_profile_subtitle),
           style = MaterialTheme.typography.bodySmall,
           color = MaterialTheme.colorScheme.onSurfaceVariant
         )
@@ -918,7 +918,7 @@ private fun ProfileHeroCard(
     Spacer(modifier = Modifier.height(16.dp))
 
     SecondaryButton(
-      text = if (primaryStory != null) "Customize Story & Moments" else "Create Your Story",
+      text = if (primaryStory != null) stringResource(R.string.settings_manage_profile_btn) else stringResource(R.string.settings_create_profile_btn),
       onClick = onManageStory,
       icon = if (primaryStory != null) Icons.Outlined.Edit else Icons.Default.Add,
       modifier = Modifier.fillMaxWidth(),

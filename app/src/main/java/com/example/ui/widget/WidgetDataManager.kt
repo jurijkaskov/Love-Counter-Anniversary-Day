@@ -22,7 +22,7 @@ class WidgetDataManager(
 
     if (targetStory == null) {
       return WidgetDisplayData(
-        title = "Love Counter: Anniversary Day",
+        title = context.getString(R.string.app_name),
         count = "0",
         countLabel = context.getString(R.string.widget_days_together_caps),
         breakdownOrNote = context.getString(R.string.widget_empty_prompt),
@@ -49,7 +49,7 @@ class WidgetDataManager(
     }
 
     val footerText = if (isPast) {
-      "Next: ${targetStory.nextAnniversaryTitle} in ${targetStory.daysUntilNextAnniversary} days"
+      context.getString(R.string.widget_footer_next_anniversary, targetStory.nextAnniversaryTitle, targetStory.daysUntilNextAnniversary.toInt())
     } else {
       context.getString(R.string.widget_in_days, targetStory.totalDays.toString())
     }
@@ -73,7 +73,7 @@ class WidgetDataManager(
     val stories = storyRepository.stories.value
     if (stories.isEmpty()) {
       return WidgetDisplayData(
-        title = "No Upcoming Events",
+        title = context.getString(R.string.widget_no_upcoming_events),
         count = "0",
         countLabel = "",
         breakdownOrNote = context.getString(R.string.widget_empty_prompt),
@@ -103,7 +103,7 @@ class WidgetDataManager(
     return WidgetDisplayData(
       title = targetEvent.displayTitle,
       count = daysUntil.toString(),
-      countLabel = "DAYS REMAINING",
+      countLabel = context.getString(R.string.widget_days_left_caps),
       breakdownOrNote = noteOrDescription,
       dateSubtitle = eventDateFormatted,
       badgeText = badge,
@@ -125,9 +125,9 @@ class WidgetDataManager(
 
     if (targetStory == null) {
       return WidgetDisplayData(
-        title = "Cherish",
+        title = context.getString(R.string.app_name),
         count = "0",
-        countLabel = "create moment",
+        countLabel = context.getString(R.string.moments_create_first_action),
         breakdownOrNote = "",
         dateSubtitle = "",
         badgeText = "",
@@ -137,16 +137,16 @@ class WidgetDataManager(
       )
     }
 
-    val count = String.format("%,d", targetStory.totalDays)
+    val countValue = String.format("%,d", targetStory.totalDays)
     val label = if (targetStory.isPastDate) {
-      "days together"
+      context.getString(R.string.widget_days_together_lower)
     } else {
-      "days until ${targetStory.displayTitle.lowercase()}"
+      context.getString(R.string.widget_days_until_lower, targetStory.totalDays.toString(), targetStory.displayTitle.lowercase())
     }
 
     return WidgetDisplayData(
       title = targetStory.displayTitle,
-      count = count,
+      count = countValue,
       countLabel = label,
       breakdownOrNote = "",
       dateSubtitle = "",
@@ -161,7 +161,6 @@ class WidgetDataManager(
 
   private fun findNearestUpcomingEvent(stories: List<StoryModel>): StoryModel {
     val today = LocalDate.now()
-    // First priority: any non-past event with date >= today
     val futureEvents = stories.filter { !it.isPastDate && !it.localDate.isBefore(today) }
       .sortedBy { it.daysUntilNextOccurrence }
 
@@ -169,7 +168,6 @@ class WidgetDataManager(
       return futureEvents.first()
     }
 
-    // Second priority: nearest upcoming yearly anniversary/occurrence
     return stories.minByOrNull { it.daysUntilNextOccurrence } ?: stories.first()
   }
 

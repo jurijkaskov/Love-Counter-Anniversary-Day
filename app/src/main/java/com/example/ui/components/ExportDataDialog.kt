@@ -94,7 +94,7 @@ fun ExportDataDialog(
 
           Column {
             Text(
-              text = "Export & Backup",
+              text = stringResource(R.string.settings_backup_title),
               style = MaterialTheme.typography.titleLarge.copy(
                 fontFamily = FontFamily.Serif,
                 fontWeight = FontWeight.SemiBold
@@ -102,7 +102,7 @@ fun ExportDataDialog(
               color = MaterialTheme.colorScheme.onSurface
             )
             Text(
-              text = "Save your relationship memories",
+              text = stringResource(R.string.settings_backup_subtitle),
               style = MaterialTheme.typography.bodySmall,
               color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -125,7 +125,7 @@ fun ExportDataDialog(
             verticalArrangement = Arrangement.spacedBy(10.dp)
           ) {
             Text(
-              text = "Data ready for backup:",
+              text = stringResource(R.string.settings_backup_ready_label),
               style = MaterialTheme.typography.labelMedium.copy(
                 fontWeight = FontWeight.SemiBold
               ),
@@ -136,9 +136,9 @@ fun ExportDataDialog(
               modifier = Modifier.fillMaxWidth(),
               horizontalArrangement = Arrangement.SpaceBetween
             ) {
-              ExportStatItem(label = "Stories & Moments", count = storiesCount)
-              ExportStatItem(label = "Milestones", count = milestonesCount)
-              ExportStatItem(label = "Preparations", count = tasksCount)
+              ExportStatItem(label = stringResource(R.string.settings_backup_stories_label), count = storiesCount)
+              ExportStatItem(label = stringResource(R.string.settings_backup_milestones_label), count = milestonesCount)
+              ExportStatItem(label = stringResource(R.string.settings_backup_tasks_label), count = tasksCount)
             }
           }
         }
@@ -146,7 +146,7 @@ fun ExportDataDialog(
         Spacer(modifier = Modifier.height(14.dp))
 
         Text(
-          text = "Your export file is formatted in portable JSON, allowing you to back up your personal memories or transfer them anytime.",
+          text = stringResource(R.string.settings_backup_desc_footer),
           style = MaterialTheme.typography.bodySmall,
           color = MaterialTheme.colorScheme.onSurfaceVariant
         )
@@ -158,7 +158,7 @@ fun ExportDataDialog(
           verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
           PrimaryButton(
-            text = "Share / Save Backup File",
+            text = stringResource(R.string.settings_backup_share_btn),
             icon = Icons.Default.Share,
             onClick = {
               val json = onGenerateExportJson()
@@ -176,14 +176,14 @@ fun ExportDataDialog(
           )
 
           SecondaryButton(
-            text = "Copy Backup JSON to Clipboard",
+            text = stringResource(R.string.settings_backup_copy_btn),
             icon = Icons.Default.ContentCopy,
             onClick = {
               val json = onGenerateExportJson()
               val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as? ClipboardManager
               val clip = ClipData.newPlainText("Cherish Backup", json)
               clipboard?.setPrimaryClip(clip)
-              Toast.makeText(context, "Backup copied to clipboard", Toast.LENGTH_SHORT).show()
+              Toast.makeText(context, context.getString(R.string.settings_backup_copied_toast), Toast.LENGTH_SHORT).show()
               onDismiss()
             },
             modifier = Modifier.fillMaxWidth(),

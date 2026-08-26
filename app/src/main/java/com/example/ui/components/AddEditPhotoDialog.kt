@@ -239,7 +239,7 @@ fun AddEditPhotoDialog(
               ) {
                 Icon(
                   imageVector = Icons.Outlined.PhotoCamera,
-                  contentDescription = "Change",
+                  contentDescription = stringResource(R.string.btn_change),
                   tint = Color.White,
                   modifier = Modifier.size(16.dp)
                 )
@@ -341,7 +341,7 @@ fun AddEditPhotoDialog(
             )
             Icon(
               imageVector = Icons.Outlined.CalendarToday,
-              contentDescription = "Pick Date",
+              contentDescription = stringResource(R.string.date_picker_action),
               tint = MaterialTheme.colorScheme.primary,
               modifier = Modifier.size(20.dp)
             )
@@ -418,7 +418,7 @@ fun AddEditPhotoDialog(
                 )
                 Icon(
                   imageVector = Icons.Outlined.Collections,
-                  contentDescription = "Select Moment",
+                  contentDescription = stringResource(R.string.event_category_label),
                   tint = extColors.textMuted,
                   modifier = Modifier.size(18.dp)
                 )
@@ -489,7 +489,7 @@ fun AddEditPhotoDialog(
                 )
                 Icon(
                   imageVector = Icons.Outlined.MenuBook,
-                  contentDescription = "Select Journal",
+                  contentDescription = stringResource(R.string.journal_title),
                   tint = extColors.textMuted,
                   modifier = Modifier.size(18.dp)
                 )

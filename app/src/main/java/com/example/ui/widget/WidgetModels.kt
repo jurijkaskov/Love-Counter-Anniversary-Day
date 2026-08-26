@@ -1,9 +1,11 @@
 package com.example.ui.widget
 
-enum class WidgetType(val id: String, val defaultTitle: String) {
-  MAIN_COUNTDOWN("main_countdown", "Cherish Countdown"),
-  NEXT_EVENT("next_event", "Next Moment"),
-  MINIMAL_DAYS("minimal_days", "Minimal Days");
+import com.example.R
+
+enum class WidgetType(val id: String, val titleResId: Int) {
+  MAIN_COUNTDOWN("main_countdown", R.string.widget_type_countdown),
+  NEXT_EVENT("next_event", R.string.widget_type_next_event),
+  MINIMAL_DAYS("minimal_days", R.string.widget_type_minimal);
 
   companion object {
     fun fromId(id: String?): WidgetType {
@@ -12,10 +14,10 @@ enum class WidgetType(val id: String, val defaultTitle: String) {
   }
 }
 
-enum class WidgetThemePreference(val id: String, val title: String) {
-  LIGHT("light", "Warm Ivory (Light)"),
-  DARK("dark", "Espresso Night (Dark)"),
-  SYSTEM("system", "Follow Device Theme");
+enum class WidgetThemePreference(val id: String, val titleResId: Int) {
+  LIGHT("light", R.string.widget_config_theme_light),
+  DARK("dark", R.string.widget_config_theme_dark),
+  SYSTEM("system", R.string.widget_config_theme_system);
 
   companion object {
     fun fromId(id: String?): WidgetThemePreference {

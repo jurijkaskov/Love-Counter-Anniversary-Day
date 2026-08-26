@@ -495,7 +495,7 @@ fun MilestonesScreen(
                       color = MaterialTheme.colorScheme.onSurface
                     )
                     Text(
-                      text = "All ${item.totalTasksCount} preparations completed",
+                      text = stringResource(R.string.milestones_all_preparations_completed, item.totalTasksCount),
                       style = MaterialTheme.typography.bodySmall,
                       color = extColors.textMuted
                     )
@@ -503,7 +503,7 @@ fun MilestonesScreen(
                 }
 
                 Text(
-                  text = "View",
+                  text = stringResource(R.string.btn_view),
                   style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.SemiBold),
                   color = MaterialTheme.colorScheme.primary
                 )

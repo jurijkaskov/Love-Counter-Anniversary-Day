@@ -70,6 +70,7 @@ fun CreateStoryFlowScreen(
   onCancel: (() -> Unit)? = null,
   modifier: Modifier = Modifier
 ) {
+  val context = LocalContext.current
   val extColors = LocalCherishExtendedColors.current
   val listState = rememberLazyListState()
   val scope = rememberCoroutineScope()
@@ -148,7 +149,7 @@ fun CreateStoryFlowScreen(
         EventCategory.ENGAGEMENT
       )
       if (isCoupleCategory && yourName.isBlank() && partnerName.isBlank() && storyTitle.isBlank()) {
-        validationError = "Please enter your name, partner's name, or a story title"
+        validationError = context.getString(R.string.create_step2_error_required)
         return
       }
     }

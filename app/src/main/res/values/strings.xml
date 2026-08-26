@@ -1,4 +1,14 @@
 <resources>
+    <string name="btn_delete">Delete</string>
+    <string name="btn_clear">Clear</string>
+    <string name="btn_select">Select</string>
+    <string name="btn_change">Change</string>
+    <string name="btn_back">Back</string>
+    <string name="btn_close">Close</string>
+    <string name="btn_view">View</string>
+    <string name="btn_enable">Enable</string>
+    <string name="btn_edit">Edit</string>
+
     <string name="app_name">Love Counter: Anniversary Day</string>
     <string name="app_tagline">Celebrate every moment together</string>
 
@@ -22,8 +32,35 @@
     <string name="countdown_add_moment">Add Milestone</string>
     <string name="countdown_card_love_story">Our Love Story</string>
     <string name="countdown_since_date">Since October 24, 2023</string>
+    <string name="countdown_begin_story">Begin Your Story</string>
+    <string name="countdown_set_date_desc">Set your relationship date or first anniversary to celebrate every single day together.</string>
+    <string name="countdown_create_story_btn">Create First Story</string>
+    <string name="countdown_days_to_go_suffix">days to go ♥</string>
+    <string name="countdown_until_prefix">Until %1$s</string>
+    <string name="countdown_since_prefix">Since %1$s</string>
+    <string name="countdown_no_milestones_empty">No active milestones yet. Plan your next celebration!</string>
+    <string name="countdown_days_together_heart">days together ♥</string>
 
     <!-- Moments Screen -->
+    <string name="share_label_anniversary_celebration">ANNIVERSARY CELEBRATION</string>
+    <string name="share_label_together_for">TOGETHER FOR</string>
+    <string name="share_label_countdown_special">COUNTDOWN TO SPECIAL DAY</string>
+    <string name="share_days_suffix">%1$s Days</string>
+    <string name="share_days_in_prefix">In %1$s Days</string>
+    <string name="share_upcoming_celebration">Upcoming celebration of our love</string>
+    <string name="share_since_prefix">Since %1$s</string>
+    <string name="share_label_milestone_complete">Milestone Complete</string>
+    <string name="share_milestone_progress">%1$d of %2$d Completed</string>
+    <string name="share_label_relationship_milestone">RELATIONSHIP MILESTONE</string>
+    <string name="share_milestone_ready_footer">Ready for the next chapter of our story.</string>
+    <string name="share_milestone_complete_footer">Another beautiful chapter written together.</string>
+    <string name="share_label_cherished_memory">Cherished Memory</string>
+    <string name="share_label_captured_with_love">Captured With Love</string>
+    <string name="share_photo_frozen_moment">A moment frozen in time forever.</string>
+    <string name="share_precious_moment_title">Our Precious Moment</string>
+    <string name="share_label_written_memory">WRITTEN MEMORY</string>
+    <string name="share_watermark">Love Counter: Anniversary Day</string>
+
     <string name="moments_title">Moments</string>
     <string name="moments_subtitle">Your shared journey and timeline</string>
     <string name="moments_tab_all">All</string>
@@ -52,8 +89,10 @@
     <string name="event_category_label">Category</string>
     <string name="event_date_label">Date</string>
     <string name="event_time_together_label">Time Together</string>
+    <string name="event_exact_duration_label">Exact Duration</string>
     <string name="event_days_remaining_label">Remaining</string>
     <string name="event_saved_toast">Moment saved with love</string>
+    <string name="event_title_label">Event Title</string>
     <string name="event_deleted_toast">Moment removed</string>
 
     <!-- Additional Categories -->
@@ -81,12 +120,45 @@
     <string name="settings_haptics_subtitle">Subtle vibration when completing milestones</string>
     <string name="settings_section_data">Data &amp; Security</string>
     <string name="settings_backup_title">Export &amp; Backup</string>
-    <string name="settings_backup_subtitle">Safeguard your relationship moments</string>
+    <string name="settings_backup_subtitle">Save your relationship memories</string>
+    <string name="settings_backup_ready_label">Data ready for backup:</string>
+    <string name="settings_backup_stories_label">Stories &amp; Moments</string>
+    <string name="settings_backup_milestones_label">Milestones</string>
+    <string name="settings_backup_tasks_label">Preparations</string>
+    <string name="settings_backup_desc_footer">Your export file is formatted in portable JSON, allowing you to back up your personal memories or transfer them anytime.</string>
+    <string name="settings_backup_share_btn">Share / Save Backup File</string>
+    <string name="settings_backup_copy_btn">Copy Backup JSON to Clipboard</string>
+    <string name="settings_backup_copied_toast">Backup copied to clipboard</string>
     <string name="settings_section_about">About Love Counter</string>
     <string name="settings_version_title">Version</string>
     <string name="settings_version_value">1.0.0 (Foundation)</string>
     <string name="settings_send_feedback">Send Feedback</string>
     <string name="settings_privacy_policy">Privacy Policy</string>
+    <string name="settings_appearance_header">Appearance</string>
+    <string name="settings_app_theme">App Theme</string>
+    <string name="settings_color_style">Color Style &amp; Accent</string>
+    <string name="settings_theme_preview">Theme Preview</string>
+    <string name="settings_reduce_animations">Reduce Animations</string>
+    <string name="settings_reduce_animations_desc">Minimize decorative motion and transitions</string>
+    <string name="settings_stored_locally_title">Stored Locally &amp; Privately</string>
+    <string name="settings_stored_locally_desc">Your memories, countdowns, and love notes are safely preserved only on your personal device.</string>
+    <string name="settings_reset_data_desc">Clear all stories, moments, and milestones</string>
+    <string name="settings_privacy_title">Privacy &amp; Data Protection</string>
+    <string name="settings_privacy_subtitle">Built with your privacy at heart</string>
+    <string name="settings_privacy_bullet1">• All your data is stored locally on your device in secure app storage.</string>
+    <string name="settings_privacy_bullet2">• No accounts, passwords, or personal credentials are required to celebrate your moments.</string>
+    <string name="settings_privacy_bullet3">• You can export your data at any time in portable JSON format, or delete it completely whenever you choose.</string>
+    <string name="settings_feedback_email_toast">Feedback email: support@lovecounter.app</string>
+    <string name="settings_reset_data_title">Reset Application Data</string>
+    <string name="settings_manage_profile_btn">Customize Story &amp; Moments</string>
+    <string name="settings_create_profile_btn">Create Your Story</string>
+    <string name="settings_notification_permission_toast">Notifications enabled with love</string>
+    <string name="settings_notification_permission_denied_toast">Notification permission was not granted</string>
+    <string name="settings_notification_time_updated_toast">Default reminder time updated</string>
+    <string name="settings_data_reset_toast">All data has been reset</string>
+    <string name="settings_together_since">Together since %1$s</string>
+    <string name="settings_glance_widgets_title">Glance at Your Moments</string>
+    <string name="settings_stored_locally_label">Stored Locally &amp; Privately</string>
 
     <!-- Onboarding Experience -->
     <string name="onboarding_skip">Skip</string>
@@ -151,9 +223,20 @@
     <string name="input_error_names_required">Please enter your names or a story title</string>
 
     <!-- Step 3: Date -->
+    <string name="create_step2_error_required">Please enter your name, partner\'s name, or a story title</string>
     <string name="create_step3_badge">Important Date</string>
     <string name="create_step3_headline">When is this special date?</string>
     <string name="create_step3_subhead">Choose the date to start counting days or upcoming anniversaries.</string>
+    <string name="create_step3_tap_to_change">Tap to change</string>
+    <string name="create_step3_beginning_today">Beginning Today</string>
+    <string name="create_step3_together_for">Together for %1$d days</string>
+    <string name="create_step3_coming_in">Coming in %1$d days</string>
+    <string name="create_step3_quick_presets">Quick Presets</string>
+    <string name="create_step3_preset_today">Today</string>
+    <string name="create_step3_preset_1yr">1 Year Ago</string>
+    <string name="create_step3_preset_3yr">3 Years Ago</string>
+    <string name="create_step3_preset_5yr">5 Years Ago</string>
+    <string name="create_step3_preset_custom">Custom Calendar</string>
     <string name="date_picker_action">Select Date</string>
     <string name="date_selected_label">Selected Date</string>
     <string name="date_elapsed_prefix">Together for</string>
@@ -176,6 +259,8 @@
     <string name="create_step5_subhead">Here is a preview of your first cherished milestone.</string>
 
     <!-- Common UI Components -->
+    <string name="create_step5_days_together">days together ♥</string>
+    <string name="create_step5_days_to_go">days to go ♥</string>
     <string name="btn_save">Save</string>
     <string name="btn_cancel">Cancel</string>
     <string name="btn_add">Add</string>
@@ -198,6 +283,7 @@
     <string name="milestones_linked_event_label">Connect to Important Event</string>
     <string name="milestones_none_linked">None (Independent Goal)</string>
     <string name="milestones_target_date_label">Target Date</string>
+    <string name="milestones_select_date_hint">Select target date</string>
     <string name="milestones_category_label">Journey Type</string>
     <string name="milestones_tab_all">All</string>
     <string name="milestones_tab_wedding">Wedding Journey</string>
@@ -206,6 +292,7 @@
     <string name="milestones_tab_trip">Trip</string>
     <string name="milestones_completed_section">Completed</string>
     <string name="milestones_active_section">Active Preparations</string>
+    <string name="milestones_all_preparations_completed">All %1$d preparations completed</string>
     <string name="milestones_empty_headline">No Milestones Yet</string>
     <string name="milestones_empty_subheadline">Organize wedding plans, anniversary surprises, shared trips, and preparation goals together.</string>
     <string name="milestones_empty_cta">Create First Milestone</string>
@@ -215,6 +302,9 @@
     <string name="milestone_delete_btn">Delete Milestone</string>
     <string name="milestone_edit_btn">Edit Milestone</string>
     <string name="milestone_completed_tag">Completed</string>
+    <string name="milestone_connected_to">Connected to %1$s</string>
+    <string name="milestone_no_tasks">No tasks yet</string>
+    <string name="milestone_no_tasks_desc">Add preparation steps to organize this milestone together.</string>
     <string name="milestone_celebration_headline">Milestone Completed! ✨</string>
     <string name="milestone_celebration_sub">All preparations are ready for this wonderful moment.</string>
     <string name="milestone_delete_dialog_title">Delete Milestone?</string>
@@ -244,6 +334,19 @@
     <string name="calendar_tab_timeline">Timeline</string>
     <string name="calendar_tab_calendar">Calendar</string>
     <string name="calendar_moments_count">%1$d moments</string>
+    <string name="calendar_content_today">, Today</string>
+    <string name="calendar_content_selected">, Selected</string>
+    <string name="calendar_today_dot_separator">Today • %1$s</string>
+    <string name="calendar_event_initial_date">Initial Date</string>
+    <string name="calendar_event_anniversary_year">Year %1$d Celebration</string>
+    <string name="calendar_event_all_day">All day</string>
+    <string name="calendar_event_milestone_target">Milestone Target Date</string>
+    <string name="calendar_event_task_completed">Completed Preparation</string>
+    <string name="calendar_event_task_due">Preparation Due</string>
+    <string name="calendar_badge_yrs">%1$d yrs</string>
+    <string name="calendar_badge_done">Done</string>
+    <string name="calendar_badge_task">Task</string>
+    <string name="calendar_badge_milestone">Milestone</string>
     <string name="calendar_empty_no_events_title">Your Calendar Awaits</string>
     <string name="calendar_empty_no_events_desc">Mark anniversaries, birthdays, and special milestones to see them mapped throughout the year.</string>
     <string name="calendar_empty_no_events_action">Add Your First Moment</string>
@@ -294,6 +397,11 @@
     <string name="timeline_empty_title">Your Story Awaits</string>
     <string name="timeline_empty_description">Begin adding meaningful anniversaries, milestones, and personal journal memories to see your journey unfold chronologically.</string>
     <string name="timeline_empty_action">Write First Memory</string>
+    <string name="timeline_label_memory_story">Memory • %1$s</string>
+    <string name="timeline_label_photo_story">Photo • %1$s</string>
+    <string name="timeline_label_milestone_cat">Milestone • %1$s</string>
+    <string name="timeline_journey_milestone">Journey milestone</string>
+    <string name="timeline_photo_caption_empty">Memory Photo</string>
     <string name="timeline_type_memory">Written Memory</string>
     <string name="timeline_type_event">Milestone Event</string>
     <string name="timeline_type_milestone">Journey Goal</string>
@@ -330,8 +438,11 @@
     <string name="journal_delete_btn">Delete Memory</string>
     <string name="journal_saved_toast">Memory preserved with love</string>
     <string name="journal_deleted_toast">Memory removed</string>
+    <string name="journal_all_memories_completed">All %1$d preparations completed</string>
     <string name="journal_related_memories_header">Related Memories</string>
     <string name="journal_add_memory_for_event">Add Memory for this Moment</string>
+    <string name="journal_memory_on_date">Memory on %1$s</string>
+    <string name="journal_no_content_placeholder">No written memory added.</string>
     <string name="journal_no_related_memories">No written memories linked to this moment yet.</string>
 
     <!-- Memory Photos Experience -->
@@ -404,6 +515,10 @@
     <!-- Home Screen Widgets -->
     <string name="widget_main_title">Love Counter</string>
     <string name="widget_main_desc">Keep your relationship time and days together visible on your home screen.</string>
+    <string name="widget_type_countdown">Cherish Countdown</string>
+    <string name="widget_type_next_event">Next Moment</string>
+    <string name="widget_type_minimal">Minimal Days</string>
+    <string name="widget_no_upcoming_events">No Upcoming Events</string>
     <string name="widget_next_title">Next Moment</string>
     <string name="widget_next_desc">Shows the nearest upcoming anniversary or celebration countdown.</string>
     <string name="widget_minimal_title">Minimal Days</string>
@@ -416,7 +531,10 @@
     <string name="widget_next_moment_label">Next Moment</string>
     <string name="widget_since_label">Since %1$s</string>
     <string name="widget_in_days">In %1$s days</string>
+    <string name="widget_footer_next_anniversary">Next: %1$s in %2$d days</string>
     <string name="widget_days_together_lower">%1$s days together</string>
+    <string name="widget_days_together_label">days together</string>
+    <string name="widget_days_until_event">days until %1$s</string>
     <string name="widget_days_until_lower">%1$s days until %2$s</string>
 
     <!-- Widget Configuration -->
@@ -425,6 +543,7 @@
     <string name="widget_config_preview_label">Widget Preview</string>
     <string name="widget_config_select_story">Choose Moment</string>
     <string name="widget_config_auto_next">Automatic (Next Upcoming Moment)</string>
+    <string name="widget_config_auto_next_desc">Automatically highlights nearest upcoming moment or celebration.</string>
     <string name="widget_config_primary_story">Primary Story (%1$s)</string>
     <string name="widget_config_appearance">Appearance</string>
     <string name="widget_config_theme_light">Warm Ivory (Light)</string>

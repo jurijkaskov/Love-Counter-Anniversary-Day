@@ -177,7 +177,7 @@ fun Step3DateSelection(
               .padding(horizontal = 10.dp, vertical = 4.dp)
           ) {
             Text(
-              text = "Tap to change",
+              text = stringResource(R.string.create_step3_tap_to_change),
               style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Medium),
               color = MaterialTheme.colorScheme.primary
             )
@@ -221,9 +221,9 @@ fun Step3DateSelection(
             Spacer(modifier = Modifier.width(8.dp))
             Text(
               text = if (isPast) {
-                if (daysDiff == 0L) "Beginning Today" else "Together for $daysDiff days"
+                if (daysDiff == 0L) stringResource(R.string.create_step3_beginning_today) else stringResource(R.string.create_step3_together_for, daysDiff)
               } else {
-                "Coming in $daysDiff days"
+                stringResource(R.string.create_step3_coming_in, daysDiff)
               },
               style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.Bold),
               color = if (isPast) MaterialTheme.colorScheme.primary else extColors.goldAccent
@@ -237,7 +237,7 @@ fun Step3DateSelection(
 
     // Quick presets
     Text(
-      text = "Quick Presets",
+      text = stringResource(R.string.create_step3_quick_presets),
       style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.SemiBold),
       color = extColors.textMuted,
       modifier = Modifier.fillMaxWidth()
@@ -251,27 +251,27 @@ fun Step3DateSelection(
       verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
       QuickDateChip(
-        label = "Today",
+        label = stringResource(R.string.create_step3_preset_today),
         isSelected = selectedDate == today,
         onClick = { onDateSelected(today) }
       )
       QuickDateChip(
-        label = "1 Year Ago",
+        label = stringResource(R.string.create_step3_preset_1yr),
         isSelected = selectedDate == today.minusYears(1),
         onClick = { onDateSelected(today.minusYears(1)) }
       )
       QuickDateChip(
-        label = "3 Years Ago",
+        label = stringResource(R.string.create_step3_preset_3yr),
         isSelected = selectedDate == today.minusYears(3),
         onClick = { onDateSelected(today.minusYears(3)) }
       )
       QuickDateChip(
-        label = "5 Years Ago",
+        label = stringResource(R.string.create_step3_preset_5yr),
         isSelected = selectedDate == today.minusYears(5),
         onClick = { onDateSelected(today.minusYears(5)) }
       )
       QuickDateChip(
-        label = "Custom Calendar",
+        label = stringResource(R.string.create_step3_preset_custom),
         isSelected = false,
         icon = Icons.Default.EditCalendar,
         onClick = { showDatePickerDialog = true }
@@ -301,12 +301,12 @@ fun Step3DateSelection(
               showDatePickerDialog = false
             }
           ) {
-            Text("Done", fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary)
+            Text(stringResource(R.string.btn_close), fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary)
           }
         },
         dismissButton = {
           TextButton(onClick = { showDatePickerDialog = false }) {
-            Text("Cancel", color = extColors.textMuted)
+            Text(stringResource(R.string.btn_cancel), color = extColors.textMuted)
           }
         },
         colors = DatePickerDefaults.colors(

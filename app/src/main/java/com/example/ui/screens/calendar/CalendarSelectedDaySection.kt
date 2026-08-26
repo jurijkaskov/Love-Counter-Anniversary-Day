@@ -82,7 +82,7 @@ fun CalendarSelectedDaySection(
       verticalAlignment = Alignment.CenterVertically
     ) {
       Text(
-        text = if (isToday) "Today • $formattedDateHeader" else formattedDateHeader,
+        text = if (isToday) stringResource(R.string.calendar_today_dot_separator, formattedDateHeader) else formattedDateHeader,
         style = MaterialTheme.typography.titleLarge.copy(
           fontFamily = FontFamily.Serif,
           fontWeight = FontWeight.SemiBold,
@@ -256,7 +256,7 @@ fun getIconVectorForCalendarItem(event: CalendarEventItem): ImageVector {
     "flight", "trip" -> Icons.Default.Flight
     "cake", "birthday" -> Icons.Default.Cake
     "star" -> Icons.Default.Star
-    "checklist" -> if (event.badgeText == "Done") Icons.Default.CheckCircle else Icons.Default.RadioButtonUnchecked
+    "checklist" -> if (event.isCompleted) Icons.Default.CheckCircle else Icons.Default.RadioButtonUnchecked
     else -> Icons.Outlined.Event
   }
 }

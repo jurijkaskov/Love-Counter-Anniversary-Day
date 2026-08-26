@@ -27,6 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.platform.LocalContext
 import com.example.R
 import com.example.data.MilestoneRepository
 import com.example.data.PreferencesManager
@@ -49,6 +50,7 @@ fun CalendarScreen(
   onNavigateToTimeline: () -> Unit,
   modifier: Modifier = Modifier
 ) {
+  val context = LocalContext.current
   val stories by storyRepository.stories.collectAsState()
   val allMilestones by milestoneRepository.milestones.collectAsState()
   val allTasks by milestoneRepository.tasks.collectAsState()
@@ -67,8 +69,8 @@ fun CalendarScreen(
   var milestoneToEdit by remember { mutableStateOf<MilestoneModel?>(null) }
 
   // Events for selected date
-  val eventsOnSelectedDate = remember(selectedDate, stories, allMilestones, allTasks) {
-    CalendarDataHelper.getAllEventsForDate(selectedDate, stories, allMilestones, allTasks)
+  val eventsOnSelectedDate = remember(context, selectedDate, stories, allMilestones, allTasks) {
+    CalendarDataHelper.getAllEventsForDate(context, selectedDate, stories, allMilestones, allTasks)
   }
 
   // Upcoming stories for preview (sorted by days until next occurrence)

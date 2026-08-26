@@ -292,7 +292,7 @@ fun Step5PreviewConfirmation(
             )
             Spacer(modifier = Modifier.width(6.dp))
             Text(
-              text = if (isPast) "days together ♥" else "days to go ♥",
+              text = if (isPast) stringResource(R.string.create_step5_days_together) else stringResource(R.string.create_step5_days_to_go),
               style = MaterialTheme.typography.titleMedium.copy(
                 fontFamily = FontFamily.Serif,
                 fontStyle = FontStyle.Italic

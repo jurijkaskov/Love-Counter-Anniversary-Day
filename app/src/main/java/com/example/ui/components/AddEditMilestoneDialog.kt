@@ -294,14 +294,14 @@ fun AddEditMilestoneDialog(
               )
               Spacer(modifier = Modifier.width(10.dp))
               Text(
-                text = targetDateFormatted ?: "Select target date",
+                text = targetDateFormatted ?: stringResource(R.string.milestones_select_date_hint),
                 style = MaterialTheme.typography.bodyMedium,
                 color = if (targetDateFormatted != null) MaterialTheme.colorScheme.onSurface else extColors.textMuted
               )
             }
             if (targetDateEpochDay != null) {
               Text(
-                text = "Clear",
+                text = stringResource(R.string.btn_clear),
                 style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Medium),
                 color = extColors.textMuted,
                 modifier = Modifier.clickable { targetDateEpochDay = null }
@@ -380,7 +380,7 @@ fun AddEditMilestoneDialog(
         ) {
           if (milestoneToEdit != null && onDeleteMilestone != null) {
             SecondaryButton(
-              text = "Delete",
+              text = stringResource(R.string.btn_delete),
               onClick = { showDeleteConfirm = true },
               modifier = Modifier.weight(1f),
               icon = Icons.Default.Delete,
@@ -439,7 +439,7 @@ fun AddEditMilestoneDialog(
             onDeleteMilestone(milestoneToEdit.id)
           }
         ) {
-          Text(text = "Delete", color = MaterialTheme.colorScheme.error)
+          Text(text = stringResource(R.string.btn_delete), color = MaterialTheme.colorScheme.error)
         }
       },
       dismissButton = {

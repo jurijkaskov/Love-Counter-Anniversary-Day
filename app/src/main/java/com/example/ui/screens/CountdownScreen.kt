@@ -102,6 +102,7 @@ fun CountdownScreen(
   onNavigateToMilestones: () -> Unit = {},
   modifier: Modifier = Modifier
 ) {
+  val context = androidx.compose.ui.platform.LocalContext.current
   val extColors = LocalCherishExtendedColors.current
   var showShareCardDialog by remember { mutableStateOf(false) }
 
@@ -190,7 +191,7 @@ fun CountdownScreen(
       if (upcomingMilestones.isEmpty()) {
         item {
           Text(
-            text = "No active milestones yet. Plan your next celebration!",
+            text = stringResource(R.string.countdown_no_milestones_empty),
             style = MaterialTheme.typography.bodyMedium,
             color = extColors.textMuted,
             textAlign = TextAlign.Center,
@@ -229,7 +230,7 @@ fun CountdownScreen(
 
     if (showShareCardDialog && primaryStory != null) {
       ShareCardDialog(
-        payload = ShareCardPayloadFactory.fromStory(primaryStory),
+        payload = ShareCardPayloadFactory.fromStory(context, primaryStory),
         onDismiss = { showShareCardDialog = false }
       )
     }
@@ -349,7 +350,7 @@ private fun HeroCountdownCard(
         Spacer(modifier = Modifier.height(16.dp))
 
         Text(
-          text = "Begin Your Story",
+          text = stringResource(R.string.countdown_begin_story),
           style = MaterialTheme.typography.headlineSmall.copy(
             fontFamily = FontFamily.Serif,
             fontWeight = FontWeight.Bold
@@ -360,7 +361,7 @@ private fun HeroCountdownCard(
         Spacer(modifier = Modifier.height(6.dp))
 
         Text(
-          text = "Set your relationship date or first anniversary to celebrate every single day together.",
+          text = stringResource(R.string.countdown_set_date_desc),
           style = MaterialTheme.typography.bodyMedium,
           color = extColors.textMuted,
           textAlign = TextAlign.Center,
@@ -370,7 +371,7 @@ private fun HeroCountdownCard(
         Spacer(modifier = Modifier.height(20.dp))
 
         PrimaryButton(
-          text = "Create First Story",
+          text = stringResource(R.string.countdown_create_story_btn),
           onClick = onCreateStoryClick,
           icon = Icons.Filled.Add,
           testTag = "btn_create_first_story_hero"
@@ -521,7 +522,7 @@ private fun HeroCountdownCard(
           )
           Spacer(modifier = Modifier.width(10.dp))
           Text(
-            text = if (isPast) "days ♥" else "days to go ♥",
+            text = stringResource(R.string.countdown_days_to_go_suffix),
             style = MaterialTheme.typography.headlineSmall.copy(
               fontFamily = FontFamily.Serif,
               fontStyle = FontStyle.Italic,
@@ -540,7 +541,7 @@ private fun HeroCountdownCard(
           text = if (isPast) {
             primaryStory.formattedPeriodBreakdown
           } else {
-            "Until ${primaryStory.displayTitle}"
+            stringResource(R.string.countdown_until_prefix, primaryStory.displayTitle)
           },
           style = MaterialTheme.typography.bodyLarge.copy(
             fontWeight = FontWeight.Medium,
@@ -569,7 +570,7 @@ private fun HeroCountdownCard(
             modifier = Modifier.padding(horizontal = 8.dp)
           )
           Text(
-            text = if (isPast) "Since ${primaryStory.formattedDate}" else primaryStory.formattedDate,
+            text = if (isPast) stringResource(R.string.countdown_since_prefix, primaryStory.formattedDate) else primaryStory.formattedDate,
             style = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.Medium),
             color = extColors.textMuted
           )
