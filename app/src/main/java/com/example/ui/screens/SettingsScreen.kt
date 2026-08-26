@@ -648,7 +648,7 @@ fun SettingsScreen(
           )
 
           // Send Feedback
-          PreferenceRow(
+          /*PreferenceRow(
             title = stringResource(R.string.settings_send_feedback),
             subtitle = "Share thoughts, ideas, or suggestions",
             icon = Icons.Default.Feedback,
@@ -669,7 +669,7 @@ fun SettingsScreen(
           HorizontalDivider(
             modifier = Modifier.padding(horizontal = 14.dp),
             color = extColors.cardBorderSubtle
-          )
+          )*/
 
           // Privacy Policy
           PreferenceRow(

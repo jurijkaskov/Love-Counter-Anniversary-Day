@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatter
 import java.util.Locale
 
 enum class ThemeMode(val title: String, val description: String) {
-  SYSTEM("System Default", "Follows your device settings"),
+  SYSTEM("Default", "Follows your device settings"),
   LIGHT("Light", "Warm ivory and soft cream"),
   DARK("Dark", "Warm espresso night ambiance")
 }
