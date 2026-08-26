@@ -474,7 +474,8 @@ fun MomentsScreen(
         Spacer(modifier = Modifier.height(12.dp))
         MomentsHeader(
           onAddClick = { showAddDialog = true },
-          onCalendarClick = { selectedTab = MomentsTabCategory.CALENDAR }
+          onCalendarClick = { selectedTab = MomentsTabCategory.CALENDAR },
+          showAddButton = filteredStories.isNotEmpty()
         )
       }
 
@@ -760,7 +761,8 @@ fun MomentsScreen(
 @Composable
 private fun MomentsHeader(
   onAddClick: () -> Unit,
-  onCalendarClick: () -> Unit
+  onCalendarClick: () -> Unit,
+  showAddButton: Boolean = true
 ) {
   val extColors = LocalCherishExtendedColors.current
 
@@ -800,14 +802,16 @@ private fun MomentsHeader(
         testTag = "moments_calendar_toggle_button"
       )
 
-      CherishIconButton(
-        icon = Icons.Default.Add,
-        contentDescription = stringResource(R.string.moments_add_button),
-        onClick = onAddClick,
-        backgroundColor = MaterialTheme.colorScheme.primary,
-        tint = MaterialTheme.colorScheme.onPrimary,
-        testTag = "add_moment_top_button"
-      )
+      if (showAddButton) {
+        CherishIconButton(
+          icon = Icons.Default.Add,
+          contentDescription = stringResource(R.string.moments_add_button),
+          onClick = onAddClick,
+          backgroundColor = MaterialTheme.colorScheme.primary,
+          tint = MaterialTheme.colorScheme.onPrimary,
+          testTag = "add_moment_top_button"
+        )
+      }
     }
   }
 }

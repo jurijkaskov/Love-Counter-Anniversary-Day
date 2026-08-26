@@ -126,33 +126,35 @@ fun PhotoGalleryView(
         )
       }
 
-      Surface(
-        modifier = Modifier
-          .clip(RoundedCornerShape(16.dp))
-          .clickable(onClick = onAddPhotoClick)
-          .testTag("btn_gallery_add_photo"),
-        shape = RoundedCornerShape(16.dp),
-        color = MaterialTheme.colorScheme.primary,
-        shadowElevation = 2.dp
-      ) {
-        Row(
-          modifier = Modifier.padding(horizontal = 14.dp, vertical = 9.dp),
-          verticalAlignment = Alignment.CenterVertically,
-          horizontalArrangement = Arrangement.spacedBy(6.dp)
+      if (filteredPhotos.isNotEmpty()) {
+        Surface(
+          modifier = Modifier
+            .clip(RoundedCornerShape(16.dp))
+            .clickable(onClick = onAddPhotoClick)
+            .testTag("btn_gallery_add_photo"),
+          shape = RoundedCornerShape(16.dp),
+          color = MaterialTheme.colorScheme.primary,
+          shadowElevation = 2.dp
         ) {
-          Icon(
-            imageVector = Icons.Outlined.AddPhotoAlternate,
-            contentDescription = "Add Photo",
-            tint = MaterialTheme.colorScheme.onPrimary,
-            modifier = Modifier.size(16.dp)
-          )
-          Text(
-            text = stringResource(R.string.photos_add_btn),
-            style = MaterialTheme.typography.labelMedium.copy(
-              color = MaterialTheme.colorScheme.onPrimary,
-              fontWeight = FontWeight.Bold
+          Row(
+            modifier = Modifier.padding(horizontal = 14.dp, vertical = 9.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(6.dp)
+          ) {
+            Icon(
+              imageVector = Icons.Outlined.AddPhotoAlternate,
+              contentDescription = "Add Photo",
+              tint = MaterialTheme.colorScheme.onPrimary,
+              modifier = Modifier.size(16.dp)
             )
-          )
+            Text(
+              text = stringResource(R.string.photos_add_btn),
+              style = MaterialTheme.typography.labelMedium.copy(
+                color = MaterialTheme.colorScheme.onPrimary,
+                fontWeight = FontWeight.Bold
+              )
+            )
+          }
         }
       }
     }

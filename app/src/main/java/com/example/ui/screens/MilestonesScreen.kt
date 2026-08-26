@@ -214,12 +214,14 @@ fun MilestonesScreen(
             )
           }
 
-          CherishIconButton(
-            icon = Icons.Default.Add,
-            contentDescription = "Create Milestone",
-            onClick = { showAddMilestoneDialog = true },
-            testTag = "add_milestone_header_button"
-          )
+          if (filteredMilestones.isNotEmpty()) {
+            CherishIconButton(
+              icon = Icons.Default.Add,
+              contentDescription = "Create Milestone",
+              onClick = { showAddMilestoneDialog = true },
+              testTag = "add_milestone_header_button"
+            )
+          }
         }
       }
 

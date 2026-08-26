@@ -92,12 +92,14 @@ fun JournalView(
         )
       }
 
-      PrimaryButton(
-        text = stringResource(R.string.journal_add_entry_btn),
-        onClick = onWriteMemoryClick,
-        testTag = "journal_write_header_btn",
-        icon = Icons.Default.Add
-      )
+      if (filteredEntries.isNotEmpty()) {
+        PrimaryButton(
+          text = stringResource(R.string.journal_add_entry_btn),
+          onClick = onWriteMemoryClick,
+          testTag = "journal_write_header_btn",
+          icon = Icons.Default.Add
+        )
+      }
     }
 
     // Filter Chips Row
