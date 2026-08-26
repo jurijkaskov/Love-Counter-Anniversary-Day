@@ -335,25 +335,6 @@ private fun HeaderBar(
         onClick = onAddClick,
         testTag = "countdown_add_moment_btn"
       )
-
-      Spacer(modifier = Modifier.width(6.dp))
-
-      // Couple initials / status badge
-      Box(
-        modifier = Modifier
-          .clip(RoundedCornerShape(16.dp))
-          .background(extColors.goldContainer)
-          .border(1.dp, extColors.goldAccent.copy(alpha = 0.35f), RoundedCornerShape(16.dp))
-          .clickable { onAddClick() }
-          .padding(horizontal = 10.dp, vertical = 6.dp),
-        contentAlignment = Alignment.Center
-      ) {
-        Text(
-          text = primaryStory?.displayInitials ?: "♥",
-          style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold),
-          color = extColors.goldAccent
-        )
-      }
     }
   }
 }
