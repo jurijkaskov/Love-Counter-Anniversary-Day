@@ -121,7 +121,7 @@ fun ThemePreviewCard(
 
           Column(modifier = Modifier.weight(1f)) {
             Text(
-              text = "Together for 1,253 days",
+              text = "Together for 1,234 days",
               style = MaterialTheme.typography.titleSmall.copy(
                 fontFamily = FontFamily.Serif,
                 fontWeight = FontWeight.SemiBold
@@ -129,7 +129,7 @@ fun ThemePreviewCard(
               color = MaterialTheme.colorScheme.onSurface
             )
             Text(
-              text = "Next: Wedding Anniversary in 156 days",
+              text = "Next: Anniversary in 100 days",
               style = MaterialTheme.typography.bodySmall.copy(fontSize = 12.sp),
               color = primaryAccent
             )

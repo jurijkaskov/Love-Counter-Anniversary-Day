@@ -64,8 +64,8 @@
 
     <!-- Settings Screen -->
     <string name="settings_title">Settings</string>
-    <string name="settings_profile_names">Eleanor &amp; Julian</string>
-    <string name="settings_profile_subtitle">Celebrating since October 24, 2023</string>
+    <string name="settings_profile_names">Your Names</string>
+    <string name="settings_profile_subtitle">Your relationship date not set yet</string>
     <string name="settings_edit_profile">Manage Profile</string>
     <string name="settings_section_preferences">Preferences</string>
     <string name="settings_notifications_title">Reminders &amp; Alerts</string>

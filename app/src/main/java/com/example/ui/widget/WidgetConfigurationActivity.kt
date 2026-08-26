@@ -588,7 +588,7 @@ private fun WidgetLivePreview(
             )
             Spacer(modifier = Modifier.width(6.dp))
             Text(
-              text = selectedStory?.displayTitle ?: "Eleanor & Julian",
+              text = selectedStory?.displayTitle ?: "Your Love Story",
               style = MaterialTheme.typography.titleMedium.copy(
                 fontWeight = FontWeight.Bold,
                 fontSize = 15.sp
