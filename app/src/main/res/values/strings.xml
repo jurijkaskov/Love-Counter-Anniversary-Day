@@ -168,7 +168,7 @@
     <string name="onboarding_create_first_moment">Create My First Moment</string>
     
     <!-- Onboarding Step 1 -->
-    <string name="onboarding_step1_badge">Welcome to Love Counter</string>
+    <string name="onboarding_step1_badge">Welcome to %1$s</string>
     <string name="onboarding_step1_title">Every moment deserves to be remembered.</string>
     <string name="onboarding_step1_description">Celebrate anniversaries, count days together, and preserve your shared love story in one intimate space.</string>
     
@@ -177,7 +177,25 @@
     <string name="onboarding_step2_title">Never miss a date that matters.</string>
     <string name="onboarding_step2_description">Stay reminded of upcoming anniversaries, milestones, and celebrations with beautiful countdowns and alerts.</string>
 
-    <!-- Onboarding Step 3 -->
+    <!-- Onboarding Step 2 Visuals -->
+    <string name="onboarding_visual_trip">Trip to Amalfi</string>
+    <string name="onboarding_visual_trip_date">September 14 · Next month</string>
+    <string name="onboarding_visual_first_date">First Date Anniversary</string>
+    <string name="onboarding_visual_first_date_val">February 14</string>
+    <string name="onboarding_visual_first_date_days">In 12d</string>
+    <string name="onboarding_visual_wedding">Wedding Anniversary</string>
+    <string name="onboarding_visual_wedding_countdown">August 12 · Countdown Active</string>
+    <string name="onboarding_visual_wedding_days">156 days</string>
+
+    <!-- Onboarding Step 3 Visuals -->
+    <string name="onboarding_visual_met">The Day We Met</string>
+    <string name="onboarding_visual_met_date">October 24 · Chapter 1</string>
+    <string name="onboarding_visual_journey">First Journey Together</string>
+    <string name="onboarding_visual_journey_desc">Romantic Getaway</string>
+    <string name="onboarding_visual_forever">Forever &amp; Beyond</string>
+    <string name="onboarding_visual_forever_desc">Every day created by you</string>
+
+    <!-- Settings Addition -->
     <string name="onboarding_step3_badge">Your Journey</string>
     <string name="onboarding_step3_title">Your story. Your moments. Your way.</string>
     <string name="onboarding_step3_description">From the day you met to everyday memories, customize your timeline and celebrate every step of your journey.</string>

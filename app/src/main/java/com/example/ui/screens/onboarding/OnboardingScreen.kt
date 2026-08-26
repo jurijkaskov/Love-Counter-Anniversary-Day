@@ -60,7 +60,7 @@ import com.example.ui.theme.LocalCherishExtendedColors
 import kotlinx.coroutines.launch
 
 private data class OnboardingPageData(
-  val badgeResId: Int,
+  val badgeText: String,
   val titleResId: Int,
   val descriptionResId: Int,
   val visualContent: @Composable () -> Unit,
@@ -78,21 +78,21 @@ fun OnboardingScreen(
 
   val pages = listOf(
     OnboardingPageData(
-      badgeResId = R.string.onboarding_step1_badge,
+      badgeText = stringResource(R.string.onboarding_step1_badge, stringResource(R.string.app_name)),
       titleResId = R.string.onboarding_step1_title,
       descriptionResId = R.string.onboarding_step1_description,
       visualContent = { WelcomeHeroVisual() },
       buttonTextResId = R.string.onboarding_get_started
     ),
     OnboardingPageData(
-      badgeResId = R.string.onboarding_step2_badge,
+      badgeText = stringResource(R.string.onboarding_step2_badge),
       titleResId = R.string.onboarding_step2_title,
       descriptionResId = R.string.onboarding_step2_description,
       visualContent = { MilestonesHeroVisual() },
       buttonTextResId = R.string.onboarding_next
     ),
     OnboardingPageData(
-      badgeResId = R.string.onboarding_step3_badge,
+      badgeText = stringResource(R.string.onboarding_step3_badge),
       titleResId = R.string.onboarding_step3_title,
       descriptionResId = R.string.onboarding_step3_description,
       visualContent = { YourStoryHeroVisual() },
@@ -278,7 +278,7 @@ private fun OnboardingPageItem(
         .padding(horizontal = 14.dp, vertical = 6.dp)
     ) {
       Text(
-        text = stringResource(page.badgeResId),
+        text = page.badgeText,
         style = MaterialTheme.typography.labelSmall.copy(
           fontWeight = FontWeight.SemiBold,
           letterSpacing = 0.5.sp

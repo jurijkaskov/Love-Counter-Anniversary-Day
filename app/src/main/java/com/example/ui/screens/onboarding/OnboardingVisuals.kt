@@ -52,10 +52,12 @@ import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.R
 import com.example.ui.theme.LocalCherishExtendedColors
 
 /**
@@ -236,12 +238,12 @@ fun MilestonesHeroVisual(modifier: Modifier = Modifier) {
         Spacer(modifier = Modifier.width(10.dp))
         Column {
           Text(
-            text = "Trip to Amalfi",
+            text = stringResource(R.string.onboarding_visual_trip),
             style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.SemiBold),
             color = MaterialTheme.colorScheme.onSurface
           )
           Text(
-            text = "September 14 · Next month",
+            text = stringResource(R.string.onboarding_visual_trip_date),
             style = MaterialTheme.typography.bodySmall.copy(fontSize = 11.sp),
             color = extColors.textMuted
           )
@@ -281,12 +283,12 @@ fun MilestonesHeroVisual(modifier: Modifier = Modifier) {
         Spacer(modifier = Modifier.width(10.dp))
         Column(modifier = Modifier.weight(1f)) {
           Text(
-            text = "First Date Anniversary",
+            text = stringResource(R.string.onboarding_visual_first_date),
             style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.SemiBold),
             color = MaterialTheme.colorScheme.onSurface
           )
           Text(
-            text = "February 14",
+            text = stringResource(R.string.onboarding_visual_first_date_val),
             style = MaterialTheme.typography.bodySmall.copy(fontSize = 11.sp),
             color = extColors.textMuted
           )
@@ -298,7 +300,7 @@ fun MilestonesHeroVisual(modifier: Modifier = Modifier) {
             .padding(horizontal = 8.dp, vertical = 4.dp)
         ) {
           Text(
-            text = "In 12d",
+            text = stringResource(R.string.onboarding_visual_first_date_days),
             style = MaterialTheme.typography.labelSmall.copy(
               fontWeight = FontWeight.Bold,
               fontSize = 10.5.sp
@@ -343,7 +345,7 @@ fun MilestonesHeroVisual(modifier: Modifier = Modifier) {
 
         Column(modifier = Modifier.weight(1f)) {
           Text(
-            text = "Wedding Anniversary",
+            text = stringResource(R.string.onboarding_visual_wedding),
             style = MaterialTheme.typography.titleSmall.copy(
               fontFamily = FontFamily.Serif,
               fontWeight = FontWeight.Bold
@@ -352,7 +354,7 @@ fun MilestonesHeroVisual(modifier: Modifier = Modifier) {
           )
           Spacer(modifier = Modifier.height(1.dp))
           Text(
-            text = "August 12 · Countdown Active",
+            text = stringResource(R.string.onboarding_visual_wedding_countdown),
             style = MaterialTheme.typography.bodySmall.copy(fontSize = 11.5.sp),
             color = extColors.textMuted
           )
@@ -365,7 +367,7 @@ fun MilestonesHeroVisual(modifier: Modifier = Modifier) {
             .padding(horizontal = 10.dp, vertical = 5.dp)
         ) {
           Text(
-            text = "156 days",
+            text = stringResource(R.string.onboarding_visual_wedding_days),
             style = MaterialTheme.typography.labelSmall.copy(
               fontWeight = FontWeight.Bold,
               fontSize = 11.sp
@@ -422,22 +424,22 @@ fun YourStoryHeroVisual(modifier: Modifier = Modifier) {
       ) {
         TimelineStepRow(
           icon = Icons.Default.Favorite,
-          title = "The Day We Met",
-          date = "October 24 · Chapter 1",
+          title = stringResource(R.string.onboarding_visual_met),
+          date = stringResource(R.string.onboarding_visual_met_date),
           isHighlighted = false
         )
 
         TimelineStepRow(
           icon = Icons.Outlined.PhotoCamera,
-          title = "First Journey Together",
-          date = "Romantic Getaway",
+          title = stringResource(R.string.onboarding_visual_journey),
+          date = stringResource(R.string.onboarding_visual_journey_desc),
           isHighlighted = false
         )
 
         TimelineStepRow(
           icon = Icons.Outlined.Stars,
-          title = "Forever & Beyond",
-          date = "Every day created by you",
+          title = stringResource(R.string.onboarding_visual_forever),
+          date = stringResource(R.string.onboarding_visual_forever_desc),
           isHighlighted = true
         )
       }
