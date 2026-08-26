@@ -13,6 +13,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -68,6 +69,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.outlined.Share
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.geometry.CornerRadius
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
 import com.example.R
 import com.example.ui.share.ShareCardDialog
 import com.example.ui.share.ShareCardPayloadFactory
@@ -428,14 +433,62 @@ private fun HeroCountdownCard(
   )
   val daysDisplay = String.format("%,d", animatedDays)
 
+  val heroShape = RoundedCornerShape(28.dp)
+
+  val col1 = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.025f)
   CherishCard(
     modifier = Modifier
       .fillMaxWidth()
-      .shadow(16.dp, shape = RoundedCornerShape(28.dp), ambientColor = extColors.goldAccent.copy(alpha = 0.25f))
+      .drawBehind {
+        val shadowOffset = 16.dp.toPx()
+        val cornerRadius = 28.dp.toPx()
+
+        // Большой внешний мягкий слой
+        drawRoundRect(
+          color = extColors.goldAccent.copy(alpha = 0.035f),
+          topLeft = Offset(
+            -shadowOffset * 0.8f,
+            shadowOffset * 0.45f
+          ),
+          size = Size(
+            width = size.width + shadowOffset * 1.6f,
+            height = size.height + shadowOffset * 1.3f
+          ),
+          cornerRadius = CornerRadius(
+            cornerRadius + shadowOffset,
+            cornerRadius + shadowOffset
+          )
+        )
+
+        // Более близкий и чуть заметнее слой
+        drawRoundRect(
+          color = extColors.goldAccent.copy(alpha = 0.055f),
+          topLeft = Offset(
+            -shadowOffset * 0.4f,
+            shadowOffset * 0.3f
+          ),
+          size = Size(
+            width = size.width + shadowOffset * 0.8f,
+            height = size.height + shadowOffset * 0.8f
+          ),
+          cornerRadius = CornerRadius(
+            cornerRadius + shadowOffset * 0.5f,
+            cornerRadius + shadowOffset * 0.5f
+          )
+        )
+
+        // Очень лёгкая нижняя тень для объёма
+        drawRoundRect(
+          color = col1,
+          topLeft = Offset(0f, 3.dp.toPx()),
+          size = size,
+          cornerRadius = CornerRadius(cornerRadius, cornerRadius)
+        )
+      }
       .testTag("hero_countdown_card"),
-    shape = RoundedCornerShape(28.dp),
+    shape = heroShape,
     containerColor = Color.Transparent,
-    contentPadding = androidx.compose.foundation.layout.PaddingValues(0.dp)
+    contentPadding = PaddingValues(0.dp)
   ) {
     Box(
       modifier = Modifier
