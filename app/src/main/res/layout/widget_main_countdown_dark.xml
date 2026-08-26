@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_bg_dark"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center">
+
+    <!-- Top Title / Names & Heart -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="6dp">
+
+        <ImageView
+            android:id="@+id/widget_icon"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@drawable/ic_widget_heart"
+            android:contentDescription="@null"
+            android:layout_marginEnd="6dp" />
+
+        <TextView
+            android:id="@+id/widget_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Eleanor &amp; Julian"
+            android:textColor="@color/widget_text_primary_dark"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
+        <TextView
+            android:id="@+id/widget_date_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Since May 20, 2020"
+            android:textColor="@color/widget_text_muted_dark"
+            android:textSize="11sp"
+            android:maxLines="1" />
+    </LinearLayout>
+
+    <!-- Main Count Container -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/widget_card_inner_dark"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/widget_primary_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1,253"
+            android:textColor="@color/widget_rosewood_dark_theme"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            android:includeFontPadding="false" />
+
+        <TextView
+            android:id="@+id/widget_count_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DAYS TOGETHER"
+            android:textColor="@color/widget_text_secondary_dark"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.08"
+            android:layout_marginTop="2dp" />
+
+        <TextView
+            android:id="@+id/widget_time_breakdown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3 years · 5 months · 18 days"
+            android:textColor="@color/widget_text_muted_dark"
+            android:textSize="11sp"
+            android:layout_marginTop="4dp"
+            android:maxLines="1"
+            android:ellipsize="end" />
+    </LinearLayout>
+
+    <!-- Bottom Secondary / Next Moment Line -->
+    <LinearLayout
+        android:id="@+id/widget_footer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="6dp">
+
+        <ImageView
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:src="@drawable/ic_widget_sparkle"
+            android:contentDescription="@null"
+            android:layout_marginEnd="5dp" />
+
+        <TextView
+            android:id="@+id/widget_footer_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Next: Wedding Anniversary in 156 days"
+            android:textColor="@color/widget_gold_dark"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:maxLines="1"
+            android:ellipsize="end" />
+    </LinearLayout>
+
+</LinearLayout>

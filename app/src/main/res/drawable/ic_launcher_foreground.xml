@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Centered within 66dp safe zone (21dp to 87dp) -->
+    <!-- Intertwined infinity heart and rings motif -->
+    <!-- Ambient soft shadow -->
+    <path
+        android:pathData="M54,74 C47,68 34,57 34,44 C34,36.5 40,31 47.5,31 C51.2,31 53.5,33 54,34 C54.5,33 56.8,31 60.5,31 C68,31 74,36.5 74,44 C74,57 61,68 54,74 Z"
+        android:fillColor="#155C3A21" />
+
+    <!-- Main Outer Heart Outline -->
+    <path
+        android:pathData="M54,71 C47.5,65.5 35,55 35,43 C35,36 40.5,31 47.5,31 C51.3,31 53.2,33.2 54,34.2 C54.8,33.2 56.7,31 60.5,31 C67.5,31 73,36 73,43 C73,55 60.5,65.5 54,71 Z"
+        android:strokeWidth="3.2"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round">
+        <aapt:attr name="android:strokeColor">
+            <gradient
+                android:startX="35"
+                android:startY="31"
+                android:endX="73"
+                android:endY="71"
+                android:type="linear">
+                <item android:offset="0.0" android:color="#9B583C" />
+                <item android:offset="0.5" android:color="#C57D5D" />
+                <item android:offset="1.0" android:color="#D4A373" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Interlocking Inner Loop Accent -->
+    <path
+        android:pathData="M54,61 C49.5,56.5 42,49 42,42 C42,37.5 45.5,34.5 49.5,34.5 C52.2,34.5 53.5,36 54,37 C54.5,36 55.8,34.5 58.5,34.5 C62.5,34.5 66,37.5 66,42 C66,49 58.5,56.5 54,61 Z"
+        android:strokeWidth="2.2"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round">
+        <aapt:attr name="android:strokeColor">
+            <gradient
+                android:startX="42"
+                android:startY="34"
+                android:endX="66"
+                android:endY="61"
+                android:type="linear">
+                <item android:offset="0.0" android:color="#D4A373" />
+                <item android:offset="1.0" android:color="#E8A598" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Little sparkle / star highlight -->
+    <path
+        android:pathData="M69,30 C69.2,32 70,32.8 72,33 C70,33.2 69.2,34 69,36 C68.8,34 68,33.2 66,33 C68,32.8 68.8,32 69,30 Z"
+        android:fillColor="#D4A373" />
+    <path
+        android:pathData="M39,36 C39.1,37.2 39.6,37.8 41,38 C39.6,38.2 39.1,38.8 39,40 C38.9,38.8 38.4,38.2 37,38 C38.4,37.8 38.9,37.2 39,36 Z"
+        android:fillColor="#C57D5D" />
+</vector>

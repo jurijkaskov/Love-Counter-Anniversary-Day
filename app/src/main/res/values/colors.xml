@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Cherish Light Widget Palette -->
+    <color name="widget_bg_light">#FFFBF8F4</color>
+    <color name="widget_surface_light">#FFFFFFFF</color>
+    <color name="widget_surface_variant_light">#FFF6F0E9</color>
+    <color name="widget_border_light">#FFEFE6DB</color>
+    <color name="widget_border_subtle_light">#FFF5EEE4</color>
+    <color name="widget_text_primary_light">#FF28211D</color>
+    <color name="widget_text_secondary_light">#FF756A63</color>
+    <color name="widget_text_muted_light">#FFA39992</color>
+    <color name="widget_rosewood_light">#FFB8644A</color>
+    <color name="widget_rosewood_dark">#FF9E4E37</color>
+    <color name="widget_rosewood_container_light">#FFFCEEEA</color>
+    <color name="widget_gold_light">#FFC99252</color>
+    <color name="widget_gold_container_light">#FFFBF2E6</color>
+    <color name="widget_blush_light">#FFE89A89</color>
+    <color name="widget_divider_light">#FFEBE1D6</color>
+
+    <!-- Cherish Dark Widget Palette -->
+    <color name="widget_bg_dark">#FF14100E</color>
+    <color name="widget_surface_dark">#FF1E1815</color>
+    <color name="widget_surface_variant_dark">#FF29211D</color>
+    <color name="widget_border_dark">#FF3B312B</color>
+    <color name="widget_border_subtle_dark">#FF2C241F</color>
+    <color name="widget_text_primary_dark">#FFF6EFE9</color>
+    <color name="widget_text_secondary_dark">#FFB3A79F</color>
+    <color name="widget_text_muted_dark">#FF7A6F68</color>
+    <color name="widget_rosewood_dark_theme">#FFDE8C75</color>
+    <color name="widget_rosewood_container_dark">#FF38231C</color>
+    <color name="widget_gold_dark">#FFE4AD70</color>
+    <color name="widget_gold_container_dark">#FF382918</color>
+    <color name="widget_divider_dark">#FF332923</color>
+</resources>

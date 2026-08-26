@@ -1,0 +1,7 @@
+{
+  "name": "Love Counter: Anniversary Day",
+  "description": "A refined, warm companion for tracking relationship milestones, anniversaries, and memories.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

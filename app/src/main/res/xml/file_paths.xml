@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <cache-path name="shared_cards" path="share_cards/" />
+    <cache-path name="shared_images" path="shared_images/" />
+    <files-path name="photos" path="memory_photos/" />
+    <files-path name="app_files" path="." />
+</paths>

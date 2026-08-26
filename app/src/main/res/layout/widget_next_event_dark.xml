@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_bg_dark"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center_vertical">
+
+    <!-- Top Row: Next Moment Label & Icon -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="8dp">
+
+        <ImageView
+            android:id="@+id/widget_event_icon"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@drawable/ic_widget_sparkle"
+            android:contentDescription="@null"
+            android:layout_marginEnd="6dp" />
+
+        <TextView
+            android:id="@+id/widget_next_header_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="NEXT MOMENT"
+            android:textColor="@color/widget_rosewood_dark_theme"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.08" />
+
+        <TextView
+            android:id="@+id/widget_event_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="August 12, 2026"
+            android:textColor="@color/widget_text_muted_dark"
+            android:textSize="11sp" />
+    </LinearLayout>
+
+    <!-- Main Event Title & Countdown Pill -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/widget_card_inner_dark"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        android:paddingStart="14dp"
+        android:paddingEnd="14dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
+
+        <TextView
+            android:id="@+id/widget_event_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Wedding Anniversary"
+            android:textColor="@color/widget_text_primary_dark"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="6dp">
+
+            <!-- Pill Badge -->
+            <TextView
+                android:id="@+id/widget_countdown_pill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/widget_pill_gold_dark"
+                android:text="IN 156 DAYS"
+                android:textColor="@color/widget_gold_dark"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
+                android:letterSpacing="0.04" />
+
+            <TextView
+                android:id="@+id/widget_event_note"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Celebrating our vows &amp; love"
+                android:textColor="@color/widget_text_secondary_dark"
+                android:textSize="11sp"
+                android:layout_marginStart="8dp"
+                android:maxLines="1"
+                android:ellipsize="end" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

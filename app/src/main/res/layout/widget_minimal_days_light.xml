@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_bg_light"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:gravity="center">
+
+    <ImageView
+        android:id="@+id/widget_minimal_icon"
+        android:layout_width="14dp"
+        android:layout_height="14dp"
+        android:src="@drawable/ic_widget_heart"
+        android:contentDescription="@null"
+        android:layout_marginBottom="2dp" />
+
+    <TextView
+        android:id="@+id/widget_minimal_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1,253"
+        android:textColor="@color/widget_rosewood_light"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:includeFontPadding="false" />
+
+    <TextView
+        android:id="@+id/widget_minimal_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="days together"
+        android:textColor="@color/widget_text_secondary_light"
+        android:textSize="10sp"
+        android:textStyle="normal"
+        android:gravity="center"
+        android:maxLines="1"
+        android:ellipsize="end" />
+
+</LinearLayout>
