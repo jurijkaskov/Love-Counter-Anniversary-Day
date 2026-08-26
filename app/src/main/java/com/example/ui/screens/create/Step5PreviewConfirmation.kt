@@ -26,7 +26,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
@@ -196,8 +198,53 @@ fun Step5PreviewConfirmation(
 
           Spacer(modifier = Modifier.height(20.dp))
 
+          val color1 = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.035f)
+          val color2 = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.045f)
           // Floating Symbol Icon
           Box(
+            modifier = Modifier
+              .size(56.dp)
+              .drawBehind {
+                val shadowOffset = 6.dp.toPx()
+                val radius = size.minDimension / 2f
+
+                // Мягкий внешний круглый ореол
+                drawCircle(
+                  color = color1,
+                  radius = radius + shadowOffset * 0.8f,
+                  center = Offset(
+                    size.width / 2f,
+                    size.height / 2f + shadowOffset * 0.35f
+                  )
+                )
+
+                // Более близкая мягкая тень
+                drawCircle(
+                  color = color2,
+                  radius = radius + shadowOffset * 0.35f,
+                  center = Offset(
+                    size.width / 2f,
+                    size.height / 2f + shadowOffset * 0.2f
+                  )
+                )
+              }
+              .clip(CircleShape)
+              .background(MaterialTheme.colorScheme.surface)
+              .border(
+                1.5.dp,
+                extColors.goldAccent.copy(alpha = 0.5f),
+                CircleShape
+              ),
+            contentAlignment = Alignment.Center
+          ) {
+            Icon(
+              imageVector = symbolIcon,
+              contentDescription = null,
+              tint = MaterialTheme.colorScheme.primary,
+              modifier = Modifier.size(28.dp)
+            )
+          }
+          /*Box(
             modifier = Modifier
               .size(56.dp)
               .clip(CircleShape)
@@ -212,7 +259,7 @@ fun Step5PreviewConfirmation(
               tint = MaterialTheme.colorScheme.primary,
               modifier = Modifier.size(28.dp)
             )
-          }
+          }*/
 
           Spacer(modifier = Modifier.height(14.dp))
 
