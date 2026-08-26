@@ -105,7 +105,7 @@ fun CherishApp(
     showOnboarding = false
   }
 
-  BackHandler(enabled = showCreateStoryFlow && storyRepository.hasAnyStory()) {
+  BackHandler(enabled = showCreateStoryFlow) {
     showCreateStoryFlow = false
   }
 
@@ -135,9 +135,7 @@ fun CherishApp(
             showCreateStoryFlow = false
             currentRoute = CherishScreen.Countdown.route
           },
-          onCancel = if (storyRepository.hasAnyStory()) {
-            { showCreateStoryFlow = false }
-          } else null
+          onCancel = { showCreateStoryFlow = false }
         )
       }
       else -> {
