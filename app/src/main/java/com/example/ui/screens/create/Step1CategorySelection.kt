@@ -29,7 +29,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.geometry.CornerRadius
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
@@ -114,16 +118,61 @@ fun Step1CategorySelection(
           label = "container_color"
         )
 
-        Surface(
+        val optionShape = RoundedCornerShape(20.dp)
+        val shadowColor = MaterialTheme.colorScheme.onSurface
+        Box(
           modifier = Modifier
             .fillMaxWidth()
-            .shadow(if (isSelected) 4.dp else 1.dp, RoundedCornerShape(20.dp))
-            .clip(RoundedCornerShape(20.dp))
+            .drawBehind {
+              val elevation = if (isSelected) 4.dp.toPx() else 1.dp.toPx()
+
+              // Несколько мягких закруглённых слоёв вместо Modifier.shadow()
+              if (isSelected) {
+                drawRoundRect(
+                  color = shadowColor.copy(alpha = 0.035f),
+                  topLeft = Offset(-elevation, elevation * 0.7f),
+                  size = Size(
+                    width = size.width + elevation * 2,
+                    height = size.height + elevation * 1.7f
+                  ),
+                  cornerRadius = CornerRadius(
+                    20.dp.toPx() + elevation,
+                    20.dp.toPx() + elevation
+                  )
+                )
+
+                drawRoundRect(
+                  color = shadowColor.copy(alpha = 0.045f),
+                  topLeft = Offset(-elevation * 0.5f, elevation * 0.5f),
+                  size = Size(
+                    width = size.width + elevation,
+                    height = size.height + elevation
+                  ),
+                  cornerRadius = CornerRadius(
+                    20.dp.toPx() + elevation * 0.5f,
+                    20.dp.toPx() + elevation * 0.5f
+                  )
+                )
+              }
+
+              drawRoundRect(
+                color = shadowColor.copy(
+                  alpha = if (isSelected) 0.035f else 0.015f
+                ),
+                topLeft = Offset(0f, if (isSelected) 2.dp.toPx() else 1.dp.toPx()),
+                size = size,
+                cornerRadius = CornerRadius(20.dp.toPx(), 20.dp.toPx())
+              )
+            }
+            .clip(optionShape)
+            .background(containerColor)
+            .border(
+              width = if (isSelected) 1.5.dp else 1.dp,
+              color = borderColor,
+              shape = optionShape
+            )
             .clickable { onSelectCategory(option.category) }
-            .testTag("category_option_${option.category.id}"),
-          shape = RoundedCornerShape(20.dp),
-          color = containerColor,
-          border = BorderStroke(if (isSelected) 1.5.dp else 1.dp, borderColor)
+            .testTag("category_option_${option.category.id}")
         ) {
           Row(
             modifier = Modifier
