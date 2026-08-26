@@ -82,6 +82,7 @@ import androidx.compose.material.icons.outlined.NotificationsActive
 import androidx.core.app.NotificationManagerCompat
 import android.os.Build
 import com.example.ui.components.AccentColorSelectionRow
+import com.example.ui.components.CherishAvatar
 import com.example.ui.components.CherishCard
 import com.example.ui.components.DateFormatDialog
 import com.example.ui.components.ExportDataDialog
@@ -888,23 +889,11 @@ private fun ProfileHeroCard(
       verticalAlignment = Alignment.CenterVertically
     ) {
       // Initials Double Circle Avatar
-      Box(
-        modifier = Modifier
-          .size(56.dp)
-          .clip(CircleShape)
-          .background(extColors.rosewoodContainer)
-          .border(2.dp, extColors.goldAccent.copy(alpha = 0.5f), CircleShape),
-        contentAlignment = Alignment.Center
-      ) {
-        Text(
-          text = primaryStory?.displayInitials ?: "♥",
-          style = MaterialTheme.typography.titleMedium.copy(
-            fontFamily = FontFamily.Serif,
-            fontWeight = FontWeight.Bold
-          ),
-          color = MaterialTheme.colorScheme.primary
-        )
-      }
+      CherishAvatar(
+        initials = primaryStory?.displayInitials ?: "♥",
+        size = 56.dp,
+        testTag = "settings_profile_avatar"
+      )
 
       Spacer(modifier = Modifier.width(16.dp))
 

@@ -77,6 +77,7 @@ import com.example.R
 import com.example.ui.share.ShareCardDialog
 import com.example.ui.share.ShareCardPayloadFactory
 import com.example.data.models.StoryModel
+import com.example.ui.components.CherishAvatar
 import com.example.ui.components.CherishCard
 import com.example.ui.components.CherishIconButton
 import com.example.ui.components.MilestoneItemRow
@@ -277,24 +278,11 @@ private fun HeaderBar(
       verticalAlignment = Alignment.CenterVertically,
       modifier = Modifier.weight(1f)
     ) {
-      Box(
-        modifier = Modifier
-          .size(46.dp)
-          .clip(CircleShape)
-          .background(extColors.rosewoodContainer)
-          .border(1.5.dp, extColors.goldAccent.copy(alpha = 0.4f), CircleShape),
-        contentAlignment = Alignment.Center
-      ) {
-        Text(
-          text = primaryStory?.displayInitials ?: "♥",
-          style = MaterialTheme.typography.titleMedium.copy(
-            fontFamily = FontFamily.Serif,
-            fontWeight = FontWeight.Bold,
-            fontSize = 15.sp
-          ),
-          color = MaterialTheme.colorScheme.primary
-        )
-      }
+      CherishAvatar(
+        initials = primaryStory?.displayInitials ?: "♥",
+        size = 46.dp,
+        testTag = "countdown_header_avatar"
+      )
       Spacer(modifier = Modifier.width(12.dp))
       Column {
         Text(
@@ -372,21 +360,11 @@ private fun HeroCountdownCard(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
       ) {
-        Box(
-          modifier = Modifier
-            .size(64.dp)
-            .clip(CircleShape)
-            .background(extColors.rosewoodContainer)
-            .border(1.5.dp, extColors.goldAccent.copy(alpha = 0.4f), CircleShape),
-          contentAlignment = Alignment.Center
-        ) {
-          Icon(
-            imageVector = Icons.Outlined.FavoriteBorder,
-            contentDescription = null,
-            tint = MaterialTheme.colorScheme.primary,
-            modifier = Modifier.size(34.dp)
-          )
-        }
+        CherishAvatar(
+          initials = "♥",
+          size = 64.dp,
+          testTag = "hero_avatar_empty"
+        )
 
         Spacer(modifier = Modifier.height(16.dp))
 
