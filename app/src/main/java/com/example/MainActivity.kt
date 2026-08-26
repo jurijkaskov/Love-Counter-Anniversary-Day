@@ -1,6 +1,7 @@
 package com.example
 
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -17,6 +18,7 @@ class MainActivity : ComponentActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
+    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
     enableEdgeToEdge()
     handleWidgetIntent(intent)
 
