@@ -293,7 +293,7 @@
     <string name="timeline_filter_milestones">Milestones</string>
     <string name="timeline_empty_title">Your Story Awaits</string>
     <string name="timeline_empty_description">Begin adding meaningful anniversaries, milestones, and personal journal memories to see your journey unfold chronologically.</string>
-    <string name="timeline_empty_action">+ Write First Memory</string>
+    <string name="timeline_empty_action">Write First Memory</string>
     <string name="timeline_type_memory">Written Memory</string>
     <string name="timeline_type_event">Milestone Event</string>
     <string name="timeline_type_milestone">Journey Goal</string>
@@ -302,7 +302,7 @@
     <!-- Journal Experience -->
     <string name="journal_title">Journal</string>
     <string name="journal_subtitle">Your private sanctuary of cherished memories</string>
-    <string name="journal_add_entry_btn">+ Write Memory</string>
+    <string name="journal_add_entry_btn">Write Memory</string>
     <string name="journal_write_cta">Write a Memory</string>
     <string name="journal_empty_title">Capture Your First Memory</string>
     <string name="journal_empty_description">“Every story begins with a moment worth remembering.”</string>

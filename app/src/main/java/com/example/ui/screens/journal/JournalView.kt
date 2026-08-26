@@ -16,7 +16,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Edit
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.outlined.MenuBook
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -96,7 +96,7 @@ fun JournalView(
         text = stringResource(R.string.journal_add_entry_btn),
         onClick = onWriteMemoryClick,
         testTag = "journal_write_header_btn",
-        icon = Icons.Outlined.Edit
+        icon = Icons.Default.Add
       )
     }
 
