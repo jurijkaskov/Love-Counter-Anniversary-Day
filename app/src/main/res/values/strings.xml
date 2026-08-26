@@ -188,7 +188,7 @@
     <string name="milestones_overall_progress">Overall Progress</string>
     <string name="milestones_in_progress_summary">%1$d of %2$d tasks completed</string>
     <string name="milestones_active_summary">%1$d milestones in progress</string>
-    <string name="milestones_add_button">+ Add Milestone</string>
+    <string name="milestones_add_button">Add Milestone</string>
     <string name="milestones_create_title">Create Milestone</string>
     <string name="milestones_edit_title">Edit Milestone</string>
     <string name="milestones_title_label">Milestone Title</string>
@@ -211,7 +211,7 @@
     <string name="milestones_empty_cta">Create First Milestone</string>
     <string name="milestone_details_header">Journey Details</string>
     <string name="milestone_tasks_header">Preparations &amp; Tasks</string>
-    <string name="milestone_add_task_btn">+ Add Task</string>
+    <string name="milestone_add_task_btn">Add Task</string>
     <string name="milestone_delete_btn">Delete Milestone</string>
     <string name="milestone_edit_btn">Edit Milestone</string>
     <string name="milestone_completed_tag">Completed</string>
@@ -331,14 +331,14 @@
     <string name="journal_saved_toast">Memory preserved with love</string>
     <string name="journal_deleted_toast">Memory removed</string>
     <string name="journal_related_memories_header">Related Memories</string>
-    <string name="journal_add_memory_for_event">+ Add Memory for this Moment</string>
+    <string name="journal_add_memory_for_event">Add Memory for this Moment</string>
     <string name="journal_no_related_memories">No written memories linked to this moment yet.</string>
 
     <!-- Memory Photos Experience -->
     <string name="photos_title">Photo Memories</string>
     <string name="photos_tab_title">Photos</string>
     <string name="photos_subtitle">“Keep the moments you never want to forget.”</string>
-    <string name="photos_add_btn">+ Add Photos</string>
+    <string name="photos_add_btn">Add Photos</string>
     <string name="photos_filter_all">All Photos</string>
     <string name="photos_filter_favorites">Favorites</string>
     <string name="photos_empty_title">Capture Your Visual Story</string>
@@ -361,11 +361,11 @@
     <string name="photos_deleted_toast">Photo memory removed</string>
     <string name="photos_from_this_moment">Photos from this moment</string>
     <string name="photos_no_photos_for_moment">No photos added for this moment yet.</string>
-    <string name="photos_add_photo_for_moment">+ Add Photo</string>
+    <string name="photos_add_photo_for_moment">Add Photo</string>
     <string name="photos_viewer_details">Memory Details</string>
     <string name="photos_viewer_counter">%1$d of %2$d</string>
     <string name="photos_connected_title">Visual Memories</string>
-    <string name="photos_add_to_story">+ Add Photo</string>
+    <string name="photos_add_to_story">Add Photo</string>
     <string name="photos_connected_empty">No photos added to this memory yet.</string>
     <string name="timeline_filter_photos">Photos</string>
     <string name="timeline_type_photo">Photo Memory</string>

@@ -68,6 +68,7 @@ fun CherishApp(
   val primaryStory by storyRepository.primaryStory.collectAsState()
 
   var currentRoute by rememberSaveable { mutableStateOf(initialRoute ?: CherishScreen.Countdown.route) }
+  var momentsInitialTab by rememberSaveable { mutableStateOf(com.example.ui.screens.MomentsTabCategory.ALL) }
   
   var showOnboarding by rememberSaveable {
     mutableStateOf(!onboardingManager.hasCompletedOnboarding)
@@ -174,8 +175,16 @@ fun CherishApp(
               when (route) {
                 CherishScreen.Countdown.route -> CountdownScreen(
                   primaryStory = primaryStory,
+                  milestoneRepository = milestoneRepository,
                   onCreateStoryClick = { showCreateStoryFlow = true },
-                  onNavigateToMoments = { currentRoute = CherishScreen.Moments.route }
+                  onNavigateToMoments = {
+                    momentsInitialTab = com.example.ui.screens.MomentsTabCategory.ALL
+                    currentRoute = CherishScreen.Moments.route
+                  },
+                  onNavigateToMilestones = {
+                    momentsInitialTab = com.example.ui.screens.MomentsTabCategory.MILESTONES
+                    currentRoute = CherishScreen.Moments.route
+                  }
                 )
                 CherishScreen.Moments.route -> MomentsScreen(
                   storyRepository = storyRepository,
@@ -183,6 +192,7 @@ fun CherishApp(
                   journalRepository = journalRepository,
                   photoRepository = photoRepository,
                   preferencesManager = preferencesManager,
+                  initialTab = momentsInitialTab,
                   onAddMoment = { showCreateStoryFlow = true }
                 )
                 CherishScreen.Settings.route -> SettingsScreen(

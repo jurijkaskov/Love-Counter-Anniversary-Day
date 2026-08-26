@@ -94,6 +94,7 @@ fun MomentsScreen(
   journalRepository: JournalRepository? = null,
   photoRepository: PhotoRepository? = null,
   preferencesManager: PreferencesManager? = null,
+  initialTab: MomentsTabCategory = MomentsTabCategory.ALL,
   onAddMoment: () -> Unit = {}
 ) {
   val context = LocalContext.current
@@ -116,7 +117,7 @@ fun MomentsScreen(
   val allJournalEntries by resolvedJournalRepo.entries.collectAsState()
   val allPhotos by resolvedPhotoRepo.photos.collectAsState()
 
-  var selectedTab by remember { mutableStateOf(MomentsTabCategory.ALL) }
+  var selectedTab by remember(initialTab) { mutableStateOf(initialTab) }
   var selectedEventForDetails by remember { mutableStateOf<StoryModel?>(null) }
   var eventToEdit by remember { mutableStateOf<StoryModel?>(null) }
   var showAddDialog by remember { mutableStateOf(false) }

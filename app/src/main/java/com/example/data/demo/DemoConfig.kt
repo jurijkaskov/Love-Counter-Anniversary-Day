@@ -17,5 +17,5 @@ package com.example.data.demo
  * development and build configuration only.
  */
 object DemoConfig {
-  const val USE_DEMO_DATA = true
+  const val USE_DEMO_DATA = false
 }

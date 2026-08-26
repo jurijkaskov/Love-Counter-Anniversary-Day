@@ -76,6 +76,9 @@ import androidx.compose.ui.geometry.Size
 import com.example.R
 import com.example.ui.share.ShareCardDialog
 import com.example.ui.share.ShareCardPayloadFactory
+import com.example.data.MilestoneRepository
+import com.example.data.StoryRepository
+import com.example.data.models.MilestoneModel
 import com.example.data.models.StoryModel
 import com.example.ui.components.CherishAvatar
 import com.example.ui.components.CherishCard
@@ -84,65 +87,33 @@ import com.example.ui.components.MilestoneItemRow
 import com.example.ui.components.PrimaryButton
 import com.example.ui.components.SecondaryButton
 import com.example.ui.components.SectionTitle
+import com.example.ui.components.getIconForMilestoneCategory
 import com.example.ui.theme.LocalCherishExtendedColors
+import androidx.compose.runtime.collectAsState
 import java.time.LocalDate
 
-private data class CountdownMilestone(
-  val id: String,
-  val title: String,
-  val date: String,
-  val countdownDays: String,
-  val icon: ImageVector,
-  val isFavorite: Boolean = false
-)
 
 @Composable
 fun CountdownScreen(
   primaryStory: StoryModel? = null,
+  milestoneRepository: MilestoneRepository? = null,
   onCreateStoryClick: () -> Unit = {},
   onNavigateToMoments: () -> Unit = {},
+  onNavigateToMilestones: () -> Unit = {},
   modifier: Modifier = Modifier
 ) {
   val extColors = LocalCherishExtendedColors.current
   var showShareCardDialog by remember { mutableStateOf(false) }
 
-  var sampleMilestones by remember {
-    mutableStateOf(
-      listOf(
-        CountdownMilestone(
-          id = "1",
-          title = "Wedding Anniversary",
-          date = "August 12, 2027",
-          countdownDays = "In 156 days",
-          icon = Icons.Outlined.Celebration,
-          isFavorite = true
-        ),
-        CountdownMilestone(
-          id = "2",
-          title = "First Date Anniversary",
-          date = "February 14, 2027",
-          countdownDays = "In 342 days",
-          icon = Icons.Default.Favorite,
-          isFavorite = true
-        ),
-        CountdownMilestone(
-          id = "3",
-          title = "Her Birthday",
-          date = "November 3, 2026",
-          countdownDays = "In 56 days",
-          icon = Icons.Default.Cake,
-          isFavorite = false
-        ),
-        CountdownMilestone(
-          id = "4",
-          title = "Trip to Amalfi Coast",
-          date = "December 20, 2026",
-          countdownDays = "In 103 days",
-          icon = Icons.Default.Flight,
-          isFavorite = false
-        )
-      )
-    )
+  // Real milestones from repository
+  val allMilestones by (milestoneRepository?.milestones?.collectAsState() ?: remember { mutableStateOf(emptyList()) })
+  
+  // Filter for top upcoming active milestones
+  val upcomingMilestones = remember(allMilestones) {
+    allMilestones
+      .filter { it.targetDate == null || !it.targetDate!!.isBefore(LocalDate.now()) }
+      .sortedBy { it.targetDateEpochDay ?: Long.MAX_VALUE }
+      .take(4)
   }
 
   // Animation trigger for smooth dashboard reveal
@@ -211,27 +182,36 @@ fun CountdownScreen(
           title = stringResource(R.string.countdown_upcoming_milestones_title),
           subtitle = stringResource(R.string.countdown_upcoming_subtitle),
           actionText = stringResource(R.string.btn_view_all),
-          onActionClick = onNavigateToMoments,
+          onActionClick = onNavigateToMilestones,
           testTag = "countdown_milestones_header"
         )
       }
 
-      items(sampleMilestones, key = { it.id }) { milestone ->
-        MilestoneItemRow(
-          title = milestone.title,
-          dateFormatted = milestone.date,
-          badgeText = milestone.countdownDays,
-          icon = milestone.icon,
-          iconBackground = if (milestone.isFavorite) extColors.rosewoodContainer else extColors.goldContainer,
-          iconTint = if (milestone.isFavorite) MaterialTheme.colorScheme.primary else extColors.goldAccent,
-          isFavorite = milestone.isFavorite,
-          onFavoriteClick = {
-            sampleMilestones = sampleMilestones.map {
-              if (it.id == milestone.id) it.copy(isFavorite = !it.isFavorite) else it
-            }
-          },
-          testTag = "milestone_item_${milestone.id}"
-        )
+      if (upcomingMilestones.isEmpty()) {
+        item {
+          Text(
+            text = "No active milestones yet. Plan your next celebration!",
+            style = MaterialTheme.typography.bodyMedium,
+            color = extColors.textMuted,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.fillMaxWidth().padding(vertical = 12.dp)
+          )
+        }
+      } else {
+        items(upcomingMilestones, key = { it.id }) { milestone ->
+          val icon = getIconForMilestoneCategory(milestone.category)
+          MilestoneItemRow(
+            title = milestone.title,
+            dateFormatted = milestone.formattedTargetDate ?: "Someday",
+            badgeText = milestone.timeframeLabel,
+            icon = icon,
+            iconBackground = if (milestone.category == com.example.data.models.MilestoneCategory.ANNIVERSARY) extColors.rosewoodContainer else extColors.goldContainer,
+            iconTint = if (milestone.category == com.example.data.models.MilestoneCategory.ANNIVERSARY) MaterialTheme.colorScheme.primary else extColors.goldAccent,
+            isFavorite = false, // Not using favorite for milestones in this view yet
+            onClick = onNavigateToMilestones,
+            testTag = "milestone_item_${milestone.id}"
+          )
+        }
       }
 
       // Quick-Access Action Shortcuts
