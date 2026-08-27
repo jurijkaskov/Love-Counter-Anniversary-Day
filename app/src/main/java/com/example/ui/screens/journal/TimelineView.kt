@@ -63,6 +63,7 @@ fun TimelineView(
   onWriteMemoryClick: () -> Unit,
   modifier: Modifier = Modifier
 ) {
+  val context = androidx.compose.ui.platform.LocalContext.current
   val extColors = LocalCherishExtendedColors.current
   var selectedFilter by remember { mutableStateOf(TimelineFilterType.ALL) }
 
@@ -80,9 +81,9 @@ fun TimelineView(
               id = "story_${story.id}",
               type = TimelineItemType.EVENT,
               dateEpochDay = story.dateEpochDay,
-              title = story.displayTitle,
+              title = story.getDisplayTitle(context),
               subtitle = if (story.note.isNotBlank()) story.note else story.formattedDate,
-              categoryLabel = story.category.defaultTitle,
+              categoryLabel = null, // Resolve in composable
               iconKey = story.iconKey,
               accent = story.themeAccent,
               isFavorite = story.isFavorite,
@@ -103,7 +104,7 @@ fun TimelineView(
               id = "journal_${entry.id}",
               type = TimelineItemType.MEMORY,
               dateEpochDay = entry.dateEpochDay,
-              title = entry.displayTitle,
+              title = entry.getDisplayTitle(context),
               subtitle = entry.previewSnippet,
               categoryLabel = null, // Logic moved to composable resolution
               iconKey = entry.iconKey,
@@ -128,7 +129,7 @@ fun TimelineView(
               type = TimelineItemType.PHOTO,
               dateEpochDay = photo.dateEpochDay,
               title = if (photo.caption.isNotBlank()) photo.caption else photo.formattedDate,
-              subtitle = if (associatedStory != null) "From ${associatedStory.displayTitle}" else photo.formattedDate,
+              subtitle = if (associatedStory != null) "From ${associatedStory.getDisplayTitle(context)}" else photo.formattedDate,
               categoryLabel = null, // Logic moved to composable resolution
               iconKey = "photo",
               accent = "rosewood",
@@ -151,7 +152,7 @@ fun TimelineView(
               type = TimelineItemType.MILESTONE,
               dateEpochDay = epochDay,
               title = milestone.title,
-              subtitle = milestone.description.ifBlank { null },
+              subtitle = milestone.description.ifBlank { milestone.getTimeframeLabel(context) },
               categoryLabel = null, // Logic moved to composable resolution
               iconKey = milestone.iconKey,
               accent = "gold",
@@ -287,17 +288,20 @@ fun TimelineView(
           val resolvedLabel = when (item.type) {
             TimelineItemType.MEMORY -> {
               item.associatedStory?.let {
-                stringResource(R.string.timeline_label_memory_story, it.displayTitle)
+                stringResource(R.string.timeline_label_memory_story, it.getDisplayTitle(context))
               } ?: stringResource(R.string.timeline_type_memory)
             }
             TimelineItemType.PHOTO -> {
               item.associatedStory?.let {
-                stringResource(R.string.timeline_label_photo_story, it.displayTitle)
+                stringResource(R.string.timeline_label_photo_story, it.getDisplayTitle(context))
               } ?: stringResource(R.string.timeline_type_photo)
             }
             TimelineItemType.MILESTONE -> {
               val catLabel = item.milestoneModel?.category?.name?.lowercase()?.replaceFirstChar { it.uppercase() } ?: ""
               stringResource(R.string.timeline_label_milestone_cat, catLabel)
+            }
+            TimelineItemType.EVENT -> {
+              item.storyModel?.let { stringResource(it.category.titleResId) } ?: ""
             }
             else -> item.categoryLabel ?: ""
           }

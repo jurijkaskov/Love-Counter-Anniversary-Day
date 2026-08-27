@@ -101,7 +101,7 @@ fun CreateStoryFlowScreen(
       storyTitle = if (yourName.isNotBlank() && partnerName.isNotBlank()) {
         "$yourName & $partnerName"
       } else {
-        newCat.defaultTitle
+        context.getString(newCat.titleResId)
       }
     }
   }
@@ -115,7 +115,7 @@ fun CreateStoryFlowScreen(
       } else if (name.isNotBlank()) {
         name
       } else {
-        selectedCategory.defaultTitle
+        context.getString(selectedCategory.titleResId)
       }
     }
   }
@@ -129,7 +129,7 @@ fun CreateStoryFlowScreen(
       } else if (name.isNotBlank()) {
         name
       } else {
-        selectedCategory.defaultTitle
+        context.getString(selectedCategory.titleResId)
       }
     }
   }
@@ -166,7 +166,7 @@ fun CreateStoryFlowScreen(
         yourName = yourName.trim(),
         partnerName = partnerName.trim(),
         title = storyTitle.trim().ifEmpty {
-          if (yourName.isNotBlank() && partnerName.isNotBlank()) "$yourName & $partnerName" else selectedCategory.defaultTitle
+          if (yourName.isNotBlank() && partnerName.isNotBlank()) "$yourName & $partnerName" else context.getString(selectedCategory.titleResId)
         },
         dateEpochDay = selectedDate.toEpochDay(),
         note = personalNote.trim().ifEmpty { "Every day with you is my favorite day." },

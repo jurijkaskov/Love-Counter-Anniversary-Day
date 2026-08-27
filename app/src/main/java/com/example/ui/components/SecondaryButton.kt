@@ -51,7 +51,7 @@ fun SecondaryButton(
   OutlinedButton(
     onClick = onClick,
     modifier = modifier
-      .defaultMinSize(minHeight = 50.dp)
+      .defaultMinSize(minHeight = 52.dp)
       .scale(scale)
       .testTag(testTag),
     enabled = enabled,

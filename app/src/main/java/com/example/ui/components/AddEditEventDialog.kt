@@ -8,8 +8,10 @@ import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -195,7 +197,8 @@ fun AddEditEventDialog(
                 .clickable {
                   selectedCategory = option.category
                   selectedSymbolKey = option.defaultIconKey
-                  if (titleText.isBlank() || titleText == selectedCategory.defaultTitle) {
+                  val currentDefaultTitle = context.resources.getString(selectedCategory.titleResId)
+                  if (titleText.isBlank() || titleText == currentDefaultTitle) {
                     titleText = categoryTitle
                   }
                 }
@@ -242,7 +245,7 @@ fun AddEditEventDialog(
           },
           placeholder = {
             Text(
-              text = selectedCategory.defaultTitle,
+              text = stringResource(selectedCategory.titleResId),
               color = extColors.textMuted
             )
           },
@@ -343,7 +346,7 @@ fun AddEditEventDialog(
             ) {
               Icon(
                 imageVector = symbol.icon,
-                contentDescription = symbol.label,
+                contentDescription = stringResource(symbol.labelResId),
                 tint = if (isSelected) extColors.goldAccent else extColors.textMuted,
                 modifier = Modifier.size(22.dp)
               )
@@ -404,14 +407,14 @@ fun AddEditEventDialog(
 
         // Save & Cancel Buttons
         Row(
-          modifier = Modifier.fillMaxWidth(),
+          modifier = Modifier.fillMaxWidth().height(IntrinsicSize.Max),
           horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
           TextButton(
             onClick = onDismiss,
             modifier = Modifier
               .weight(1f)
-              .height(48.dp)
+              .fillMaxHeight()
               .testTag("btn_cancel_add_edit"),
             shape = RoundedCornerShape(24.dp)
           ) {
@@ -424,7 +427,7 @@ fun AddEditEventDialog(
 
           Button(
             onClick = {
-              val finalTitle = titleText.trim().ifBlank { selectedCategory.defaultTitle }
+              val finalTitle = titleText.trim().ifBlank { context.getString(selectedCategory.titleResId) }
               val updatedModel = StoryModel(
                 id = eventToEdit?.id ?: UUID.randomUUID().toString(),
                 category = selectedCategory,
@@ -445,7 +448,7 @@ fun AddEditEventDialog(
             },
             modifier = Modifier
               .weight(1.5f)
-              .height(48.dp)
+              .fillMaxHeight()
               .testTag("btn_save_event"),
             shape = RoundedCornerShape(24.dp),
             colors = ButtonDefaults.buttonColors(
@@ -467,7 +470,7 @@ fun AddEditEventDialog(
     val tempStory = StoryModel(
       id = eventToEdit?.id ?: "temp-story",
       category = selectedCategory,
-      title = titleText.ifBlank { selectedCategory.defaultTitle },
+      title = titleText.ifBlank { context.getString(selectedCategory.titleResId) },
       dateEpochDay = dateEpochDay,
       reminderConfig = reminderConfig
     )

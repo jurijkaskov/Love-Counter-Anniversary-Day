@@ -177,7 +177,7 @@ fun Step2NamesTitle(
       label = { Text(stringResource(R.string.input_story_title)) },
       placeholder = {
         Text(
-          if (isCoupleCategory) stringResource(R.string.input_story_title_hint) else category.defaultTitle,
+          if (isCoupleCategory) stringResource(R.string.input_story_title_hint) else stringResource(category.titleResId),
           color = extColors.textMuted
         )
       },

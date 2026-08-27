@@ -195,7 +195,7 @@ fun JournalEntryDetailsDialog(
 
         // Memory Title
         Text(
-          text = entry.displayTitle,
+          text = entry.getDisplayTitle(context),
           style = MaterialTheme.typography.headlineMedium.copy(
             fontFamily = FontFamily.Serif,
             fontWeight = FontWeight.Bold
@@ -245,7 +245,7 @@ fun JournalEntryDetailsDialog(
                 modifier = Modifier.size(14.dp)
               )
               Text(
-                text = stringResource(R.string.journal_card_related_to, associatedStory.displayTitle),
+                text = stringResource(R.string.journal_card_related_to, associatedStory.getDisplayTitle(context)),
                 style = MaterialTheme.typography.labelSmall.copy(
                   fontWeight = FontWeight.SemiBold,
                   color = MaterialTheme.colorScheme.primary
@@ -494,7 +494,7 @@ fun JournalEntryDetailsDialog(
       },
       text = {
         Text(
-          text = stringResource(R.string.journal_delete_dialog_msg, entry.displayTitle),
+          text = stringResource(R.string.journal_delete_dialog_msg, entry.getDisplayTitle(context)),
           style = MaterialTheme.typography.bodyMedium
         )
       },

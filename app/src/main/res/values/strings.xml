@@ -40,6 +40,16 @@
     <string name="countdown_since_prefix">Since %1$s</string>
     <string name="countdown_no_milestones_empty">No active milestones yet. Plan your next celebration!</string>
     <string name="countdown_days_together_heart">days together ♥</string>
+    <string name="countdown_celebration_tag">COUNTDOWN TO CELEBRATION</string>
+    <string name="countdown_share_desc">Share memory card</string>
+    <string name="countdown_add_story_desc">Add milestone or story</string>
+    <string name="countdown_someday">Someday</string>
+    <string name="countdown_stats_days">Total Days</string>
+    <string name="countdown_stats_weeks">Total Weeks</string>
+    <string name="countdown_stats_months">Total Months</string>
+    <string name="countdown_yearly_progress">Yearly Journey Progress</string>
+    <string name="countdown_action_all_moments">All Moments</string>
+    <string name="countdown_action_add_moment">Add Moment</string>
 
     <!-- Moments Screen -->
     <string name="share_label_anniversary_celebration">ANNIVERSARY CELEBRATION</string>
@@ -98,7 +108,7 @@
     <!-- Additional Categories -->
     <string name="cat_trip_title">Trip Together</string>
     <string name="cat_trip_desc">A romantic getaway, holiday, or memorable travel</string>
-    <string name="cat_custom_title">Custom Moment</string>
+    <string name="cat_custom_title">Special Moment</string>
     <string name="cat_custom_desc">A personal milestone that matters to you both</string>
 
     <!-- Settings Screen -->
@@ -269,7 +279,19 @@
     <string name="input_personal_note">Romantic Note or Quote</string>
     <string name="input_personal_note_hint">e.g. Every day with you is my favorite day.</string>
     <string name="choose_symbol_label">Choose a Symbol</string>
+    <string name="symbol_heart">Heart</string>
+    <string name="symbol_rings">Rings</string>
+    <string name="symbol_birthday">Birthday</string>
+    <string name="symbol_trip">Trip</string>
+    <string name="symbol_star">Star</string>
+    <string name="symbol_rose">Rose</string>
+    <string name="symbol_cheers">Cheers</string>
+    <string name="symbol_spark">Spark</string>
     <string name="choose_theme_label">Choose a Palette</string>
+    <string name="palette_rosewood">Rosewood Sunset</string>
+    <string name="palette_gold">Champagne Gold</string>
+    <string name="palette_blush">Warm Blush</string>
+    <string name="palette_espresso">Deep Espresso</string>
 
     <!-- Step 5: Confirmation Preview -->
     <string name="create_step5_badge">Ready to Begin</string>
@@ -571,4 +593,32 @@
     <string name="widget_config_save_btn">Save Widget Settings</string>
     <string name="widget_settings_card_title">Home Screen Widgets</string>
     <string name="widget_settings_card_desc">Add Love Counter widgets to your home screen to see your days together and upcoming milestones at a glance.</string>
+
+    <!-- Duration & Time Units -->
+    <string name="unit_year">year</string>
+    <string name="unit_years">years</string>
+    <string name="unit_month">month</string>
+    <string name="unit_months">months</string>
+    <string name="unit_day">day</string>
+    <string name="unit_days">days</string>
+
+    <!-- Model Specifics -->
+    <string name="model_anniversary_special">Special Celebration</string>
+    <string name="model_anniversary_suffix">Anniversary</string>
+    <string name="model_initials_placeholder">♥</string>
+    <string name="model_countdown_today">Today!</string>
+    <string name="model_countdown_tomorrow">Tomorrow</string>
+    <string name="model_countdown_passed">Passed</string>
+    <string name="model_countdown_in_days">In %1$d days</string>
+    <string name="model_elapsed_today">Today</string>
+    <string name="model_elapsed_yesterday">Yesterday</string>
+    <string name="model_elapsed_days_ago">%1$d days ago</string>
+    <string name="model_untitled_memory">Untitled Memory</string>
+
+    <!-- Timeframe Labels -->
+    <string name="timeframe_upcoming">Upcoming</string>
+    <string name="timeframe_passed">Passed</string>
+    <string name="timeframe_today">Today</string>
+    <string name="timeframe_days_to_go">%1$d days to go</string>
+    <string name="timeframe_months_to_go">%1$d Months to go</string>
 </resources>

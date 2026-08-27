@@ -1,5 +1,7 @@
 package com.example.data.models
 
+import android.content.Context
+import com.example.R
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.UUID
@@ -29,8 +31,10 @@ data class JournalEntryModel(
       return localDate.format(formatter)
     }
 
+  fun getDisplayTitle(context: Context): String = if (title.isNotBlank()) title else context.getString(R.string.model_untitled_memory)
+
   val displayTitle: String
-    get() = if (title.isNotBlank()) title else "Untitled Memory"
+    get() = title.ifBlank { "" }
 
   val previewSnippet: String
     get() {

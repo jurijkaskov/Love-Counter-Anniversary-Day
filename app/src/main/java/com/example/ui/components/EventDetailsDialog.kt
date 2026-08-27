@@ -154,7 +154,7 @@ fun EventDetailsDialog(
               .testTag("details_category_badge")
           ) {
             Text(
-              text = event.category.defaultTitle,
+              text = stringResource(event.category.titleResId),
               style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
               color = extColors.goldAccent
             )
@@ -202,7 +202,7 @@ fun EventDetailsDialog(
 
         // Title
         Text(
-          text = event.displayTitle,
+          text = event.getDisplayTitle(context),
           style = MaterialTheme.typography.headlineMedium.copy(
             fontFamily = FontFamily.Serif,
             fontWeight = FontWeight.Bold
@@ -257,7 +257,7 @@ fun EventDetailsDialog(
               )
               Spacer(modifier = Modifier.height(2.dp))
               Text(
-                text = if (event.isPastDate) event.elapsedBadgeText else event.countdownBadgeText,
+                text = if (event.isPastDate) event.getElapsedBadgeText(context) else event.getCountdownBadgeText(context),
                 style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
                 color = MaterialTheme.colorScheme.onSurface
               )
@@ -291,7 +291,7 @@ fun EventDetailsDialog(
               )
               Spacer(modifier = Modifier.height(2.dp))
               Text(
-                text = event.formattedPeriodBreakdown,
+                text = event.getFormattedPeriodBreakdown(context),
                 style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold),
                 color = MaterialTheme.colorScheme.onSurface,
                 textAlign = TextAlign.Center,
@@ -412,7 +412,7 @@ fun EventDetailsDialog(
                     ) {
                       Column(modifier = Modifier.weight(1f)) {
                         Text(
-                          text = entry.displayTitle,
+                          text = entry.getDisplayTitle(context),
                           style = MaterialTheme.typography.bodyMedium.copy(
                             fontWeight = FontWeight.SemiBold,
                             fontFamily = FontFamily.Serif
@@ -645,7 +645,7 @@ fun EventDetailsDialog(
       },
       text = {
         Text(
-          text = stringResource(R.string.event_delete_confirm_message, event.displayTitle),
+          text = stringResource(R.string.event_delete_confirm_message, event.getDisplayTitle(context)),
           style = MaterialTheme.typography.bodyMedium,
           color = MaterialTheme.colorScheme.onSurfaceVariant
         )

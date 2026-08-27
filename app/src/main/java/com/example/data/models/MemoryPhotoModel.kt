@@ -1,5 +1,6 @@
 package com.example.data.models
 
+import android.content.Context
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.UUID
@@ -26,6 +27,8 @@ data class MemoryPhotoModel(
       val formatter = DateTimeFormatter.ofPattern("MMMM d, yyyy")
       return localDate.format(formatter)
     }
+
+  fun getDisplayTitle(context: Context): String = if (caption.isNotBlank()) caption else formattedDate
 
   val displayTitle: String
     get() = if (caption.isNotBlank()) caption else formattedDate

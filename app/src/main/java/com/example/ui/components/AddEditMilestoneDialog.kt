@@ -8,8 +8,10 @@ import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -374,7 +376,7 @@ fun AddEditMilestoneDialog(
 
         // Action Buttons
         Row(
-          modifier = Modifier.fillMaxWidth(),
+          modifier = Modifier.fillMaxWidth().height(IntrinsicSize.Max),
           horizontalArrangement = Arrangement.spacedBy(10.dp),
           verticalAlignment = Alignment.CenterVertically
         ) {
@@ -382,7 +384,7 @@ fun AddEditMilestoneDialog(
             SecondaryButton(
               text = stringResource(R.string.btn_delete),
               onClick = { showDeleteConfirm = true },
-              modifier = Modifier.weight(1f),
+              modifier = Modifier.weight(1f).fillMaxHeight(),
               icon = Icons.Default.Delete,
               testTag = "delete_milestone_button"
             )
@@ -412,7 +414,7 @@ fun AddEditMilestoneDialog(
               }
             },
             enabled = title.isNotBlank(),
-            modifier = Modifier.weight(if (milestoneToEdit != null) 1.4f else 1f),
+            modifier = Modifier.weight(if (milestoneToEdit != null) 1.4f else 1f).fillMaxHeight(),
             testTag = "save_milestone_button"
           )
         }

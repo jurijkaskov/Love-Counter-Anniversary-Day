@@ -179,7 +179,7 @@ fun Step4PersonalTouch(
           ) {
             Icon(
               imageVector = symbol.icon,
-              contentDescription = symbol.label,
+              contentDescription = stringResource(symbol.labelResId),
               tint = if (isSelected) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.primary,
               modifier = Modifier.size(24.dp)
             )
@@ -240,7 +240,7 @@ fun Step4PersonalTouch(
             Spacer(modifier = Modifier.width(12.dp))
 
             Text(
-              text = palette.name,
+              text = stringResource(palette.nameResId),
               style = MaterialTheme.typography.labelLarge.copy(
                 fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Medium
               ),

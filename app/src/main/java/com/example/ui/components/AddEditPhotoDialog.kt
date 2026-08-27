@@ -12,9 +12,11 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -525,14 +527,14 @@ fun AddEditPhotoDialog(
 
         // Action Buttons Row
         Row(
-          modifier = Modifier.fillMaxWidth(),
+          modifier = Modifier.fillMaxWidth().height(IntrinsicSize.Max),
           horizontalArrangement = Arrangement.spacedBy(12.dp),
           verticalAlignment = Alignment.CenterVertically
         ) {
           SecondaryButton(
             text = stringResource(R.string.btn_cancel),
             onClick = onDismiss,
-            modifier = Modifier.weight(1f),
+            modifier = Modifier.weight(1f).fillMaxHeight(),
             testTag = "btn_cancel_photo"
           )
 
@@ -545,7 +547,7 @@ fun AddEditPhotoDialog(
               }
             },
             enabled = canSave,
-            modifier = Modifier.weight(1f),
+            modifier = Modifier.weight(1f).fillMaxHeight(),
             testTag = "btn_save_photo"
           )
         }

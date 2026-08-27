@@ -13,9 +13,11 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -203,8 +205,8 @@ fun CountdownScreen(
           val icon = getIconForMilestoneCategory(milestone.category)
           MilestoneItemRow(
             title = milestone.title,
-            dateFormatted = milestone.formattedTargetDate ?: "Someday",
-            badgeText = milestone.timeframeLabel,
+            dateFormatted = milestone.formattedTargetDate ?: stringResource(R.string.countdown_someday),
+            badgeText = milestone.getTimeframeLabel(context),
             icon = icon,
             iconBackground = if (milestone.category == com.example.data.models.MilestoneCategory.ANNIVERSARY) extColors.rosewoodContainer else extColors.goldContainer,
             iconTint = if (milestone.category == com.example.data.models.MilestoneCategory.ANNIVERSARY) MaterialTheme.colorScheme.primary else extColors.goldAccent,
@@ -246,6 +248,7 @@ private fun HeaderBar(
   onAddClick: () -> Unit,
   onShareClick: () -> Unit = {}
 ) {
+  val context = androidx.compose.ui.platform.LocalContext.current
   val extColors = LocalCherishExtendedColors.current
 
   Row(
@@ -260,14 +263,14 @@ private fun HeaderBar(
       modifier = Modifier.weight(1f)
     ) {
       CherishAvatar(
-        initials = primaryStory?.displayInitials ?: "♥",
+        initials = primaryStory?.getDisplayInitials(context) ?: stringResource(R.string.model_initials_placeholder),
         size = 46.dp,
         testTag = "countdown_header_avatar"
       )
       Spacer(modifier = Modifier.width(12.dp))
       Column {
         Text(
-          text = primaryStory?.displayTitle ?: stringResource(R.string.app_name),
+          text = primaryStory?.getDisplayTitle(context) ?: stringResource(R.string.app_name),
           style = MaterialTheme.typography.headlineMedium.copy(
             fontFamily = FontFamily.Serif,
             fontWeight = FontWeight.Bold,
@@ -279,7 +282,7 @@ private fun HeaderBar(
         )
         Text(
           text = if (primaryStory != null) {
-            if (primaryStory.isPastDate) "Since ${primaryStory.formattedDate}" else "Coming ${primaryStory.formattedDate}"
+            if (primaryStory.isPastDate) stringResource(R.string.share_since_prefix, primaryStory.formattedDate) else stringResource(R.string.countdown_until_prefix, primaryStory.getDisplayTitle(context))
           } else {
             stringResource(R.string.app_tagline)
           },
@@ -295,7 +298,7 @@ private fun HeaderBar(
       if (primaryStory != null) {
         CherishIconButton(
           icon = Icons.Outlined.Share,
-          contentDescription = "Share memory card",
+          contentDescription = stringResource(R.string.countdown_share_desc),
           onClick = onShareClick,
           testTag = "countdown_header_share_btn"
         )
@@ -305,7 +308,7 @@ private fun HeaderBar(
       // Add / Create Story Button
       CherishIconButton(
         icon = Icons.Filled.Add,
-        contentDescription = "Add milestone or story",
+        contentDescription = stringResource(R.string.countdown_add_story_desc),
         onClick = onAddClick,
         testTag = "countdown_add_moment_btn"
       )
@@ -322,6 +325,7 @@ private fun HeroCountdownCard(
   onCreateStoryClick: () -> Unit,
   onShareClick: () -> Unit = {}
 ) {
+  val context = androidx.compose.ui.platform.LocalContext.current
   val extColors = LocalCherishExtendedColors.current
 
   if (primaryStory == null) {
@@ -491,7 +495,7 @@ private fun HeroCountdownCard(
               text = if (isPast) {
                 stringResource(R.string.countdown_together_for).uppercase()
               } else {
-                "COUNTDOWN TO CELEBRATION"
+                stringResource(R.string.countdown_celebration_tag).uppercase()
               },
               style = MaterialTheme.typography.labelSmall.copy(
                 letterSpacing = 1.6.sp,
@@ -539,9 +543,9 @@ private fun HeroCountdownCard(
         // Accurate breakdown based on exact calendar calculations
         Text(
           text = if (isPast) {
-            primaryStory.formattedPeriodBreakdown
+            primaryStory.getFormattedPeriodBreakdown(context)
           } else {
-            stringResource(R.string.countdown_until_prefix, primaryStory.displayTitle)
+            stringResource(R.string.countdown_until_prefix, primaryStory.getDisplayTitle(context))
           },
           style = MaterialTheme.typography.bodyLarge.copy(
             fontWeight = FontWeight.Medium,
@@ -646,7 +650,7 @@ private fun TimeTogetherStatsCard(primaryStory: StoryModel) {
     ) {
       StatColumnItem(
         value = String.format("%,d", primaryStory.totalDays),
-        label = "Total Days",
+        label = stringResource(R.string.countdown_stats_days),
         icon = Icons.Default.CalendarMonth,
         iconTint = MaterialTheme.colorScheme.primary,
         modifier = Modifier.weight(1f)
@@ -661,7 +665,7 @@ private fun TimeTogetherStatsCard(primaryStory: StoryModel) {
 
       StatColumnItem(
         value = String.format("%,d", primaryStory.totalWeeks),
-        label = "Total Weeks",
+        label = stringResource(R.string.countdown_stats_weeks),
         icon = Icons.Default.DateRange,
         iconTint = extColors.goldAccent,
         modifier = Modifier.weight(1f)
@@ -676,7 +680,7 @@ private fun TimeTogetherStatsCard(primaryStory: StoryModel) {
 
       StatColumnItem(
         value = String.format("%,d", primaryStory.totalMonths),
-        label = "Total Months",
+        label = stringResource(R.string.countdown_stats_months),
         icon = Icons.Default.Favorite,
         iconTint = extColors.blushAccent,
         modifier = Modifier.weight(1f)
@@ -744,11 +748,12 @@ private fun NextSpecialDateCard(
   primaryStory: StoryModel,
   onAddMoment: () -> Unit = {}
 ) {
+  val context = androidx.compose.ui.platform.LocalContext.current
   val extColors = LocalCherishExtendedColors.current
   var isFavorite by remember { mutableStateOf(true) }
 
   val daysRemaining = primaryStory.daysUntilNextAnniversary
-  val anniversaryTitle = primaryStory.nextAnniversaryTitle
+  val anniversaryTitle = primaryStory.getNextAnniversaryTitle(context)
   val anniversaryDate = primaryStory.nextAnniversaryFormattedDate
   val yearProgress = primaryStory.currentYearProgress
 
@@ -829,7 +834,7 @@ private fun NextSpecialDateCard(
             .padding(horizontal = 12.dp, vertical = 8.dp)
         ) {
           Text(
-            text = if (daysRemaining == 0L) "Today! 🎉" else "In $daysRemaining days",
+            text = if (daysRemaining == 0L) stringResource(R.string.model_countdown_today) + " 🎉" else stringResource(R.string.model_countdown_in_days, daysRemaining.toInt()),
             style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold),
             color = MaterialTheme.colorScheme.primary
           )
@@ -845,7 +850,7 @@ private fun NextSpecialDateCard(
           horizontalArrangement = Arrangement.SpaceBetween
         ) {
           Text(
-            text = "Yearly Journey Progress",
+            text = stringResource(R.string.countdown_yearly_progress),
             style = MaterialTheme.typography.labelSmall,
             color = extColors.textMuted
           )
@@ -927,22 +932,23 @@ private fun QuickActionsBar(
   Row(
     modifier = Modifier
       .fillMaxWidth()
-      .padding(top = 4.dp),
+      .padding(top = 4.dp)
+      .height(IntrinsicSize.Max),
     horizontalArrangement = Arrangement.spacedBy(12.dp)
   ) {
     SecondaryButton(
-      text = "All Moments",
+      text = stringResource(R.string.countdown_action_all_moments),
       onClick = onViewMoments,
       icon = Icons.AutoMirrored.Filled.ArrowForward,
-      modifier = Modifier.weight(1f),
+      modifier = Modifier.weight(1f).fillMaxHeight(),
       testTag = "btn_quick_view_moments"
     )
 
     PrimaryButton(
-      text = "Add Moment",
+      text = stringResource(R.string.countdown_action_add_moment),
       onClick = onAddMoment,
       icon = Icons.Filled.Add,
-      modifier = Modifier.weight(1f),
+      modifier = Modifier.weight(1f).fillMaxHeight(),
       testTag = "btn_quick_add_moment"
     )
   }

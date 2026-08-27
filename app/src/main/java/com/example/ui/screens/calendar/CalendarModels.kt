@@ -69,7 +69,7 @@ object CalendarDataHelper {
       title = story.displayTitle,
       subtitle = subtitle,
       iconKey = story.iconKey,
-      categoryName = story.category.defaultTitle,
+      categoryName = context.getString(story.category.titleResId),
       date = targetDate,
       isAllDay = true,
       badgeText = if (yearsElapsed > 0 && isAnnualMatch) context.getString(R.string.calendar_badge_yrs, yearsElapsed) else null,

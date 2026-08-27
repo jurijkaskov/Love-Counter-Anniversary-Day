@@ -90,19 +90,19 @@ val AvailableCategoryOptions = listOf(
 
 data class SymbolOption(
   val key: String,
-  val label: String,
+  val labelResId: Int,
   val icon: ImageVector
 )
 
 val AvailableSymbols = listOf(
-  SymbolOption("favorite", "Heart", Icons.Filled.Favorite),
-  SymbolOption("celebration", "Rings", Icons.Outlined.Celebration),
-  SymbolOption("cake", "Birthday", Icons.Default.Cake),
-  SymbolOption("flight", "Trip", Icons.Default.Flight),
-  SymbolOption("star", "Star", Icons.Default.Star),
-  SymbolOption("florist", "Rose", Icons.Outlined.LocalFlorist),
-  SymbolOption("champagne", "Cheers", Icons.Outlined.Nightlife),
-  SymbolOption("heart_outline", "Spark", Icons.Outlined.FavoriteBorder)
+  SymbolOption("favorite", R.string.symbol_heart, Icons.Filled.Favorite),
+  SymbolOption("celebration", R.string.symbol_rings, Icons.Outlined.Celebration),
+  SymbolOption("cake", R.string.symbol_birthday, Icons.Default.Cake),
+  SymbolOption("flight", R.string.symbol_trip, Icons.Default.Flight),
+  SymbolOption("star", R.string.symbol_star, Icons.Default.Star),
+  SymbolOption("florist", R.string.symbol_rose, Icons.Outlined.LocalFlorist),
+  SymbolOption("champagne", R.string.symbol_cheers, Icons.Outlined.Nightlife),
+  SymbolOption("heart_outline", R.string.symbol_spark, Icons.Outlined.FavoriteBorder)
 )
 
 fun getIconForSymbolKey(key: String): ImageVector {
@@ -129,14 +129,14 @@ fun getIconForStory(story: StoryModel): ImageVector {
 
 data class PaletteOption(
   val id: String,
-  val name: String,
+  val nameResId: Int,
   val primaryColor: Color,
   val accentColor: Color
 )
 
 val AvailablePalettes = listOf(
-  PaletteOption("rosewood", "Rosewood Sunset", CherishRosewood, CherishGold),
-  PaletteOption("gold", "Champagne Gold", CherishGold, CherishRosewood),
-  PaletteOption("blush", "Warm Blush", CherishBlush, CherishRosewood),
-  PaletteOption("espresso", "Deep Espresso", CherishTextPrimary, CherishGold)
+  PaletteOption("rosewood", R.string.palette_rosewood, CherishRosewood, CherishGold),
+  PaletteOption("gold", R.string.palette_gold, CherishGold, CherishRosewood),
+  PaletteOption("blush", R.string.palette_blush, CherishBlush, CherishRosewood),
+  PaletteOption("espresso", R.string.palette_espresso, CherishTextPrimary, CherishGold)
 )

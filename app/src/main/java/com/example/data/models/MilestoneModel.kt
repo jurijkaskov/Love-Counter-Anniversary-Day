@@ -1,5 +1,6 @@
 package com.example.data.models
 
+import android.content.Context
 import com.example.R
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -41,6 +42,17 @@ data class MilestoneModel(
   val daysUntilTargetDate: Long?
     get() = targetDate?.let { ChronoUnit.DAYS.between(LocalDate.now(), it) }
 
+  fun getTimeframeLabel(context: Context): String {
+    val days = daysUntilTargetDate ?: return context.getString(R.string.timeframe_upcoming)
+    return when {
+      days < 0 -> context.getString(R.string.timeframe_passed)
+      days == 0L -> context.getString(R.string.timeframe_today)
+      days in 1..30 -> context.getString(R.string.timeframe_days_to_go, days.toInt())
+      else -> context.getString(R.string.timeframe_months_to_go, (days / 30).toInt().coerceAtLeast(1))
+    }
+  }
+
+  @Deprecated("Use getTimeframeLabel(context)", ReplaceWith("getTimeframeLabel(context)"))
   val timeframeLabel: String
     get() {
       val days = daysUntilTargetDate ?: return "Upcoming"

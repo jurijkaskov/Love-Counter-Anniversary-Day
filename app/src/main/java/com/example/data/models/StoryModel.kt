@@ -1,5 +1,7 @@
 package com.example.data.models
 
+import android.content.Context
+import com.example.R
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
@@ -7,17 +9,17 @@ import java.util.UUID
 
 enum class EventCategory(
   val id: String,
-  val defaultTitle: String,
+  val titleResId: Int,
   val iconKey: String
 ) {
-  RELATIONSHIP("relationship", "Our Relationship", "favorite"),
-  WEDDING("wedding", "Wedding Anniversary", "celebration"),
-  FIRST_DATE("first_date", "First Date", "favorite_border"),
-  ENGAGEMENT("engagement", "Engagement", "ring"),
-  BIRTHDAY("birthday", "Birthday", "cake"),
-  SPECIAL_DAY("special_day", "A Special Day", "star"),
-  TRIP("trip", "Trip Together", "flight"),
-  CUSTOM("custom", "Special Moment", "star");
+  RELATIONSHIP("relationship", com.example.R.string.cat_relationship_title, "favorite"),
+  WEDDING("wedding", com.example.R.string.cat_wedding_title, "celebration"),
+  FIRST_DATE("first_date", com.example.R.string.cat_first_date_title, "favorite_border"),
+  ENGAGEMENT("engagement", com.example.R.string.cat_engagement_title, "ring"),
+  BIRTHDAY("birthday", com.example.R.string.cat_birthday_title, "cake"),
+  SPECIAL_DAY("special_day", com.example.R.string.cat_special_day_title, "star"),
+  TRIP("trip", com.example.R.string.cat_trip_title, "flight"),
+  CUSTOM("custom", com.example.R.string.cat_custom_title, "star");
 
   companion object {
     fun fromId(id: String): EventCategory {
@@ -44,15 +46,32 @@ data class StoryModel(
   val localDate: LocalDate
     get() = LocalDate.ofEpochDay(dateEpochDay)
 
+  fun getDisplayTitle(context: Context): String = when {
+    title.isNotBlank() -> title
+    yourName.isNotBlank() && partnerName.isNotBlank() -> "$yourName & $partnerName"
+    yourName.isNotBlank() -> yourName
+    partnerName.isNotBlank() -> partnerName
+    else -> context.getString(category.titleResId)
+  }
+
   val displayTitle: String
-    get() = when {
-      title.isNotBlank() -> title
-      yourName.isNotBlank() && partnerName.isNotBlank() -> "$yourName & $partnerName"
-      yourName.isNotBlank() -> yourName
-      partnerName.isNotBlank() -> partnerName
-      else -> category.defaultTitle
+    get() = title.ifBlank {
+      if (yourName.isNotBlank() && partnerName.isNotBlank()) "$yourName & $partnerName"
+      else yourName.ifBlank { partnerName.ifBlank { "" } }
     }
 
+  fun getDisplayInitials(context: Context): String {
+    val first = yourName.trim().firstOrNull()?.uppercaseChar()
+    val second = partnerName.trim().firstOrNull()?.uppercaseChar()
+    return when {
+      first != null && second != null -> "$first & $second"
+      first != null -> "$first"
+      second != null -> "$second"
+      else -> context.getString(R.string.model_initials_placeholder)
+    }
+  }
+
+  @Deprecated("Use getDisplayInitials(context)", ReplaceWith("getDisplayInitials(context)"))
   val displayInitials: String
     get() {
       val first = yourName.trim().firstOrNull()?.uppercaseChar()
@@ -126,6 +145,20 @@ data class StoryModel(
   val exactDays: Int
     get() = Math.abs(exactPeriod.days)
 
+  fun getFormattedPeriodBreakdown(context: Context): String {
+    val y = exactYears
+    val m = exactMonths
+    val d = exactDays
+
+    val parts = mutableListOf<String>()
+    if (y > 0) parts.add("$y ${context.getString(if (y == 1) R.string.unit_year else R.string.unit_years)}")
+    if (m > 0) parts.add("$m ${context.getString(if (m == 1) R.string.unit_month else R.string.unit_months)}")
+    if (d > 0 || parts.isEmpty()) parts.add("$d ${context.getString(if (d == 1) R.string.unit_day else R.string.unit_days)}")
+
+    return parts.joinToString(" · ")
+  }
+
+  @Deprecated("Use getFormattedPeriodBreakdown(context)", ReplaceWith("getFormattedPeriodBreakdown(context)"))
   val formattedPeriodBreakdown: String
     get() {
       val y = exactYears
@@ -175,6 +208,14 @@ data class StoryModel(
   val daysUntilNextAnniversary: Long
     get() = ChronoUnit.DAYS.between(LocalDate.now(), nextAnniversaryDate)
 
+  fun getNextAnniversaryTitle(context: Context): String {
+    val count = nextAnniversaryYears
+    if (count <= 0) return context.getString(R.string.model_anniversary_special)
+
+    return context.getString(R.string.calendar_event_anniversary_year, count)
+  }
+
+  @Deprecated("Use getNextAnniversaryTitle(context)", ReplaceWith("getNextAnniversaryTitle(context)"))
   val nextAnniversaryTitle: String
     get() {
       val count = nextAnniversaryYears
@@ -227,6 +268,17 @@ data class StoryModel(
       return nextOccurrenceDate.format(formatter)
     }
 
+  fun getCountdownBadgeText(context: Context): String {
+    val days = daysUntilNextOccurrence
+    return when {
+      days == 0L -> context.getString(R.string.model_countdown_today)
+      days == 1L -> context.getString(R.string.model_countdown_tomorrow)
+      days < 0L -> context.getString(R.string.model_countdown_passed)
+      else -> context.getString(R.string.model_countdown_in_days, days.toInt())
+    }
+  }
+
+  @Deprecated("Use getCountdownBadgeText(context)", ReplaceWith("getCountdownBadgeText(context)"))
   val countdownBadgeText: String
     get() {
       val days = daysUntilNextOccurrence
@@ -238,6 +290,16 @@ data class StoryModel(
       }
     }
 
+  fun getElapsedBadgeText(context: Context): String {
+    val days = totalDays
+    return when {
+      days == 0L -> context.getString(R.string.model_elapsed_today)
+      days == 1L -> context.getString(R.string.model_elapsed_yesterday)
+      else -> context.getString(R.string.model_elapsed_days_ago, days.toInt())
+    }
+  }
+
+  @Deprecated("Use getElapsedBadgeText(context)", ReplaceWith("getElapsedBadgeText(context)"))
   val elapsedBadgeText: String
     get() {
       val days = totalDays

@@ -356,7 +356,7 @@ fun PhotoViewerDialog(
                       modifier = Modifier.size(14.dp)
                     )
                     Text(
-                      text = story.displayTitle,
+                      text = story.getDisplayTitle(context),
                       style = MaterialTheme.typography.labelSmall.copy(
                         color = Color.White,
                         fontWeight = FontWeight.Medium
@@ -390,7 +390,7 @@ fun PhotoViewerDialog(
                       modifier = Modifier.size(14.dp)
                     )
                     Text(
-                      text = entry.displayTitle,
+                      text = entry.getDisplayTitle(context),
                       style = MaterialTheme.typography.labelSmall.copy(
                         color = Color.White,
                         fontWeight = FontWeight.Medium

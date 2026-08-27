@@ -49,16 +49,16 @@ class WidgetDataManager(
     }
 
     val footerText = if (isPast) {
-      context.getString(R.string.widget_footer_next_anniversary, targetStory.nextAnniversaryTitle, targetStory.daysUntilNextAnniversary.toInt())
+      context.getString(R.string.widget_footer_next_anniversary, targetStory.getNextAnniversaryTitle(context), targetStory.daysUntilNextAnniversary.toInt())
     } else {
       context.getString(R.string.widget_in_days, targetStory.totalDays.toString())
     }
 
     return WidgetDisplayData(
-      title = targetStory.displayTitle,
+      title = targetStory.getDisplayTitle(context),
       count = countValue,
       countLabel = countLabel,
-      breakdownOrNote = targetStory.formattedPeriodBreakdown,
+      breakdownOrNote = targetStory.getFormattedPeriodBreakdown(context),
       dateSubtitle = dateSubtitle,
       badgeText = footerText,
       iconResId = getCategoryIconRes(targetStory.category),
@@ -92,16 +92,16 @@ class WidgetDataManager(
     }
 
     val daysUntil = targetEvent.daysUntilNextOccurrence
-    val badge = targetEvent.countdownBadgeText.uppercase()
+    val badge = targetEvent.getCountdownBadgeText(context).uppercase()
     val eventDateFormatted = targetEvent.formattedNextOccurrenceDate
     val noteOrDescription = if (targetEvent.note.isNotBlank()) {
       targetEvent.note
     } else {
-      targetEvent.formattedPeriodBreakdown
+      targetEvent.getFormattedPeriodBreakdown(context)
     }
 
     return WidgetDisplayData(
-      title = targetEvent.displayTitle,
+      title = targetEvent.getDisplayTitle(context),
       count = daysUntil.toString(),
       countLabel = context.getString(R.string.widget_days_left_caps),
       breakdownOrNote = noteOrDescription,
@@ -145,7 +145,7 @@ class WidgetDataManager(
     }
 
     return WidgetDisplayData(
-      title = targetStory.displayTitle,
+      title = targetStory.getDisplayTitle(context),
       count = countValue,
       countLabel = label,
       breakdownOrNote = "",

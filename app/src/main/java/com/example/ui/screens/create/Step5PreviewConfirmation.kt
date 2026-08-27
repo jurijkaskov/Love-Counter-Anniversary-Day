@@ -71,7 +71,7 @@ fun Step5PreviewConfirmation(
     yourName.isNotBlank() && partnerName.isNotBlank() -> "$yourName & $partnerName"
     yourName.isNotBlank() -> yourName
     partnerName.isNotBlank() -> partnerName
-    else -> category.defaultTitle
+    else -> stringResource(category.titleResId)
   }
 
   val displayInitials = run {
@@ -172,7 +172,7 @@ fun Step5PreviewConfirmation(
                 .padding(horizontal = 10.dp, vertical = 4.dp)
             ) {
               Text(
-                text = category.defaultTitle.uppercase(),
+                text = stringResource(category.titleResId).uppercase(),
                 style = MaterialTheme.typography.labelSmall.copy(
                   fontWeight = FontWeight.Bold,
                   letterSpacing = 1.sp

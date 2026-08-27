@@ -26,6 +26,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -44,6 +45,7 @@ fun JournalEntryCard(
   onToggleFavorite: () -> Unit,
   modifier: Modifier = Modifier
 ) {
+  val context = LocalContext.current
   val extColors = LocalCherishExtendedColors.current
 
   CherishCard(
@@ -100,7 +102,7 @@ fun JournalEntryCard(
 
       // Title
       Text(
-        text = entry.displayTitle,
+        text = entry.getDisplayTitle(context),
         style = MaterialTheme.typography.headlineSmall.copy(
           fontFamily = FontFamily.Serif,
           fontWeight = FontWeight.Bold,
@@ -152,7 +154,7 @@ fun JournalEntryCard(
                 modifier = Modifier.size(12.dp)
               )
               Text(
-                text = associatedStory.displayTitle,
+                text = associatedStory.getDisplayTitle(context),
                 style = MaterialTheme.typography.labelSmall.copy(
                   fontSize = 11.sp,
                   fontWeight = FontWeight.SemiBold

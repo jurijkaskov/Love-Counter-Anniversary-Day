@@ -32,6 +32,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
@@ -53,6 +54,7 @@ fun NextEventHighlightCard(
   onFavoriteClick: (() -> Unit)? = null,
   testTag: String = "next_event_highlight_card"
 ) {
+  val context = LocalContext.current
   val extColors = LocalCherishExtendedColors.current
   val icon = getIconForStory(event)
 
@@ -113,7 +115,7 @@ fun NextEventHighlightCard(
               .testTag("next_event_countdown_pill")
           ) {
             Text(
-              text = event.countdownBadgeText,
+              text = event.getCountdownBadgeText(context),
               style = MaterialTheme.typography.labelSmall.copy(
                 fontWeight = FontWeight.SemiBold
               ),
@@ -173,7 +175,7 @@ fun NextEventHighlightCard(
 
         Column(modifier = Modifier.weight(1f)) {
           Text(
-            text = event.displayTitle,
+            text = event.getDisplayTitle(context),
             style = MaterialTheme.typography.titleLarge.copy(
               fontFamily = FontFamily.Serif,
               fontWeight = FontWeight.Bold

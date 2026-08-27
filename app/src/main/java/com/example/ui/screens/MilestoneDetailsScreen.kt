@@ -208,7 +208,7 @@ fun MilestoneDetailsScreen(
 
                 if (milestone.formattedTargetDate != null) {
                   Text(
-                    text = "${milestone.formattedTargetDate} • ${milestone.timeframeLabel}",
+                    text = "${milestone.formattedTargetDate} • ${milestone.getTimeframeLabel(context)}",
                     style = MaterialTheme.typography.bodySmall,
                     color = CherishGold
                   )
@@ -245,7 +245,7 @@ fun MilestoneDetailsScreen(
                     modifier = Modifier.size(16.dp)
                   )
                   Text(
-                    text = stringResource(R.string.milestone_connected_to, story.title),
+                    text = stringResource(R.string.milestone_connected_to, story.getDisplayTitle(context)),
                     style = MaterialTheme.typography.labelMedium.copy(
                       fontWeight = FontWeight.Medium
                     ),

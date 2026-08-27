@@ -39,7 +39,7 @@ object ShareCardPayloadFactory {
     }
 
     val supportingText = if (isPast) {
-      story.formattedPeriodBreakdown
+      story.getFormattedPeriodBreakdown(context)
     } else {
       context.getString(R.string.share_upcoming_celebration)
     }
@@ -55,7 +55,7 @@ object ShareCardPayloadFactory {
       dateString = dateString,
       quoteOrNote = story.note.ifBlank { context.getString(R.string.countdown_quote).replace("“", "").replace("”", "") },
       photoPath = connectedPhoto?.filePath,
-      initialsOrIcon = story.displayInitials,
+      initialsOrIcon = story.getDisplayInitials(context),
       watermarkText = context.getString(R.string.share_watermark),
       sourceStoryId = story.id
     )

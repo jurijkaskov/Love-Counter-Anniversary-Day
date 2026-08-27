@@ -89,6 +89,7 @@ fun MilestonesScreen(
   modifier: Modifier = Modifier,
   onOpenDetails: ((String) -> Unit)? = null
 ) {
+  val context = androidx.compose.ui.platform.LocalContext.current
   val extColors = LocalCherishExtendedColors.current
   val milestones by milestoneRepository.milestones.collectAsState()
   val tasks by milestoneRepository.tasks.collectAsState()
@@ -386,7 +387,7 @@ fun MilestonesScreen(
                   )
                   if (milestone.formattedTargetDate != null) {
                     Text(
-                      text = "${milestone.timeframeLabel.uppercase()} • ${milestone.formattedTargetDate}",
+                      text = "${milestone.getTimeframeLabel(context).uppercase()} • ${milestone.formattedTargetDate}",
                       style = MaterialTheme.typography.labelSmall.copy(
                         letterSpacing = 0.5.sp,
                         fontWeight = FontWeight.SemiBold

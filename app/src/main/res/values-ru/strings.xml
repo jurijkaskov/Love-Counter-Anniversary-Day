@@ -1,0 +1,624 @@
+<resources>
+    <string name="btn_delete">Удалить</string>
+    <string name="btn_clear">Очистить</string>
+    <string name="btn_select">Выбрать</string>
+    <string name="btn_change">Изменить</string>
+    <string name="btn_back">Назад</string>
+    <string name="btn_close">Закрыть</string>
+    <string name="btn_view">Просмотр</string>
+    <string name="btn_enable">Включить</string>
+    <string name="btn_edit">Изменить</string>
+
+    <string name="app_name">Счетчик любви: Годовщина</string>
+    <string name="app_tagline">Празднуйте каждый момент вместе</string>
+
+    <!-- Navigation Destinations -->
+    <string name="nav_countdown">Обратный отсчет</string>
+    <string name="nav_moments">Моменты</string>
+    <string name="nav_settings">Настройки</string>
+
+    <!-- Countdown Screen -->
+    <string name="countdown_together_for">Вместе уже</string>
+    <string name="countdown_days_counter">1,253</string>
+    <string name="countdown_days_label">дней</string>
+    <string name="countdown_sub_duration">3 года, 5 месяцев, 18 дней</string>
+    <string name="countdown_next_anniversary_label">Следующая годовщина</string>
+    <string name="countdown_next_anniversary_title">Годовщина свадьбы</string>
+    <string name="countdown_next_anniversary_date">12 августа 2027 г.</string>
+    <string name="countdown_next_anniversary_countdown">Через 156 дней</string>
+    <string name="countdown_quote">«Каждый день с тобой — мой любимый день».</string>
+    <string name="countdown_upcoming_milestones_title">Предстоящие вехи</string>
+    <string name="countdown_upcoming_subtitle">Воспоминания, которые ждут своего часа</string>
+    <string name="countdown_add_moment">Добавить веху</string>
+    <string name="countdown_card_love_story">Наша история любви</string>
+    <string name="countdown_since_date">С 24 октября 2023 г.</string>
+    <string name="countdown_begin_story">Начните свою историю</string>
+    <string name="countdown_set_date_desc">Установите дату начала отношений или первую годовщину, чтобы праздновать каждый день вместе.</string>
+    <string name="countdown_create_story_btn">Создать первую историю</string>
+    <string name="countdown_days_to_go_suffix">дней осталось ♥</string>
+    <string name="countdown_until_prefix">До %1$s</string>
+    <string name="countdown_since_prefix">С %1$s</string>
+    <string name="countdown_no_milestones_empty">Активных вех пока нет. Запланируйте следующий праздник!</string>
+    <string name="countdown_days_together_heart">дней вместе ♥</string>
+    <string name="countdown_celebration_tag">ОТЧЕТ ДО ПРАЗДНИКА</string>
+    <string name="countdown_share_desc">Поделиться карточкой памяти</string>
+    <string name="countdown_add_story_desc">Добавить веху или историю</string>
+    <string name="countdown_someday">Когда-нибудь</string>
+    <string name="countdown_stats_days">Всего дней</string>
+    <string name="countdown_stats_weeks">Всего недель</string>
+    <string name="countdown_stats_months">Всего месяцев</string>
+    <string name="countdown_yearly_progress">Прогресс года</string>
+    <string name="countdown_action_all_moments">Все моменты</string>
+    <string name="countdown_action_add_moment">Добавить момент</string>
+
+    <!-- Moments Screen -->
+    <string name="share_label_anniversary_celebration">ПРАЗДНОВАНИЕ ГОДОВЩИНЫ</string>
+    <string name="share_label_together_for">ВМЕСТЕ УЖЕ</string>
+    <string name="share_label_countdown_special">ОТЧЕТ ДО ОСОБОГО ДНЯ</string>
+    <string name="share_days_suffix">%1$s дней</string>
+    <string name="share_days_in_prefix">Через %1$s дней</string>
+    <string name="share_upcoming_celebration">Предстоящее празднование нашей любви</string>
+    <string name="share_since_prefix">С %1$s</string>
+    <string name="share_label_milestone_complete">Веха пройдена</string>
+    <string name="share_milestone_progress">%1$d из %2$d завершено</string>
+    <string name="share_label_relationship_milestone">ВЕХА ОТНОШЕНИЙ</string>
+    <string name="share_milestone_ready_footer">Готовы к следующей главе нашей истории.</string>
+    <string name="share_milestone_complete_footer">Еще одна прекрасная глава, написанная вместе.</string>
+    <string name="share_label_cherished_memory">Заветное воспоминание</string>
+    <string name="share_label_captured_with_love">Запечатлено с любовью</string>
+    <string name="share_photo_frozen_moment">Мгновение, застывшее во времени навсегда.</string>
+    <string name="share_precious_moment_title">Наш драгоценный момент</string>
+    <string name="share_label_written_memory">ЗАПИСАННОЕ ВОСПОМИНАНИЕ</string>
+    <string name="share_watermark">Счетчик любви: Годовщина</string>
+
+    <string name="moments_title">Моменты</string>
+    <string name="moments_subtitle">Ваш общий путь и временная шкала</string>
+    <string name="moments_tab_all">Все</string>
+    <string name="moments_tab_anniversaries">Годовщины</string>
+    <string name="moments_tab_special">Особые</string>
+    <string name="moments_tab_birthdays">Дни рождения</string>
+    <string name="moments_tab_milestones">Вехи</string>
+    <string name="moments_upcoming_header">Предстоящие</string>
+    <string name="moments_past_header">Прошедшие моменты</string>
+    <string name="moments_next_highlight_label">Следующий момент</string>
+    <string name="moments_empty_title">Моменты еще не записаны</string>
+    <string name="moments_empty_description">Начните фиксировать ваши заветные годовщины, дни рождения, поездки и важные события.</string>
+    <string name="moments_create_first_action">Создайте свой первый момент</string>
+    <string name="moments_add_button">Добавить событие</string>
+
+    <!-- Event Details & Dialogs -->
+    <string name="event_details_title">Детали момента</string>
+    <string name="event_edit_title">Изменить момент</string>
+    <string name="event_add_title">Добавить новый момент</string>
+    <string name="event_delete_confirm_title">Удалить этот момент?</string>
+    <string name="event_delete_confirm_message">Вы уверены, что хотите удалить «%1$s»? Это воспоминание будет удалено из вашей временной шкалы.</string>
+    <string name="event_delete_button">Удалить момент</string>
+    <string name="event_edit_button">Изменить момент</string>
+    <string name="event_close">Закрыть</string>
+    <string name="event_note_label">Любовное послание и воспоминание</string>
+    <string name="event_category_label">Категория</string>
+    <string name="event_date_label">Дата</string>
+    <string name="event_time_together_label">Время вместе</string>
+    <string name="event_exact_duration_label">Точная длительность</string>
+    <string name="event_days_remaining_label">Осталось</string>
+    <string name="event_saved_toast">Момент сохранен с любовью</string>
+    <string name="event_title_label">Название события</string>
+    <string name="event_deleted_toast">Момент удален</string>
+
+    <!-- Additional Categories -->
+    <string name="cat_trip_title">Совместная поездка</string>
+    <string name="cat_trip_desc">Романтический отдых, отпуск или незабываемое путешествие</string>
+    <string name="cat_custom_title">Свой момент</string>
+    <string name="cat_custom_desc">Личная веха, которая важна для вас обоих</string>
+
+    <!-- Settings Screen -->
+    <string name="settings_title">Настройки</string>
+    <string name="settings_profile_names">Ваши имена</string>
+    <string name="settings_profile_subtitle">Дата начала отношений еще не установлена</string>
+    <string name="settings_edit_profile">Управление профилем</string>
+    <string name="settings_section_preferences">Предпочтения</string>
+    <string name="settings_notifications_title">Напоминания и уведомления</string>
+    <string name="settings_notifications_subtitle">Уведомления за 7 дней и за 1 день до важных дат</string>
+    <string name="settings_dark_mode_title">Темная тема</string>
+    <string name="settings_dark_mode_subtitle">Теплая атмосфера «ночного эспрессо»</string>
+    <string name="settings_date_format_title">Формат даты</string>
+    <string name="settings_date_format_value">D MMMM YYYY</string>
+    <string name="settings_section_appearance">Вид и звук</string>
+    <string name="settings_accent_theme_title">Цветовой акцент</string>
+    <string name="settings_accent_theme_value">Шампань Розе</string>
+    <string name="settings_haptics_title">Тактильный отклик</string>
+    <string name="settings_haptics_subtitle">Легкая вибрация при достижении вех</string>
+    <string name="settings_section_data">Данные и безопасность</string>
+    <string name="settings_backup_title">Экспорт и резервное копирование</string>
+    <string name="settings_backup_subtitle">Сохраните воспоминания о ваших отношениях</string>
+    <string name="settings_backup_ready_label">Данные готовы к резервному копированию:</string>
+    <string name="settings_backup_stories_label">Истории и моменты</string>
+    <string name="settings_backup_milestones_label">Вехи</string>
+    <string name="settings_backup_tasks_label">Подготовка</string>
+    <string name="settings_backup_desc_footer">Файл экспорта имеет формат JSON, что позволяет создавать резервные копии личных воспоминаний или переносить их в любое время.</string>
+    <string name="settings_backup_share_btn">Поделиться / Сохранить файл бэкапа</string>
+    <string name="settings_backup_copy_btn">Копировать JSON в буфер обмена</string>
+    <string name="settings_backup_copied_toast">Бэкап скопирован в буфер обмена</string>
+    <string name="settings_section_about">О приложении</string>
+    <string name="settings_version_title">Версия</string>
+    <string name="settings_version_value">1.0.0 (Foundation)</string>
+    <string name="settings_send_feedback">Отправить отзыв</string>
+    <string name="settings_privacy_policy">Политика конфиденциальности</string>
+    <string name="settings_appearance_header">Внешний вид</string>
+    <string name="settings_app_theme">Тема приложения</string>
+    <string name="settings_color_style">Стиль цвета и акцента</string>
+    <string name="settings_theme_preview">Предпросмотр темы</string>
+    <string name="settings_reduce_animations">Уменьшить анимацию</string>
+    <string name="settings_reduce_animations_desc">Минимизировать декоративные движения и переходы</string>
+    <string name="settings_stored_locally_title">Локальное и приватное хранение</string>
+    <string name="settings_stored_locally_desc">Ваши воспоминания, отчеты и любовные письма надежно хранятся только на вашем личном устройстве.</string>
+    <string name="settings_reset_data_desc">Удалить все истории, моменты и вехи</string>
+    <string name="settings_privacy_title">Конфиденциальность и защита данных</string>
+    <string name="settings_privacy_subtitle">Создано с заботой о вашей приватности</string>
+    <string name="settings_privacy_bullet1">• Все ваши данные хранятся локально на устройстве в защищенном хранилище приложения.</string>
+    <string name="settings_privacy_bullet2">• Для празднования ваших моментов не требуются аккаунты, пароли или личные данные.</string>
+    <string name="settings_privacy_bullet3">• Вы можете экспортировать данные в любое время в формате JSON или полностью удалить их по своему желанию.</string>
+    <string name="settings_feedback_email_toast">Email для отзывов: support@lovecounter.app</string>
+    <string name="settings_reset_data_title">Сброс данных приложения</string>
+    <string name="settings_manage_profile_btn">Настроить историю и моменты</string>
+    <string name="settings_create_profile_btn">Создать свою историю</string>
+    <string name="settings_notification_permission_toast">Уведомления включены с любовью</string>
+    <string name="settings_notification_permission_denied_toast">Разрешение на уведомления не получено</string>
+    <string name="settings_notification_time_updated_toast">Время напоминания обновлено</string>
+    <string name="settings_data_reset_toast">Все данные были сброшены</string>
+    <string name="settings_together_since">Вместе с %1$s</string>
+    <string name="settings_glance_widgets_title">Ваши моменты на главном экране</string>
+    <string name="settings_stored_locally_label">Локальное и приватное хранение</string>
+
+    <!-- Onboarding Experience -->
+    <string name="onboarding_skip">Пропустить</string>
+    <string name="onboarding_back">Назад</string>
+    <string name="onboarding_next">Продолжить</string>
+    <string name="onboarding_get_started">Начать</string>
+    <string name="onboarding_create_first_moment">Создать мой первый момент</string>
+
+    <!-- Onboarding Step 1 -->
+    <string name="onboarding_step1_badge">Добро пожаловать в %1$s</string>
+    <string name="onboarding_step1_title">Каждый момент заслуживает того, чтобы его помнили.</string>
+    <string name="onboarding_step1_description">Празднуйте годовщины, считайте дни вместе и храните общую историю любви в одном уютном месте.</string>
+
+    <!-- Onboarding Step 2 -->
+    <string name="onboarding_step2_badge">Значимые вехи</string>
+    <string name="onboarding_step2_title">Никогда не пропускайте важные даты.</string>
+    <string name="onboarding_step2_description">Получайте напоминания о предстоящих годовщинах, вехах и праздниках с красивыми отсчетами и оповещениями.</string>
+
+    <!-- Onboarding Step 2 Visuals -->
+    <string name="onboarding_visual_trip">Поездка в Амальфи</string>
+    <string name="onboarding_visual_trip_date">14 сентября · В следующем месяце</string>
+    <string name="onboarding_visual_first_date">Годовщина первого свидания</string>
+    <string name="onboarding_visual_first_date_val">14 февраля</string>
+    <string name="onboarding_visual_first_date_days">Через 12д</string>
+    <string name="onboarding_visual_wedding">Годовщина свадьбы</string>
+    <string name="onboarding_visual_wedding_countdown">12 августа · Отсчет активен</string>
+    <string name="onboarding_visual_wedding_days">156 дней</string>
+
+    <!-- Onboarding Step 3 Visuals -->
+    <string name="onboarding_visual_met">День нашей встречи</string>
+    <string name="onboarding_visual_met_date">24 октября · Глава 1</string>
+    <string name="onboarding_visual_journey">Первое совместное путешествие</string>
+    <string name="onboarding_visual_journey_desc">Романтический отпуск</string>
+    <string name="onboarding_visual_forever">Навсегда и дольше</string>
+    <string name="onboarding_visual_forever_desc">Каждый день создан вами</string>
+
+    <!-- Settings Addition -->
+    <string name="onboarding_step3_badge">Ваш путь</string>
+    <string name="onboarding_step3_title">Ваша история. Ваши моменты. Ваш стиль.</string>
+    <string name="onboarding_step3_description">От дня знакомства до повседневных воспоминаний — настраивайте временную шкалу и празднуйте каждый шаг вашего пути.</string>
+
+    <!-- Settings Addition -->
+    <string name="settings_replay_onboarding">Повторить введение</string>
+    <string name="settings_replay_onboarding_subtitle">Снова посмотреть руководство</string>
+
+    <!-- First Story Creation Flow -->
+    <string name="create_story_title">Начните свою историю</string>
+    <string name="create_story_step_indicator">Шаг %1$d из %2$d</string>
+    <string name="create_story_next">Продолжить</string>
+    <string name="create_story_finish">Начать нашу историю</string>
+    <string name="create_story_skip_optional">Пропустить пока что</string>
+
+    <!-- Step 1: Category -->
+    <string name="create_step1_badge">Тип праздника</string>
+    <string name="create_step1_headline">Что бы вы хотели отпраздновать?</string>
+    <string name="create_step1_subhead">Выберите категорию для вашей первой вехи.</string>
+    <string name="cat_relationship_title">Наши отношения</string>
+    <string name="cat_relationship_desc">Считайте дни вместе и празднуйте любовь каждый день</string>
+    <string name="cat_wedding_title">Годовщина свадьбы</string>
+    <string name="cat_wedding_desc">Празднуйте день свадьбы и ежегодные вехи</string>
+    <string name="cat_first_date_title">Первое свидание</string>
+    <string name="cat_first_date_desc">Волшебный день, когда начался ваш путь</string>
+    <string name="cat_engagement_title">Помолвка</string>
+    <string name="cat_engagement_desc">Незабываемый момент, когда вы сказали «да»</string>
+    <string name="cat_birthday_title">День рождения</string>
+    <string name="cat_birthday_desc">Празднуйте день рождения любимого человека каждый год</string>
+    <string name="cat_special_day_title">Особый день</string>
+    <string name="cat_special_day_desc">Памятная поездка, первый дом или важная дата</string>
+
+    <!-- Step 2: Names -->
+    <string name="create_step2_badge">Персонализация</string>
+    <string name="create_step2_headline">Дайте название своей истории</string>
+    <string name="create_step2_subhead">Введите ваши имена, чтобы Love Counter стал по-настоящему вашим.</string>
+    <string name="input_your_name">Ваше имя</string>
+    <string name="input_your_name_hint">например, Элеонора</string>
+    <string name="input_partner_name">Имя партнера</string>
+    <string name="input_partner_name_hint">например, Джулиан</string>
+    <string name="input_story_title">Заголовок истории</string>
+    <string name="input_story_title_hint">например, Элеонора и Джулиан</string>
+    <string name="input_error_names_required">Пожалуйста, введите имена или заголовок</string>
+
+    <!-- Step 3: Date -->
+    <string name="create_step2_error_required">Пожалуйста, введите свое имя, имя партнера или заголовок</string>
+    <string name="create_step3_badge">Важная дата</string>
+    <string name="create_step3_headline">Когда эта особенная дата?</string>
+    <string name="create_step3_subhead">Выберите дату, чтобы начать отсчет дней или видеть предстоящие годовщины.</string>
+    <string name="create_step3_tap_to_change">Нажмите, чтобы изменить</string>
+    <string name="create_step3_beginning_today">Начиная с сегодняшнего дня</string>
+    <string name="create_step3_together_for">Вместе уже %1$d дней</string>
+    <string name="create_step3_coming_in">Через %1$d дней</string>
+    <string name="create_step3_quick_presets">Быстрые настройки</string>
+    <string name="create_step3_preset_today">Сегодня</string>
+    <string name="create_step3_preset_1yr">1 год назад</string>
+    <string name="create_step3_preset_3yr">3 года назад</string>
+    <string name="create_step3_preset_5yr">5 лет назад</string>
+    <string name="create_step3_preset_custom">Свой календарь</string>
+    <string name="date_picker_action">Выбрать дату</string>
+    <string name="date_selected_label">Выбранная дата</string>
+    <string name="date_elapsed_prefix">Вместе уже</string>
+    <string name="date_countdown_prefix">Осталось</string>
+    <string name="date_days_suffix">дней</string>
+    <string name="date_today">Сегодня</string>
+
+    <!-- Step 4: Personal Touch -->
+    <string name="create_step4_badge">Личный штрих (необязательно)</string>
+    <string name="create_step4_headline">Добавьте заметку или символ</string>
+    <string name="create_step4_subhead">Персонализируйте романтической мыслью, иконкой или палитрой.</string>
+    <string name="input_personal_note">Романтическая заметка или цитата</string>
+    <string name="input_personal_note_hint">например, Каждый день с тобой — мой любимый день.</string>
+    <string name="choose_symbol_label">Выберите символ</string>
+    <string name="symbol_heart">Сердце</string>
+    <string name="symbol_rings">Кольца</string>
+    <string name="symbol_birthday">День рождения</string>
+    <string name="symbol_trip">Поездка</string>
+    <string name="symbol_star">Звезда</string>
+    <string name="symbol_rose">Роза</string>
+    <string name="symbol_cheers">Бокалы</string>
+    <string name="symbol_spark">Искра</string>
+    <string name="choose_theme_label">Выберите палитру</string>
+    <string name="palette_rosewood">Розовое дерево</string>
+    <string name="palette_gold">Шампань и золото</string>
+    <string name="palette_blush">Теплый румянец</string>
+    <string name="palette_espresso">Глубокий эспрессо</string>
+
+    <!-- Step 5: Confirmation Preview -->
+    <string name="create_step5_badge">Готово к запуску</string>
+    <string name="create_step5_headline">Ваша история готова</string>
+    <string name="create_step5_subhead">Вот превью вашей первой заветной вехи.</string>
+
+    <!-- Common UI Components -->
+    <string name="create_step5_days_together">дней вместе ♥</string>
+    <string name="create_step5_days_to_go">дней осталось ♥</string>
+    <string name="btn_save">Сохранить</string>
+    <string name="btn_cancel">Отмена</string>
+    <string name="btn_add">Добавить</string>
+    <string name="btn_view_all">Смотреть все</string>
+    <string name="badge_milestone">Веха</string>
+
+    <!-- Milestones & Tasks System -->
+    <string name="milestones_main_title">Вехи</string>
+    <string name="milestones_main_subtitle">Готовьтесь и празднуйте ваш путь вместе</string>
+    <string name="milestones_overall_progress">Общий прогресс</string>
+    <string name="milestones_in_progress_summary">%1$d из %2$d задач выполнено</string>
+    <string name="milestones_active_summary">%1$d вех в процессе</string>
+    <string name="milestones_add_button">Добавить веху</string>
+    <string name="milestones_create_title">Создать веху</string>
+    <string name="milestones_edit_title">Изменить веху</string>
+    <string name="milestones_title_label">Заголовок вехи</string>
+    <string name="milestones_title_hint">например, Подготовка к свадьбе, План годовщины</string>
+    <string name="milestones_desc_label">Заметка или контекст</string>
+    <string name="milestones_desc_hint">например, Планируем наш волшебный день шаг за шагом</string>
+    <string name="milestones_linked_event_label">Связать с важным событием</string>
+    <string name="milestones_none_linked">Нет (независимая цель)</string>
+    <string name="milestones_target_date_label">Целевая дата</string>
+    <string name="milestones_select_date_hint">Выберите целевую дату</string>
+    <string name="milestones_category_label">Тип пути</string>
+    <string name="milestones_tab_all">Все</string>
+    <string name="milestones_tab_wedding">Свадебный путь</string>
+    <string name="milestones_tab_custom">Свой вариант</string>
+    <string name="milestones_tab_anniversary">Годовщина</string>
+    <string name="milestones_tab_trip">Поездка</string>
+    <string name="milestones_completed_section">Завершено</string>
+    <string name="milestones_active_section">Активная подготовка</string>
+    <string name="milestones_all_preparations_completed">Все %1$d этапов подготовки завершены</string>
+    <string name="milestones_empty_headline">Вех пока нет</string>
+    <string name="milestones_empty_subheadline">Организуйте вместе свадебные планы, сюрпризы к годовщине и совместные поездки.</string>
+    <string name="milestones_empty_cta">Создать первую веху</string>
+    <string name="milestone_details_header">Детали пути</string>
+    <string name="milestone_tasks_header">Подготовка и задачи</string>
+    <string name="milestone_add_task_btn">Добавить задачу</string>
+    <string name="milestone_delete_btn">Удалить веху</string>
+    <string name="milestone_edit_btn">Изменить веху</string>
+    <string name="milestone_completed_tag">Завершено</string>
+    <string name="milestone_connected_to">Связано с %1$s</string>
+    <string name="milestone_no_tasks">Задач пока нет</string>
+    <string name="milestone_no_tasks_desc">Добавьте этапы подготовки, чтобы организовать эту веху вместе.</string>
+    <string name="milestone_celebration_headline">Веха достигнута! ✨</string>
+    <string name="milestone_celebration_sub">Всё готово к этому замечательному моменту.</string>
+    <string name="milestone_delete_dialog_title">Удалить веху?</string>
+    <string name="milestone_delete_dialog_msg">Вы уверены, что хотите удалить «%1$s»? Все связанные задачи будут удалены.</string>
+    <string name="task_add_dialog_title">Новая задача</string>
+    <string name="task_edit_dialog_title">Изменить задачу</string>
+    <string name="task_title_label">Заголовок задачи</string>
+    <string name="task_title_hint">например, Забронировать зал, Выбрать платье</string>
+    <string name="task_note_label">Заметка или детали</string>
+    <string name="task_note_hint">например, Связаться с флористом до вторника</string>
+    <string name="task_due_date_label">Срок (необязательно)</string>
+    <string name="task_delete_btn">Удалить задачу</string>
+    <string name="task_delete_dialog_title">Удалить задачу?</string>
+    <string name="task_delete_dialog_msg">Вы уверены, что хотите удалить «%1$s»?</string>
+
+    <!-- Calendar Experience -->
+    <string name="calendar_title">Календарь</string>
+    <string name="calendar_subtitle">Ваша карта особых дат и моментов</string>
+    <string name="calendar_empty_day_message">В этот день пока нет событий.</string>
+    <string name="calendar_add_moment_for_date">Добавить момент на эту дату</string>
+    <string name="calendar_upcoming_moments_title">Предстоящие моменты</string>
+    <string name="calendar_today_label">Сегодня</string>
+    <string name="calendar_jump_to_today">Сегодня</string>
+    <string name="calendar_select_month_year">Выбрать месяц и год</string>
+    <string name="calendar_all_day">Весь день</string>
+    <string name="calendar_view_timeline">Просмотр всей линии времени</string>
+    <string name="calendar_tab_timeline">Линия времени</string>
+    <string name="calendar_tab_calendar">Календарь</string>
+    <string name="calendar_moments_count">%1$d моментов</string>
+    <string name="calendar_content_today">, Сегодня</string>
+    <string name="calendar_content_selected">, Выбрано</string>
+    <string name="calendar_today_dot_separator">Сегодня • %1$s</string>
+    <string name="calendar_event_initial_date">Начальная дата</string>
+    <string name="calendar_event_anniversary_year">Празднование %1$d года</string>
+    <string name="calendar_event_all_day">Весь день</string>
+    <string name="calendar_event_milestone_target">Целевая дата вехи</string>
+    <string name="calendar_event_task_completed">Подготовка завершена</string>
+    <string name="calendar_event_task_due">Срок подготовки</string>
+    <string name="calendar_badge_yrs">%1$d лет</string>
+    <string name="calendar_badge_done">Готово</string>
+    <string name="calendar_badge_task">Задача</string>
+    <string name="calendar_badge_milestone">Веха</string>
+    <string name="calendar_empty_no_events_title">Ваш календарь пуст</string>
+    <string name="calendar_empty_no_events_desc">Отмечайте годовщины, дни рождения и вехи, чтобы видеть их в течение года.</string>
+    <string name="calendar_empty_no_events_action">Добавить первый момент</string>
+
+    <!-- Smart Reminders System -->
+    <string name="reminder_title">Умные напоминания</string>
+    <string name="reminder_subtitle">Мягкие уведомления перед важными моментами</string>
+    <string name="reminder_enable_switch">Напомнить об этом моменте</string>
+    <string name="reminder_time_label">Время уведомления</string>
+    <string name="reminder_offsets_label">Когда напомнить</string>
+    <string name="reminder_quick_options">Быстрые варианты</string>
+    <string name="reminder_custom_option">+ Свои дни</string>
+    <string name="reminder_custom_dialog_title">Свое напоминание</string>
+    <string name="reminder_custom_dialog_hint">Дней до события</string>
+    <string name="reminder_smart_suggestions_title">Предложено для %1$s</string>
+    <string name="reminder_apply_suggestion">Применить</string>
+    <string name="reminder_summary_header">Напоминания</string>
+    <string name="reminder_no_reminders">Напоминания не установлены</string>
+    <string name="reminder_change_button">Изменить</string>
+    <string name="reminder_permission_dialog_title">Никогда не пропускайте важные моменты</string>
+    <string name="reminder_permission_dialog_desc">Love Counter отправляет мягкие уведомления перед годовщинами, чтобы у вас было время подготовиться.</string>
+    <string name="reminder_permission_grant">Включить напоминания</string>
+    <string name="reminder_permission_later">Может быть, позже</string>
+    <string name="reminder_permission_denied_banner">Уведомления отключены в настройках. Нажмите, чтобы включить.</string>
+    <string name="reminder_global_section_title">Умные напоминания</string>
+    <string name="reminder_global_enable_title">Включить напоминания</string>
+    <string name="reminder_global_enable_sub">Получать уведомления о предстоящих моментах</string>
+    <string name="reminder_global_time_title">Время уведомления по умолчанию</string>
+    <string name="reminder_global_suggestions_title">Умные предложения</string>
+    <string name="reminder_global_suggestions_sub">Автоматически предлагать подходящее время для каждой категории</string>
+    <string name="reminder_permission_status_enabled">Уведомления включены</string>
+    <string name="reminder_permission_status_disabled">Уведомления отключены</string>
+    <string name="reminder_time_picker_title">Выбрать время уведомления</string>
+    <string name="reminder_preview_label">Предпросмотр расписания</string>
+
+    <!-- Journal & Timeline Experience -->
+    <string name="timeline_title">Наша история</string>
+    <string name="timeline_header_title">Наша линия времени</string>
+    <string name="timeline_header_subtitle">«Каждый момент становится частью вашей истории».</string>
+    <string name="timeline_today_marker_title">Приключение продолжается…</string>
+    <string name="timeline_today_marker_date">Сегодня</string>
+    <string name="timeline_tab_timeline">Линия времени</string>
+    <string name="timeline_tab_journal">Дневник</string>
+    <string name="timeline_filter_all">Все</string>
+    <string name="timeline_filter_memories">Записи</string>
+    <string name="timeline_filter_events">События</string>
+    <string name="timeline_filter_milestones">Цели</string>
+    <string name="timeline_empty_title">Ваша история ждет</string>
+    <string name="timeline_empty_description">Добавляйте годовщины, вехи и личные записи в дневник, чтобы видеть ваш путь в хронологическом порядке.</string>
+    <string name="timeline_empty_action">Написать первую запись</string>
+    <string name="timeline_label_memory_story">Запись • %1$s</string>
+    <string name="timeline_label_photo_story">Фото • %1$s</string>
+    <string name="timeline_label_milestone_cat">Веха • %1$s</string>
+    <string name="timeline_journey_milestone">Веха пути</string>
+    <string name="timeline_photo_caption_empty">Фото воспоминания</string>
+    <string name="timeline_type_memory">Записанное воспоминание</string>
+    <string name="timeline_type_event">Событие вехи</string>
+    <string name="timeline_type_milestone">Цель пути</string>
+    <string name="timeline_type_upcoming">Предстоящая дата</string>
+
+    <!-- Journal Experience -->
+    <string name="journal_title">Дневник</string>
+    <string name="journal_subtitle">Ваше личное пространство для заветных воспоминаний</string>
+    <string name="journal_add_entry_btn">Написать запись</string>
+    <string name="journal_write_cta">Записать воспоминание</string>
+    <string name="journal_empty_title">Сохраните свое первое воспоминание</string>
+    <string name="journal_empty_description">«Каждая история начинается с момента, который стоит запомнить».</string>
+    <string name="journal_card_related_to">Связано с %1$s</string>
+    <string name="journal_filter_all">Все записи</string>
+    <string name="journal_filter_favorites">Избранное</string>
+    <string name="journal_create_title">Новая запись</string>
+    <string name="journal_edit_title">Изменить запись</string>
+    <string name="journal_input_title">Заголовок записи</string>
+    <string name="journal_input_title_hint">например, Закат на пляже, первое свидание в кафе</string>
+    <string name="journal_input_date">Дата воспоминания</string>
+    <string name="journal_input_content">Текст вашей записи</string>
+    <string name="journal_input_content_hint">Напишите о том, что вы чувствовали, что произошло, о деталях, которые не хотите забывать…</string>
+    <string name="journal_connect_event_label">Связать с событием (необязательно)</string>
+    <string name="journal_connect_none">Нет (независимая запись)</string>
+    <string name="journal_tags_label">Теги и настроение</string>
+    <string name="journal_tag_travel">Путешествие</string>
+    <string name="journal_tag_sunset">Закат</string>
+    <string name="journal_tag_date_night">Свидание</string>
+    <string name="journal_tag_milestone">Веха</string>
+    <string name="journal_tag_love_note">Послание</string>
+    <string name="journal_tag_coffee">Кофе</string>
+    <string name="journal_delete_dialog_title">Удалить эту запись?</string>
+    <string name="journal_delete_dialog_msg">Вы уверены, что хотите удалить «%1$s»? Эта запись будет удалена безвозвратно.</string>
+    <string name="journal_delete_btn">Удалить запись</string>
+    <string name="journal_saved_toast">Воспоминание сохранено с любовью</string>
+    <string name="journal_deleted_toast">Запись удалена</string>
+    <string name="journal_all_memories_completed">Все %1$d этапов подготовки завершены</string>
+    <string name="journal_related_memories_header">Связанные записи</string>
+    <string name="journal_add_memory_for_event">Добавить запись к этому событию</string>
+    <string name="journal_memory_on_date">Запись от %1$s</string>
+    <string name="journal_no_content_placeholder">Текст записи не добавлен.</string>
+    <string name="journal_no_related_memories">К этому событию пока не привязано ни одной записи.</string>
+
+    <!-- Memory Photos Experience -->
+    <string name="photos_title">Фотовоспоминания</string>
+    <string name="photos_tab_title">Фото</string>
+    <string name="photos_subtitle">«Сохраняйте моменты, которые не хотите забывать».</string>
+    <string name="photos_add_btn">Добавить фото</string>
+    <string name="photos_filter_all">Все фото</string>
+    <string name="photos_filter_favorites">Избранное</string>
+    <string name="photos_empty_title">Создайте свою визуальную историю</string>
+    <string name="photos_empty_desc">Добавляйте особенные фотографии с ваших свиданий и поездок, чтобы они всегда были в вашем сердце.</string>
+    <string name="photos_empty_action">Добавить первое фото</string>
+    <string name="photos_dialog_add_title">Новое фотовоспоминание</string>
+    <string name="photos_dialog_edit_title">Изменить фотовоспоминание</string>
+    <string name="photos_caption_label">Описание или послание</string>
+    <string name="photos_caption_hint">например, Один из самых красивых закатов, что мы видели вместе.</string>
+    <string name="photos_date_label">Дата фото</string>
+    <string name="photos_link_story_label">Связать с событием (необязательно)</string>
+    <string name="photos_link_journal_label">Связать с записью в дневнике (необязательно)</string>
+    <string name="photos_link_none">Нет</string>
+    <string name="photos_select_prompt">Выбрать фото на устройстве</string>
+    <string name="photos_change_photo">Изменить фото</string>
+    <string name="photos_delete_dialog_title">Удалить это фотовоспоминание?</string>
+    <string name="photos_delete_dialog_msg">Вы уверены, что хотите удалить это фото из приложения? Оригинал фото на вашем устройстве НЕ будет удален.</string>
+    <string name="photos_delete_btn">Удалить воспоминание</string>
+    <string name="photos_saved_toast">Фотовоспоминание сохранено с любовью</string>
+    <string name="photos_deleted_toast">Фотовоспоминание удалено</string>
+    <string name="photos_from_this_moment">Фото этого момента</string>
+    <string name="photos_no_photos_for_moment">Фото для этого момента пока не добавлены.</string>
+    <string name="photos_add_photo_for_moment">Добавить фото</string>
+    <string name="photos_viewer_details">Детали воспоминания</string>
+    <string name="photos_viewer_counter">%1$d из %2$d</string>
+    <string name="photos_connected_title">Визуальные воспоминания</string>
+    <string name="photos_add_to_story">Добавить фото</string>
+    <string name="photos_connected_empty">К этому воспоминанию пока не добавлено ни одного фото.</string>
+    <string name="timeline_filter_photos">Фото</string>
+    <string name="timeline_type_photo">Фотовоспоминание</string>
+
+    <!-- Share Cards -->
+    <string name="share_card_dialog_title">Создать карточку</string>
+    <string name="share_card_dialog_subtitle">Превратите это воспоминание в красивую картинку, чтобы сохранить её или поделиться ею.</string>
+    <string name="share_card_type_time">Наше время вместе</string>
+    <string name="share_card_type_anniversary">Годовщина</string>
+    <string name="share_card_type_countdown">Отсчет</string>
+    <string name="share_card_type_milestone">Веха</string>
+    <string name="share_card_type_memory">Воспоминание</string>
+    <string name="share_card_style_classic">Классика</string>
+    <string name="share_card_style_midnight">Полночь</string>
+    <string name="share_card_style_rose">Розовое золото</string>
+    <string name="share_card_style_minimal">Минимализм</string>
+    <string name="share_card_format_story">История (9:16)</string>
+    <string name="share_card_format_post">Пост (1:1)</string>
+    <string name="share_card_format_label">Формат карточки</string>
+    <string name="share_card_style_label">Тема оформления</string>
+    <string name="share_card_options_label">Настройка</string>
+    <string name="share_card_custom_message_hint">Добавить сообщение (необязательно)…</string>
+    <string name="share_card_toggle_quote">Показывать цитату / послание</string>
+    <string name="share_card_toggle_breakdown">Показывать детализацию времени</string>
+    <string name="share_card_toggle_date">Показывать конкретную дату</string>
+    <string name="share_card_toggle_watermark">Включить логотип приложения</string>
+    <string name="share_card_toggle_photo">Использовать фото из воспоминания как фон</string>
+    <string name="share_card_action_share">Поделиться</string>
+    <string name="share_card_action_save">Сохранить картинку</string>
+    <string name="share_card_saved_success">Карточка сохранена в галерею</string>
+    <string name="share_card_saved_error">Не удалось сохранить картинку на устройство</string>
+    <string name="share_card_share_error">Не удалось подготовить картинку для отправки</string>
+    <string name="share_card_btn_share_our_time">Поделиться нашим временем</string>
+    <string name="share_card_btn_share_moment">Поделиться карточкой</string>
+
+    <!-- Home Screen Widgets -->
+    <string name="widget_main_title">Счетчик любви</string>
+    <string name="widget_main_desc">Следите за временем ваших отношений и днями вместе на главном экране.</string>
+    <string name="widget_type_countdown">Заветный отсчет</string>
+    <string name="widget_type_next_event">Следующий момент</string>
+    <string name="widget_type_minimal">Только дни</string>
+    <string name="widget_no_upcoming_events">Нет предстоящих событий</string>
+    <string name="widget_next_title">Следующий момент</string>
+    <string name="widget_next_desc">Показывает отсчет до ближайшей годовщины или праздника.</string>
+    <string name="widget_minimal_title">Только дни</string>
+    <string name="widget_minimal_desc">Простой счетчик, выделяющий ваше самое важное число.</string>
+    <string name="widget_empty_prompt">Создайте свой первый момент</string>
+    <string name="widget_empty_tap_to_open">Нажмите, чтобы открыть приложение</string>
+    <string name="widget_days_together_caps">ДНЕЙ ВМЕСТЕ</string>
+    <string name="widget_days_left_caps">ДНЕЙ ОСТАЛОСЬ</string>
+    <string name="widget_together_for">Вместе уже</string>
+    <string name="widget_next_moment_label">Следующий момент</string>
+    <string name="widget_since_label">С %1$s</string>
+    <string name="widget_in_days">Через %1$s дней</string>
+    <string name="widget_footer_next_anniversary">Далее: %1$s через %2$d дн.</string>
+    <string name="widget_days_together_lower">%1$s дней вместе</string>
+    <string name="widget_days_together_label">дней вместе</string>
+    <string name="widget_days_until_event">дней до %1$s</string>
+    <string name="widget_days_until_lower">%1$s дн. до %2$s</string>
+
+    <!-- Widget Configuration -->
+    <string name="widget_config_title">Настройка виджета</string>
+    <string name="widget_config_subtitle">Настройте, как ваш момент будет выглядеть на главном экране.</string>
+    <string name="widget_config_preview_label">Предпросмотр виджета</string>
+    <string name="widget_config_select_story">Выбрать момент</string>
+    <string name="widget_config_auto_next">Авто (следующее событие)</string>
+    <string name="widget_config_auto_next_desc">Автоматически показывает ближайшее событие или праздник.</string>
+    <string name="widget_config_primary_story">Основная история (%1$s)</string>
+    <string name="widget_config_appearance">Внешний вид</string>
+    <string name="widget_config_theme_light">Теплый светлый</string>
+    <string name="widget_config_theme_dark">Темный эспрессо</string>
+    <string name="widget_config_theme_system">Как в системе</string>
+    <string name="widget_config_apply_btn">Добавить на экран</string>
+    <string name="widget_config_save_btn">Сохранить настройки виджета</string>
+    <string name="widget_settings_card_title">Виджеты на главном экране</string>
+    <string name="widget_settings_card_desc">Добавьте виджеты Love Counter, чтобы видеть дни вместе и предстоящие вехи с первого взгляда.</string>
+
+    <!-- Duration & Time Units -->
+    <string name="unit_year">год</string>
+    <string name="unit_years">лет</string>
+    <string name="unit_month">месяц</string>
+    <string name="unit_months">месяцев</string>
+    <string name="unit_day">день</string>
+    <string name="unit_days">дней</string>
+
+    <!-- Model Specifics -->
+    <string name="model_anniversary_special">Особое торжество</string>
+    <string name="model_anniversary_suffix">годовщина</string>
+    <string name="model_initials_placeholder">♥</string>
+    <string name="model_countdown_today">Сегодня!</string>
+    <string name="model_countdown_tomorrow">Завтра</string>
+    <string name="model_countdown_passed">Прошло</string>
+    <string name="model_countdown_in_days">Через %1$d дн.</string>
+    <string name="model_elapsed_today">Сегодня</string>
+    <string name="model_elapsed_yesterday">Вчера</string>
+    <string name="model_elapsed_days_ago">%1$d дн. назад</string>
+    <string name="model_untitled_memory">Без названия</string>
+
+    <!-- Timeframe Labels -->
+    <string name="timeframe_upcoming">Предстоящий</string>
+    <string name="timeframe_passed">Прошло</string>
+    <string name="timeframe_today">Сегодня</string>
+    <string name="timeframe_days_to_go">Осталось %1$d дн.</string>
+    <string name="timeframe_months_to_go">Осталось %1$d мес.</string>
+</resources>
