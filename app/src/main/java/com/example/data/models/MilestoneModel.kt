@@ -47,8 +47,11 @@ data class MilestoneModel(
     return when {
       days < 0 -> context.getString(R.string.timeframe_passed)
       days == 0L -> context.getString(R.string.timeframe_today)
-      days in 1..30 -> context.getString(R.string.timeframe_days_to_go, days.toInt())
-      else -> context.getString(R.string.timeframe_months_to_go, (days / 30).toInt().coerceAtLeast(1))
+      days in 1..30 -> context.resources.getQuantityString(R.plurals.plural_days_remaining, days.toInt(), days.toInt())
+      else -> {
+        val months = (days / 30).toInt().coerceAtLeast(1)
+        context.resources.getQuantityString(R.plurals.plural_months_to_go, months, months)
+      }
     }
   }
 

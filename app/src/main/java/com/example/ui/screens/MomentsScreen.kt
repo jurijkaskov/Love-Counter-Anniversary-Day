@@ -520,7 +520,7 @@ fun MomentsScreen(
             Spacer(modifier = Modifier.height(8.dp))
             SectionTitle(
               title = stringResource(R.string.moments_upcoming_header),
-              subtitle = "${upcomingEvents.size} special dates ahead",
+              subtitle = context.resources.getQuantityString(R.plurals.plural_special_dates_ahead, upcomingEvents.size, upcomingEvents.size),
               testTag = "upcoming_section_header"
             )
           }
@@ -528,9 +528,9 @@ fun MomentsScreen(
           items(upcomingEvents, key = { it.id }) { event ->
             val icon = getIconForStory(event)
             MilestoneItemRow(
-              title = event.displayTitle,
+              title = event.getDisplayTitle(context),
               dateFormatted = event.formattedNextOccurrenceDate,
-              badgeText = event.countdownBadgeText,
+              badgeText = event.getCountdownBadgeText(context),
               icon = icon,
               iconBackground = extColors.goldContainer,
               iconTint = extColors.goldAccent,
@@ -548,7 +548,7 @@ fun MomentsScreen(
             Spacer(modifier = Modifier.height(12.dp))
             SectionTitle(
               title = stringResource(R.string.moments_past_header),
-              subtitle = "${pastEvents.size} cherished memories",
+              subtitle = context.resources.getQuantityString(R.plurals.plural_cherished_memories, pastEvents.size, pastEvents.size),
               testTag = "past_section_header"
             )
           }
@@ -556,9 +556,9 @@ fun MomentsScreen(
           items(pastEvents, key = { "past_${it.id}" }) { event ->
             val icon = getIconForStory(event)
             MilestoneItemRow(
-              title = event.displayTitle,
+              title = event.getDisplayTitle(context),
               dateFormatted = event.formattedDate,
-              badgeText = event.elapsedBadgeText,
+              badgeText = event.getElapsedBadgeText(context),
               icon = icon,
               iconBackground = extColors.rosewoodContainer,
               iconTint = MaterialTheme.colorScheme.primary,

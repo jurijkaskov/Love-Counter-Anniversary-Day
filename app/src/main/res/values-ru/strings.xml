@@ -38,6 +38,9 @@
     <string name="countdown_days_to_go_suffix">дней осталось ♥</string>
     <string name="countdown_until_prefix">До %1$s</string>
     <string name="countdown_since_prefix">С %1$s</string>
+    <string name="countdown_today_tag">СЕГОДНЯ</string>
+    <string name="countdown_celebrate_today">Празднуем сегодня! 🎉</string>
+    <string name="countdown_days_today_suffix">сегодня ♥</string>
     <string name="countdown_no_milestones_empty">Активных вех пока нет. Запланируйте следующий праздник!</string>
     <string name="countdown_days_together_heart">дней вместе ♥</string>
     <string name="countdown_celebration_tag">ОТЧЕТ ДО ПРАЗДНИКА</string>

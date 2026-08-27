@@ -35,23 +35,24 @@ class WidgetDataManager(
     }
 
     val isPast = targetStory.isPastDate
+    val isToday = targetStory.isToday
     val countValue = String.format("%,d", targetStory.totalDays)
-    val countLabel = if (isPast) {
-      context.getString(R.string.widget_days_together_caps)
-    } else {
-      context.getString(R.string.widget_days_left_caps)
+    val countLabel = when {
+      isToday -> context.getString(R.string.countdown_today_tag)
+      isPast -> context.getString(R.string.widget_days_together_caps)
+      else -> context.getString(R.string.widget_days_left_caps)
     }
 
-    val dateSubtitle = if (isPast) {
+    val dateSubtitle = if (isPast || isToday) {
       context.getString(R.string.widget_since_label, targetStory.formattedDate)
     } else {
       targetStory.formattedDate
     }
 
-    val footerText = if (isPast) {
-      context.getString(R.string.widget_footer_next_anniversary, targetStory.getNextAnniversaryTitle(context), targetStory.daysUntilNextAnniversary.toInt())
-    } else {
-      context.getString(R.string.widget_in_days, targetStory.totalDays.toString())
+    val footerText = when {
+      isToday -> context.getString(R.string.countdown_celebrate_today)
+      isPast -> context.getString(R.string.widget_footer_next_anniversary, targetStory.getNextAnniversaryTitle(context), targetStory.daysUntilNextAnniversary.toInt())
+      else -> context.resources.getQuantityString(R.plurals.plural_in_days, targetStory.totalDays.toInt().coerceAtLeast(1), targetStory.totalDays.toInt())
     }
 
     return WidgetDisplayData(
@@ -138,10 +139,10 @@ class WidgetDataManager(
     }
 
     val countValue = String.format("%,d", targetStory.totalDays)
-    val label = if (targetStory.isPastDate) {
-      context.getString(R.string.widget_days_together_lower)
-    } else {
-      context.getString(R.string.widget_days_until_lower, targetStory.totalDays.toString(), targetStory.displayTitle.lowercase())
+    val label = when {
+      targetStory.isToday -> context.getString(R.string.countdown_days_today_suffix)
+      targetStory.isPastDate -> context.resources.getQuantityString(R.plurals.plural_days_together_suffix, targetStory.totalDays.toInt().coerceAtLeast(0))
+      else -> context.resources.getQuantityString(R.plurals.plural_days_to_go_suffix, targetStory.totalDays.toInt().coerceAtLeast(1))
     }
 
     return WidgetDisplayData(

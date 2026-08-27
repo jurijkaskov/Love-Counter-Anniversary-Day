@@ -172,9 +172,9 @@ fun TimelineView(
           id = "today_marker",
           type = TimelineItemType.TODAY_MARKER,
           dateEpochDay = todayEpochDay,
-          title = "And so the adventure continues…",
-          subtitle = "Today",
-          categoryLabel = "Today",
+          title = context.getString(R.string.timeline_today_marker_title),
+          subtitle = context.getString(R.string.timeline_today_marker_date),
+          categoryLabel = context.getString(R.string.timeline_today_marker_date),
           iconKey = "favorite",
           accent = "rosewood"
         )

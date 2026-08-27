@@ -38,6 +38,9 @@
     <string name="countdown_days_to_go_suffix">days to go ♥</string>
     <string name="countdown_until_prefix">Until %1$s</string>
     <string name="countdown_since_prefix">Since %1$s</string>
+    <string name="countdown_today_tag">TODAY</string>
+    <string name="countdown_celebrate_today">Celebrating today! 🎉</string>
+    <string name="countdown_days_today_suffix">today ♥</string>
     <string name="countdown_no_milestones_empty">No active milestones yet. Plan your next celebration!</string>
     <string name="countdown_days_together_heart">days together ♥</string>
     <string name="countdown_celebration_tag">COUNTDOWN TO CELEBRATION</string>

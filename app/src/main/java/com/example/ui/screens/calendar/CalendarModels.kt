@@ -60,19 +60,19 @@ object CalendarDataHelper {
     val yearsElapsed = targetDate.year - storyDate.year
     val subtitle = when {
       isOriginalDate && story.isPastDate && yearsElapsed == 0 -> context.getString(R.string.calendar_event_initial_date)
-      isAnnualMatch && yearsElapsed > 0 -> context.getString(R.string.calendar_event_anniversary_year, yearsElapsed)
+      isAnnualMatch && yearsElapsed > 0 -> context.resources.getQuantityString(R.plurals.plural_anniversary_year, yearsElapsed, yearsElapsed)
       else -> context.getString(R.string.calendar_event_all_day)
     }
 
     return CalendarEventItem(
       id = "story_${story.id}_${targetDate}",
-      title = story.displayTitle,
+      title = story.getDisplayTitle(context),
       subtitle = subtitle,
       iconKey = story.iconKey,
       categoryName = context.getString(story.category.titleResId),
       date = targetDate,
       isAllDay = true,
-      badgeText = if (yearsElapsed > 0 && isAnnualMatch) context.getString(R.string.calendar_badge_yrs, yearsElapsed) else null,
+      badgeText = if (yearsElapsed > 0 && isAnnualMatch) context.resources.getQuantityString(R.plurals.plural_years, yearsElapsed, yearsElapsed) else null,
       originalStory = story
     )
   }

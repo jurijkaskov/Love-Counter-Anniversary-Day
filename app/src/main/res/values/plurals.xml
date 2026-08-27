@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Time Units Plurals (English) -->
+    <plurals name="plural_years">
+        <item quantity="one">%d year</item>
+        <item quantity="other">%d years</item>
+    </plurals>
+
+    <plurals name="plural_months">
+        <item quantity="one">%d month</item>
+        <item quantity="other">%d months</item>
+    </plurals>
+
+    <plurals name="plural_weeks">
+        <item quantity="one">%d week</item>
+        <item quantity="other">%d weeks</item>
+    </plurals>
+
+    <plurals name="plural_days">
+        <item quantity="one">%d day</item>
+        <item quantity="other">%d days</item>
+    </plurals>
+
+    <!-- Suffixes for Hero Number -->
+    <plurals name="plural_days_together_suffix">
+        <item quantity="one">day together ♥</item>
+        <item quantity="other">days together ♥</item>
+    </plurals>
+
+    <plurals name="plural_days_to_go_suffix">
+        <item quantity="one">day to go ♥</item>
+        <item quantity="other">days to go ♥</item>
+    </plurals>
+
+    <!-- Badges & Timeframes -->
+    <plurals name="plural_in_days">
+        <item quantity="one">In %d day</item>
+        <item quantity="other">In %d days</item>
+    </plurals>
+
+    <plurals name="plural_days_ago">
+        <item quantity="one">%d day ago</item>
+        <item quantity="other">%d days ago</item>
+    </plurals>
+
+    <plurals name="plural_days_remaining">
+        <item quantity="one">%d day to go</item>
+        <item quantity="other">%d days to go</item>
+    </plurals>
+
+    <plurals name="plural_months_to_go">
+        <item quantity="one">%d Month to go</item>
+        <item quantity="other">%d Months to go</item>
+    </plurals>
+
+    <plurals name="plural_together_for_days">
+        <item quantity="one">Together for %d day</item>
+        <item quantity="other">Together for %d days</item>
+    </plurals>
+
+    <plurals name="plural_coming_in_days">
+        <item quantity="one">Coming in %d day</item>
+        <item quantity="other">Coming in %d days</item>
+    </plurals>
+
+    <!-- Share Cards & Widgets -->
+    <plurals name="plural_days_together_highlight">
+        <item quantity="one">%s Day</item>
+        <item quantity="other">%s Days</item>
+    </plurals>
+
+    <plurals name="plural_in_days_highlight">
+        <item quantity="one">In %s Day</item>
+        <item quantity="other">In %s Days</item>
+    </plurals>
+
+    <plurals name="plural_widget_days_together">
+        <item quantity="one">%s day together</item>
+        <item quantity="other">%s days together</item>
+    </plurals>
+
+    <plurals name="plural_widget_days_until">
+        <item quantity="one">%1$s day until %2$s</item>
+        <item quantity="other">%1$s days until %2$s</item>
+    </plurals>
+
+    <plurals name="plural_special_dates_ahead">
+        <item quantity="one">%d special date ahead</item>
+        <item quantity="other">%d special dates ahead</item>
+    </plurals>
+
+    <plurals name="plural_cherished_memories">
+        <item quantity="one">%d cherished memory</item>
+        <item quantity="other">%d cherished memories</item>
+    </plurals>
+
+    <plurals name="plural_anniversary_year">
+        <item quantity="one">%d year anniversary</item>
+        <item quantity="other">%d year anniversary</item>
+    </plurals>
+</resources>

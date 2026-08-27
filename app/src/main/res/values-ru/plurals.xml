@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Time Units Plurals (Russian) -->
+    <plurals name="plural_years">
+        <item quantity="one">%d год</item>
+        <item quantity="few">%d года</item>
+        <item quantity="many">%d лет</item>
+        <item quantity="other">%d лет</item>
+    </plurals>
+
+    <plurals name="plural_months">
+        <item quantity="one">%d месяц</item>
+        <item quantity="few">%d месяца</item>
+        <item quantity="many">%d месяцев</item>
+        <item quantity="other">%d месяцев</item>
+    </plurals>
+
+    <plurals name="plural_weeks">
+        <item quantity="one">%d неделя</item>
+        <item quantity="few">%d недели</item>
+        <item quantity="many">%d недель</item>
+        <item quantity="other">%d недель</item>
+    </plurals>
+
+    <plurals name="plural_days">
+        <item quantity="one">%d день</item>
+        <item quantity="few">%d дня</item>
+        <item quantity="many">%d дней</item>
+        <item quantity="other">%d дней</item>
+    </plurals>
+
+    <!-- Suffixes for Hero Number -->
+    <plurals name="plural_days_together_suffix">
+        <item quantity="one">день вместе ♥</item>
+        <item quantity="few">дня вместе ♥</item>
+        <item quantity="many">дней вместе ♥</item>
+        <item quantity="other">дней вместе ♥</item>
+    </plurals>
+
+    <plurals name="plural_days_to_go_suffix">
+        <item quantity="one">день остался ♥</item>
+        <item quantity="few">дня осталось ♥</item>
+        <item quantity="many">дней осталось ♥</item>
+        <item quantity="other">дней осталось ♥</item>
+    </plurals>
+
+    <!-- Badges & Timeframes -->
+    <plurals name="plural_in_days">
+        <item quantity="one">Через %d день</item>
+        <item quantity="few">Через %d дня</item>
+        <item quantity="many">Через %d дней</item>
+        <item quantity="other">Через %d дней</item>
+    </plurals>
+
+    <plurals name="plural_days_ago">
+        <item quantity="one">%d день назад</item>
+        <item quantity="few">%d дня назад</item>
+        <item quantity="many">%d дней назад</item>
+        <item quantity="other">%d дней назад</item>
+    </plurals>
+
+    <plurals name="plural_days_remaining">
+        <item quantity="one">Остался %d день</item>
+        <item quantity="few">Осталось %d дня</item>
+        <item quantity="many">Осталось %d дней</item>
+        <item quantity="other">Осталось %d дней</item>
+    </plurals>
+
+    <plurals name="plural_months_to_go">
+        <item quantity="one">Остался %d месяц</item>
+        <item quantity="few">Осталось %d месяца</item>
+        <item quantity="many">Осталось %d месяцев</item>
+        <item quantity="other">Осталось %d месяцев</item>
+    </plurals>
+
+    <plurals name="plural_together_for_days">
+        <item quantity="one">Вместе уже %d день</item>
+        <item quantity="few">Вместе уже %d дня</item>
+        <item quantity="many">Вместе уже %d дней</item>
+        <item quantity="other">Вместе уже %d дней</item>
+    </plurals>
+
+    <plurals name="plural_coming_in_days">
+        <item quantity="one">Через %d день</item>
+        <item quantity="few">Через %d дня</item>
+        <item quantity="many">Через %d дней</item>
+        <item quantity="other">Через %d дней</item>
+    </plurals>
+
+    <!-- Share Cards & Widgets -->
+    <plurals name="plural_days_together_highlight">
+        <item quantity="one">%s день</item>
+        <item quantity="few">%s дня</item>
+        <item quantity="many">%s дней</item>
+        <item quantity="other">%s дней</item>
+    </plurals>
+
+    <plurals name="plural_in_days_highlight">
+        <item quantity="one">Через %s день</item>
+        <item quantity="few">Через %s дня</item>
+        <item quantity="many">Через %s дней</item>
+        <item quantity="other">Через %s дней</item>
+    </plurals>
+
+    <plurals name="plural_widget_days_together">
+        <item quantity="one">%s день вместе</item>
+        <item quantity="few">%s дня вместе</item>
+        <item quantity="many">%s дней вместе</item>
+        <item quantity="other">%s дней вместе</item>
+    </plurals>
+
+    <plurals name="plural_widget_days_until">
+        <item quantity="one">%1$s день до %2$s</item>
+        <item quantity="few">%1$s дня до %2$s</item>
+        <item quantity="many">%1$s дней до %2$s</item>
+        <item quantity="other">%1$s дней до %2$s</item>
+    </plurals>
+
+    <plurals name="plural_special_dates_ahead">
+        <item quantity="one">%d особая дата впереди</item>
+        <item quantity="few">%d особые даты впереди</item>
+        <item quantity="many">%d особых дат впереди</item>
+        <item quantity="other">%d особых дат впереди</item>
+    </plurals>
+
+    <plurals name="plural_cherished_memories">
+        <item quantity="one">%d сохраненное воспоминание</item>
+        <item quantity="few">%d сохраненных воспоминания</item>
+        <item quantity="many">%d сохраненных воспоминаний</item>
+        <item quantity="other">%d сохраненных воспоминаний</item>
+    </plurals>
+
+    <plurals name="plural_anniversary_year">
+        <item quantity="one">%d-я годовщина</item>
+        <item quantity="few">%d-я годовщина</item>
+        <item quantity="many">%d-я годовщина</item>
+        <item quantity="other">%d-я годовщина</item>
+    </plurals>
+</resources>

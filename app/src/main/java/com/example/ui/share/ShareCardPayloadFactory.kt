@@ -20,31 +20,32 @@ object ShareCardPayloadFactory {
    */
   fun fromStory(context: Context, story: StoryModel, connectedPhoto: MemoryPhotoModel? = null): ShareCardPayload {
     val isPast = story.isPastDate
-    val cardType = if (isPast) {
-      if (story.category == EventCategory.WEDDING) ShareCardType.ANNIVERSARY else ShareCardType.TIME_TOGETHER
-    } else {
-      ShareCardType.COUNTDOWN
+    val isToday = story.isToday
+    val cardType = when {
+      isToday -> ShareCardType.TIME_TOGETHER
+      isPast -> if (story.category == EventCategory.WEDDING) ShareCardType.ANNIVERSARY else ShareCardType.TIME_TOGETHER
+      else -> ShareCardType.COUNTDOWN
     }
 
-    val subtitle = if (isPast) {
-      if (cardType == ShareCardType.ANNIVERSARY) context.getString(R.string.share_label_anniversary_celebration) else context.getString(R.string.share_label_together_for)
-    } else {
-      context.getString(R.string.share_label_countdown_special)
+    val subtitle = when {
+      isToday -> context.getString(R.string.countdown_today_tag)
+      isPast -> if (cardType == ShareCardType.ANNIVERSARY) context.getString(R.string.share_label_anniversary_celebration) else context.getString(R.string.share_label_together_for)
+      else -> context.getString(R.string.share_label_countdown_special)
     }
 
-    val highlight = if (isPast) {
-      context.getString(R.string.share_days_suffix, String.format("%,d", story.totalDays))
-    } else {
-      context.getString(R.string.share_days_in_prefix, story.totalDays.toString())
+    val highlight = when {
+      isToday -> context.getString(R.string.countdown_celebrate_today)
+      isPast -> context.resources.getQuantityString(R.plurals.plural_days, story.totalDays.toInt().coerceAtLeast(0), story.totalDays.toInt())
+      else -> context.resources.getQuantityString(R.plurals.plural_in_days, story.totalDays.toInt().coerceAtLeast(1), story.totalDays.toInt())
     }
 
-    val supportingText = if (isPast) {
-      story.getFormattedPeriodBreakdown(context)
-    } else {
-      context.getString(R.string.share_upcoming_celebration)
+    val supportingText = when {
+      isToday -> story.getFormattedPeriodBreakdown(context)
+      isPast -> story.getFormattedPeriodBreakdown(context)
+      else -> context.getString(R.string.share_upcoming_celebration)
     }
 
-    val dateString = if (isPast) context.getString(R.string.share_since_prefix, story.formattedDate) else story.formattedDate
+    val dateString = if (isPast || isToday) context.getString(R.string.share_since_prefix, story.formattedDate) else story.formattedDate
 
     return ShareCardPayload(
       cardType = cardType,

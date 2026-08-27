@@ -251,13 +251,21 @@ fun EventDetailsDialog(
               )
               Spacer(modifier = Modifier.height(4.dp))
               Text(
-                text = if (event.isPastDate) stringResource(R.string.event_time_together_label) else stringResource(R.string.event_days_remaining_label),
+                text = when {
+                  event.isToday -> stringResource(R.string.countdown_today_tag)
+                  event.isPastDate -> stringResource(R.string.event_time_together_label)
+                  else -> stringResource(R.string.event_days_remaining_label)
+                },
                 style = MaterialTheme.typography.labelSmall,
                 color = extColors.textMuted
               )
               Spacer(modifier = Modifier.height(2.dp))
               Text(
-                text = if (event.isPastDate) event.getElapsedBadgeText(context) else event.getCountdownBadgeText(context),
+                text = when {
+                  event.isToday -> stringResource(R.string.model_countdown_today) + " 🎉"
+                  event.isPastDate -> event.getElapsedBadgeText(context)
+                  else -> event.getCountdownBadgeText(context)
+                },
                 style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
                 color = MaterialTheme.colorScheme.onSurface
               )

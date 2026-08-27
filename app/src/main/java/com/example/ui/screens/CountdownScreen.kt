@@ -492,10 +492,10 @@ private fun HeroCountdownCard(
             )
             Spacer(modifier = Modifier.width(6.dp))
             Text(
-              text = if (isPast) {
-                stringResource(R.string.countdown_together_for).uppercase()
-              } else {
-                stringResource(R.string.countdown_celebration_tag).uppercase()
+              text = when {
+                primaryStory.isToday -> stringResource(R.string.countdown_today_tag).uppercase()
+                isPast -> stringResource(R.string.countdown_together_for).uppercase()
+                else -> stringResource(R.string.countdown_celebration_tag).uppercase()
               },
               style = MaterialTheme.typography.labelSmall.copy(
                 letterSpacing = 1.6.sp,
@@ -526,7 +526,7 @@ private fun HeroCountdownCard(
           )
           Spacer(modifier = Modifier.width(10.dp))
           Text(
-            text = stringResource(R.string.countdown_days_to_go_suffix),
+            text = primaryStory.getHeroDaysSuffix(context),
             style = MaterialTheme.typography.headlineSmall.copy(
               fontFamily = FontFamily.Serif,
               fontStyle = FontStyle.Italic,
@@ -542,7 +542,7 @@ private fun HeroCountdownCard(
 
         // Accurate breakdown based on exact calendar calculations
         Text(
-          text = if (isPast) {
+          text = if (isPast || primaryStory.isToday) {
             primaryStory.getFormattedPeriodBreakdown(context)
           } else {
             stringResource(R.string.countdown_until_prefix, primaryStory.getDisplayTitle(context))
@@ -834,7 +834,7 @@ private fun NextSpecialDateCard(
             .padding(horizontal = 12.dp, vertical = 8.dp)
         ) {
           Text(
-            text = if (daysRemaining == 0L) stringResource(R.string.model_countdown_today) + " 🎉" else stringResource(R.string.model_countdown_in_days, daysRemaining.toInt()),
+            text = if (daysRemaining == 0L) stringResource(R.string.model_countdown_today) + " 🎉" else context.resources.getQuantityString(R.plurals.plural_in_days, daysRemaining.toInt(), daysRemaining.toInt()),
             style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold),
             color = MaterialTheme.colorScheme.primary
           )

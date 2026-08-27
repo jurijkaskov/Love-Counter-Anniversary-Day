@@ -60,10 +60,12 @@ fun Step5PreviewConfirmation(
   selectedThemeAccent: String,
   modifier: Modifier = Modifier
 ) {
+  val context = androidx.compose.ui.platform.LocalContext.current
   val extColors = LocalCherishExtendedColors.current
 
   val today = LocalDate.now()
-  val isPast = !selectedDate.isAfter(today)
+  val isToday = selectedDate == today
+  val isPast = selectedDate.isBefore(today)
   val daysDiff = abs(ChronoUnit.DAYS.between(selectedDate, today))
 
   val displayTitle = when {
@@ -292,7 +294,11 @@ fun Step5PreviewConfirmation(
             )
             Spacer(modifier = Modifier.width(6.dp))
             Text(
-              text = if (isPast) stringResource(R.string.create_step5_days_together) else stringResource(R.string.create_step5_days_to_go),
+              text = when {
+                isToday -> stringResource(R.string.countdown_days_today_suffix)
+                isPast -> context.resources.getQuantityString(R.plurals.plural_days_together_suffix, daysDiff.toInt().coerceAtLeast(0))
+                else -> context.resources.getQuantityString(R.plurals.plural_days_to_go_suffix, daysDiff.toInt().coerceAtLeast(1))
+              },
               style = MaterialTheme.typography.titleMedium.copy(
                 fontFamily = FontFamily.Serif,
                 fontStyle = FontStyle.Italic

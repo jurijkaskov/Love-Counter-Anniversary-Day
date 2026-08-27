@@ -90,28 +90,34 @@ data class StoryModel(
       return localDate.format(formatter)
     }
 
+  val isToday: Boolean
+    get() = localDate == LocalDate.now()
+
   val isPastDate: Boolean
-    get() = !localDate.isAfter(LocalDate.now())
+    get() = localDate.isBefore(LocalDate.now())
+
+  val isFutureDate: Boolean
+    get() = localDate.isAfter(LocalDate.now())
 
   val totalDays: Long
-    get() = if (isPastDate) {
-      ChronoUnit.DAYS.between(localDate, LocalDate.now())
-    } else {
-      ChronoUnit.DAYS.between(LocalDate.now(), localDate)
+    get() = when {
+      isPastDate -> ChronoUnit.DAYS.between(localDate, LocalDate.now())
+      isFutureDate -> ChronoUnit.DAYS.between(LocalDate.now(), localDate)
+      else -> 0L
     }
 
   val totalWeeks: Long
-    get() = if (isPastDate) {
-      ChronoUnit.WEEKS.between(localDate, LocalDate.now())
-    } else {
-      ChronoUnit.WEEKS.between(LocalDate.now(), localDate)
+    get() = when {
+      isPastDate -> ChronoUnit.WEEKS.between(localDate, LocalDate.now())
+      isFutureDate -> ChronoUnit.WEEKS.between(LocalDate.now(), localDate)
+      else -> 0L
     }
 
   val totalMonths: Long
-    get() = if (isPastDate) {
-      ChronoUnit.MONTHS.between(localDate, LocalDate.now())
-    } else {
-      ChronoUnit.MONTHS.between(LocalDate.now(), localDate)
+    get() = when {
+      isPastDate -> ChronoUnit.MONTHS.between(localDate, LocalDate.now())
+      isFutureDate -> ChronoUnit.MONTHS.between(LocalDate.now(), localDate)
+      else -> 0L
     }
 
   val totalHours: Long
@@ -129,10 +135,10 @@ data class StoryModel(
   val exactPeriod: java.time.Period
     get() {
       val today = LocalDate.now()
-      return if (isPastDate) {
-        java.time.Period.between(localDate, today)
-      } else {
-        java.time.Period.between(today, localDate)
+      return when {
+        isPastDate -> java.time.Period.between(localDate, today)
+        isFutureDate -> java.time.Period.between(today, localDate)
+        else -> java.time.Period.ZERO
       }
     }
 
@@ -145,15 +151,27 @@ data class StoryModel(
   val exactDays: Int
     get() = Math.abs(exactPeriod.days)
 
+  fun getHeroDaysSuffix(context: Context): String {
+    return when {
+      isToday -> context.getString(R.string.countdown_days_today_suffix)
+      isPastDate -> context.resources.getQuantityString(R.plurals.plural_days_together_suffix, totalDays.toInt().coerceAtLeast(0))
+      else -> context.resources.getQuantityString(R.plurals.plural_days_to_go_suffix, totalDays.toInt().coerceAtLeast(1))
+    }
+  }
+
   fun getFormattedPeriodBreakdown(context: Context): String {
+    if (isToday) {
+      return context.getString(R.string.countdown_celebrate_today)
+    }
+
     val y = exactYears
     val m = exactMonths
     val d = exactDays
 
     val parts = mutableListOf<String>()
-    if (y > 0) parts.add("$y ${context.getString(if (y == 1) R.string.unit_year else R.string.unit_years)}")
-    if (m > 0) parts.add("$m ${context.getString(if (m == 1) R.string.unit_month else R.string.unit_months)}")
-    if (d > 0 || parts.isEmpty()) parts.add("$d ${context.getString(if (d == 1) R.string.unit_day else R.string.unit_days)}")
+    if (y > 0) parts.add(context.resources.getQuantityString(R.plurals.plural_years, y, y))
+    if (m > 0) parts.add(context.resources.getQuantityString(R.plurals.plural_months, m, m))
+    if (d > 0 || parts.isEmpty()) parts.add(context.resources.getQuantityString(R.plurals.plural_days, d, d))
 
     return parts.joinToString(" · ")
   }
@@ -274,7 +292,7 @@ data class StoryModel(
       days == 0L -> context.getString(R.string.model_countdown_today)
       days == 1L -> context.getString(R.string.model_countdown_tomorrow)
       days < 0L -> context.getString(R.string.model_countdown_passed)
-      else -> context.getString(R.string.model_countdown_in_days, days.toInt())
+      else -> context.resources.getQuantityString(R.plurals.plural_in_days, days.toInt(), days.toInt())
     }
   }
 
@@ -295,7 +313,7 @@ data class StoryModel(
     return when {
       days == 0L -> context.getString(R.string.model_elapsed_today)
       days == 1L -> context.getString(R.string.model_elapsed_yesterday)
-      else -> context.getString(R.string.model_elapsed_days_ago, days.toInt())
+      else -> context.resources.getQuantityString(R.plurals.plural_days_ago, days.toInt(), days.toInt())
     }
   }
 
