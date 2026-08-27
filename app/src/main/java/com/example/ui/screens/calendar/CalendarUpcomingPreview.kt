@@ -14,6 +14,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
@@ -34,6 +35,7 @@ fun CalendarUpcomingPreview(
   onToggleFavorite: (String) -> Unit,
   modifier: Modifier = Modifier
 ) {
+  val context = LocalContext.current
   val extColors = LocalCherishExtendedColors.current
 
   if (upcomingStories.isEmpty()) return
@@ -75,9 +77,9 @@ fun CalendarUpcomingPreview(
 
     upcomingStories.take(3).forEach { story ->
       MilestoneItemRow(
-        title = story.displayTitle,
+        title = story.getDisplayTitle(context),
         dateFormatted = story.formattedNextOccurrenceDate,
-        badgeText = story.countdownBadgeText,
+        badgeText = story.getCountdownBadgeText(context),
         icon = getIconForStory(story),
         iconBackground = extColors.goldContainer,
         iconTint = extColors.goldAccent,

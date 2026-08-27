@@ -545,6 +545,7 @@ private fun WidgetLivePreview(
   autoNextEvent: Boolean,
   stories: List<StoryModel>
 ) {
+  val context = LocalContext.current
   val isDark = when (themePreference) {
     WidgetThemePreference.LIGHT -> false
     WidgetThemePreference.DARK -> true
@@ -588,7 +589,7 @@ private fun WidgetLivePreview(
             )
             Spacer(modifier = Modifier.width(6.dp))
             Text(
-              text = selectedStory?.displayTitle ?: "Your Love Story",
+              text = selectedStory?.getDisplayTitle(context) ?: stringResource(R.string.countdown_card_love_story),
               style = MaterialTheme.typography.titleMedium.copy(
                 fontWeight = FontWeight.Bold,
                 fontSize = 15.sp
@@ -633,7 +634,7 @@ private fun WidgetLivePreview(
                 color = textSecondary
               )
               Text(
-                text = selectedStory?.formattedPeriodBreakdown ?: "3 years · 5 months · 18 days",
+                text = selectedStory?.getFormattedPeriodBreakdown(context) ?: stringResource(R.string.widget_preview_duration),
                 style = MaterialTheme.typography.bodySmall.copy(fontSize = 11.sp),
                 color = textMuted,
                 modifier = Modifier.padding(top = 4.dp)
@@ -655,7 +656,7 @@ private fun WidgetLivePreview(
             Spacer(modifier = Modifier.width(4.dp))
             Text(
               text = if (selectedStory?.isPastDate == true) {
-                stringResource(R.string.widget_footer_next_anniversary, selectedStory.nextAnniversaryTitle, selectedStory.daysUntilNextAnniversary.toInt())
+                stringResource(R.string.widget_footer_next_anniversary, selectedStory.getNextAnniversaryTitle(context), selectedStory.daysUntilNextAnniversary.toInt())
               } else {
                 stringResource(R.string.widget_in_days, selectedStory?.totalDays?.toString() ?: "0")
               },
@@ -720,7 +721,7 @@ private fun WidgetLivePreview(
           ) {
             Column {
               Text(
-                text = targetEvent?.displayTitle ?: "Wedding Anniversary",
+                text = targetEvent?.getDisplayTitle(context) ?: stringResource(R.string.cat_wedding_title),
                 style = MaterialTheme.typography.titleMedium.copy(
                   fontWeight = FontWeight.Bold,
                   fontSize = 17.sp
@@ -737,7 +738,7 @@ private fun WidgetLivePreview(
                     .padding(horizontal = 10.dp, vertical = 3.dp)
                 ) {
                   Text(
-                    text = targetEvent?.countdownBadgeText?.uppercase() ?: "IN 156 DAYS",
+                    text = targetEvent?.getCountdownBadgeText(context)?.uppercase() ?: stringResource(R.string.share_days_in_prefix, "156").uppercase(),
                     style = MaterialTheme.typography.labelSmall.copy(
                       fontWeight = FontWeight.Bold,
                       letterSpacing = 0.5.sp
@@ -747,7 +748,7 @@ private fun WidgetLivePreview(
                 }
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(
-                  text = targetEvent?.note?.ifBlank { "Celebrating our vows" } ?: "Celebrating our vows",
+                  text = targetEvent?.note?.ifBlank { stringResource(R.string.cat_wedding_desc) } ?: stringResource(R.string.cat_wedding_desc),
                   style = MaterialTheme.typography.bodySmall.copy(fontSize = 11.sp),
                   color = textSecondary,
                   maxLines = 1

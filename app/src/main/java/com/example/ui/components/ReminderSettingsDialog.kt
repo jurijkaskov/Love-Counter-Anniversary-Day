@@ -37,6 +37,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
@@ -61,6 +62,7 @@ fun ReminderSettingsDialog(
   onDismiss: () -> Unit,
   onSave: (ReminderConfig) -> Unit
 ) {
+  val context = LocalContext.current
   val extColors = LocalCherishExtendedColors.current
 
   var isEnabled by remember { mutableStateOf(story.reminderConfig.isEnabled) }
@@ -81,9 +83,14 @@ fun ReminderSettingsDialog(
   }
 
   // Calculate next upcoming trigger preview
-  val nextTriggerPreview = remember(currentConfig, story) {
+  val noNotifStr = stringResource(R.string.reminder_no_notifications_scheduled)
+  val nextNotifFormat = stringResource(R.string.reminder_next_notification_format)
+  val nextNotifCycleStr = stringResource(R.string.reminder_next_notification_cycle)
+  val atStr = stringResource(R.string.reminder_time_picker_at)
+
+  val nextTriggerPreview = remember(currentConfig, story, noNotifStr, nextNotifFormat, nextNotifCycleStr, atStr) {
     if (!isEnabled || selectedOffsets.isEmpty()) {
-      "No notifications scheduled"
+      noNotifStr
     } else {
       val sortedOffsets = selectedOffsets.sortedBy { it.daysBefore }
       val now = System.currentTimeMillis()
@@ -92,10 +99,10 @@ fun ReminderSettingsDialog(
       }
       if (nextMillis != null) {
         val dt = Instant.ofEpochMilli(nextMillis).atZone(ZoneId.systemDefault()).toLocalDateTime()
-        val formatter = DateTimeFormatter.ofPattern("MMMM d, yyyy 'at' h:mm a", Locale.getDefault())
-        "Next notification: ${dt.format(formatter)}"
+        val formatter = DateTimeFormatter.ofPattern("MMMM d, yyyy '$atStr' h:mm a", Locale.getDefault())
+        nextNotifFormat.format(dt.format(formatter))
       } else {
-        "Next notification scheduled for upcoming cycle"
+        nextNotifCycleStr
       }
     }
   }
@@ -202,14 +209,7 @@ fun ReminderSettingsDialog(
             val suggestions = remember(story.category) {
               ReminderConfig.suggestionsForCategory(story.category)
             }
-            val categoryLabel = when (story.category) {
-              EventCategory.WEDDING -> "Wedding Anniversary"
-              EventCategory.BIRTHDAY -> "Birthday"
-              EventCategory.FIRST_DATE -> "First Date"
-              EventCategory.ENGAGEMENT -> "Engagement"
-              EventCategory.RELATIONSHIP -> "Relationship Milestone"
-              else -> "Special Moment"
-            }
+            val categoryLabel = stringResource(story.category.titleResId)
 
             Box(
               modifier = Modifier
@@ -237,12 +237,12 @@ fun ReminderSettingsDialog(
                   )
                   Column {
                     Text(
-                      text = "Suggested for $categoryLabel",
+                      text = stringResource(R.string.reminder_smart_suggestions_title, categoryLabel),
                       style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold),
                       color = MaterialTheme.colorScheme.onSurface
                     )
                     Text(
-                      text = suggestions.joinToString(" · ") { it.shortLabel },
+                      text = suggestions.joinToString(" · ") { it.getShortLabel(context) },
                       style = MaterialTheme.typography.bodySmall,
                       color = extColors.textMuted
                     )
@@ -297,6 +297,7 @@ fun ReminderSettingsDialog(
                   ReminderChip(
                     offset = option,
                     isSelected = isSelected,
+                    context = context,
                     onClick = {
                       val current = selectedOffsets.toMutableList()
                       if (isSelected) {
@@ -320,6 +321,7 @@ fun ReminderSettingsDialog(
                   ReminderChip(
                     offset = option,
                     isSelected = isSelected,
+                    context = context,
                     onClick = {
                       val current = selectedOffsets.toMutableList()
                       if (isSelected) {
@@ -352,6 +354,7 @@ fun ReminderSettingsDialog(
                   ReminderChip(
                     offset = customOffset,
                     isSelected = true,
+                    context = context,
                     onClick = {
                       val current = selectedOffsets.toMutableList()
                       current.removeAll { it.daysBefore == customOffset.daysBefore }
@@ -507,6 +510,7 @@ fun ReminderSettingsDialog(
 private fun ReminderChip(
   offset: ReminderOffset,
   isSelected: Boolean,
+  context: android.content.Context,
   onClick: () -> Unit,
   modifier: Modifier = Modifier
 ) {
@@ -535,7 +539,7 @@ private fun ReminderChip(
         )
       }
       Text(
-        text = offset.shortLabel,
+        text = offset.getShortLabel(context),
         style = MaterialTheme.typography.labelSmall.copy(
           fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Medium
         ),

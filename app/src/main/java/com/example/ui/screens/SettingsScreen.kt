@@ -112,6 +112,7 @@ fun SettingsScreen(
 ) {
   val context = LocalContext.current
   val extColors = LocalCherishExtendedColors.current
+  val today = remember { LocalDate.now() }
   val userSettings by preferencesManager.settings.collectAsState()
   val stories by storyRepository.stories.collectAsState()
   val milestones by milestoneRepository.milestones.collectAsState()
@@ -248,8 +249,8 @@ fun SettingsScreen(
           // Date Format
           PreferenceRow(
             title = stringResource(R.string.settings_date_format_title),
-            subtitle = "Display format for dates & countdowns",
-            valueText = userSettings.dateFormat.example,
+            subtitle = stringResource(R.string.settings_date_format_desc),
+            valueText = userSettings.dateFormat.format(today),
             icon = Icons.Default.DateRange,
             onClick = { showDateFormatDialog = true },
             testTag = "pref_date_format"
@@ -262,9 +263,9 @@ fun SettingsScreen(
 
           // First Day of Week
           PreferenceRow(
-            title = "First Day of the Week",
-            subtitle = "Starting day for calendars",
-            valueText = userSettings.firstDayOfWeek.title,
+            title = stringResource(R.string.settings_first_day_title),
+            subtitle = stringResource(R.string.settings_first_day_desc),
+            valueText = stringResource(userSettings.firstDayOfWeek.titleResId),
             icon = Icons.Default.CalendarMonth,
             onClick = { showFirstDayOfWeekDialog = true },
             testTag = "pref_first_day_of_week"
@@ -349,7 +350,7 @@ fun SettingsScreen(
             // Default Notification Time Row
             PreferenceRow(
               title = stringResource(R.string.reminder_global_time_title),
-              subtitle = "Default time for moment notifications",
+              subtitle = stringResource(R.string.settings_reminder_time_desc),
               valueText = userSettings.formattedDefaultTime,
               icon = Icons.Outlined.Schedule,
               onClick = { showReminderTimePicker = true },
@@ -381,8 +382,8 @@ fun SettingsScreen(
             // Permission Warning Banner Row
             PreferenceRow(
               title = stringResource(R.string.reminder_permission_status_disabled),
-              subtitle = "Tap to grant notification permission in system settings",
-              valueText = "Enable",
+              subtitle = stringResource(R.string.settings_notification_permission_desc),
+              valueText = stringResource(R.string.btn_enable),
               icon = Icons.Default.Info,
               onClick = {
                 val intent = Intent(android.provider.Settings.ACTION_APP_NOTIFICATION_SETTINGS).apply {
@@ -431,7 +432,7 @@ fun SettingsScreen(
               }
               Column(modifier = Modifier.weight(1f)) {
                 Text(
-                  text = "Glance at Your Moments",
+                  text = stringResource(R.string.settings_glance_widgets_title),
                   style = MaterialTheme.typography.titleMedium.copy(
                     fontWeight = FontWeight.Bold
                   ),
@@ -460,12 +461,12 @@ fun SettingsScreen(
                   horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                   Text(
-                    text = "Countdown",
+                    text = stringResource(R.string.widget_type_countdown),
                     style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
                     color = MaterialTheme.colorScheme.onSurface
                   )
                   Text(
-                    text = "3x2 / 4x2",
+                    text = stringResource(R.string.widget_size_medium),
                     style = MaterialTheme.typography.bodySmall.copy(fontSize = 10.sp),
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                   )
@@ -483,12 +484,12 @@ fun SettingsScreen(
                   horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                   Text(
-                    text = "Next Moment",
+                    text = stringResource(R.string.widget_type_next_event),
                     style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
                     color = MaterialTheme.colorScheme.onSurface
                   )
                   Text(
-                    text = "3x2 / 4x2",
+                    text = stringResource(R.string.widget_size_medium),
                     style = MaterialTheme.typography.bodySmall.copy(fontSize = 10.sp),
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                   )
@@ -506,12 +507,12 @@ fun SettingsScreen(
                   horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                   Text(
-                    text = "Minimal Days",
+                    text = stringResource(R.string.widget_type_minimal),
                     style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
                     color = MaterialTheme.colorScheme.onSurface
                   )
                   Text(
-                    text = "2x1 / 1x1",
+                    text = stringResource(R.string.widget_size_small),
                     style = MaterialTheme.typography.bodySmall.copy(fontSize = 10.sp),
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                   )
@@ -520,7 +521,7 @@ fun SettingsScreen(
             }
 
             SecondaryButton(
-              text = "Preview & Configure Widgets",
+              text = stringResource(R.string.settings_preview_widgets_btn),
               icon = Icons.Outlined.AutoAwesome,
               onClick = {
                 context.startActivity(Intent(context, com.example.ui.widget.WidgetConfigurationActivity::class.java))
@@ -675,7 +676,7 @@ fun SettingsScreen(
           // Privacy Policy
           PreferenceRow(
             title = stringResource(R.string.settings_privacy_policy),
-            subtitle = "How your relationship data is protected",
+            subtitle = stringResource(R.string.settings_privacy_policy_desc),
             icon = Icons.Outlined.PrivacyTip,
             onClick = { showPrivacyInfoDialog = true },
             testTag = "pref_privacy"
@@ -706,7 +707,7 @@ fun SettingsScreen(
           horizontalAlignment = Alignment.CenterHorizontally
         ) {
           Text(
-            text = "Love Counter: Anniversary Day",
+            text = stringResource(R.string.app_name),
             style = MaterialTheme.typography.titleMedium.copy(
               fontFamily = FontFamily.Serif,
               fontWeight = FontWeight.Bold
@@ -715,7 +716,7 @@ fun SettingsScreen(
           )
           Spacer(modifier = Modifier.height(4.dp))
           Text(
-            text = "Celebrate every moment together",
+            text = stringResource(R.string.app_tagline),
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant
           )

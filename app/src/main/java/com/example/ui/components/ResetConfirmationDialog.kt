@@ -86,7 +86,7 @@ fun ResetConfirmationDialog(
 
           Column {
             Text(
-              text = "Reset Application Data",
+              text = stringResource(R.string.settings_reset_confirm_title),
               style = MaterialTheme.typography.titleLarge.copy(
                 fontFamily = FontFamily.Serif,
                 fontWeight = FontWeight.SemiBold
@@ -94,7 +94,7 @@ fun ResetConfirmationDialog(
               color = MaterialTheme.colorScheme.onSurface
             )
             Text(
-              text = "Irreversible action",
+              text = stringResource(R.string.settings_reset_confirm_subtitle),
               style = MaterialTheme.typography.bodySmall,
               color = errorColor
             )
@@ -105,7 +105,7 @@ fun ResetConfirmationDialog(
 
         // Explanation text
         Text(
-          text = "Are you sure you want to remove all locally stored data? This will delete all your love stories, timeline moments, milestones, and task checklists from this device.",
+          text = stringResource(R.string.settings_reset_confirm_msg),
           style = MaterialTheme.typography.bodyMedium,
           color = MaterialTheme.colorScheme.onSurfaceVariant
         )
@@ -129,7 +129,7 @@ fun ResetConfirmationDialog(
               modifier = Modifier.size(18.dp)
             )
             Text(
-              text = "You can export a backup first before resetting.",
+              text = stringResource(R.string.settings_reset_export_hint),
               style = MaterialTheme.typography.bodySmall,
               color = MaterialTheme.colorScheme.onSurface
             )
@@ -165,7 +165,7 @@ fun ResetConfirmationDialog(
               .testTag("btn_confirm_reset")
           ) {
             Text(
-              text = "Reset All",
+              text = stringResource(R.string.settings_reset_all_btn),
               style = MaterialTheme.typography.labelLarge.copy(
                 fontWeight = FontWeight.Bold
               )

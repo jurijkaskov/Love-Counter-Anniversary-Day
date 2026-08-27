@@ -88,7 +88,7 @@ fun DateFormatDialog(
 
           Column {
             Text(
-              text = "Date Format",
+              text = stringResource(R.string.settings_date_format_title),
               style = MaterialTheme.typography.titleLarge.copy(
                 fontFamily = FontFamily.Serif,
                 fontWeight = FontWeight.SemiBold
@@ -96,7 +96,7 @@ fun DateFormatDialog(
               color = MaterialTheme.colorScheme.onSurface
             )
             Text(
-              text = "Choose how special dates are displayed",
+              text = stringResource(R.string.date_format_desc_dialog),
               style = MaterialTheme.typography.bodySmall,
               color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -145,7 +145,7 @@ fun DateFormatDialog(
                     color = MaterialTheme.colorScheme.onSurface
                   )
                   Text(
-                    text = option.label,
+                    text = stringResource(option.labelResId),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                   )

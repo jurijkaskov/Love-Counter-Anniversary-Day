@@ -31,6 +31,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -100,7 +101,7 @@ fun AccentColorSelectionRow(
 
           Column {
             Text(
-              text = accent.title,
+              text = stringResource(accent.titleResId),
               style = MaterialTheme.typography.labelMedium.copy(
                 fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Medium,
                 fontSize = 13.sp
@@ -108,7 +109,7 @@ fun AccentColorSelectionRow(
               color = MaterialTheme.colorScheme.onSurface
             )
             Text(
-              text = accent.subtitle,
+              text = stringResource(accent.subtitleResId),
               style = MaterialTheme.typography.bodySmall.copy(fontSize = 11.sp),
               color = MaterialTheme.colorScheme.onSurfaceVariant
             )

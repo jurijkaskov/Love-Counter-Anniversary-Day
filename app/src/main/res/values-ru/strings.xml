@@ -158,6 +158,20 @@
     <string name="settings_privacy_bullet1">• Все ваши данные хранятся локально на устройстве в защищенном хранилище приложения.</string>
     <string name="settings_privacy_bullet2">• Для празднования ваших моментов не требуются аккаунты, пароли или личные данные.</string>
     <string name="settings_privacy_bullet3">• Вы можете экспортировать данные в любое время в формате JSON или полностью удалить их по своему желанию.</string>
+    <string name="settings_reset_confirm_title">Сброс данных приложения</string>
+    <string name="settings_reset_confirm_subtitle">Необратимое действие</string>
+    <string name="settings_reset_confirm_msg">Вы уверены, что хотите удалить все локально сохраненные данные? Это удалит все ваши истории любви, моменты, вехи и задачи с этого устройства.</string>
+    <string name="settings_reset_export_hint">Вы можете сначала экспортировать бэкап перед сбросом.</string>
+    <string name="settings_reset_all_btn">Сбросить всё</string>
+    <string name="settings_date_format_desc">Формат отображения дат и отсчетов</string>
+    <string name="settings_first_day_title">Первый день недели</string>
+    <string name="settings_first_day_desc">День начала календаря</string>
+    <string name="settings_reminder_time_desc">Время уведомлений по умолчанию</string>
+    <string name="settings_notification_permission_desc">Нажмите, чтобы разрешить уведомления в настройках</string>
+    <string name="settings_preview_widgets_btn">Настройка виджетов</string>
+    <string name="settings_privacy_policy_desc">Как защищены ваши личные данные</string>
+    <string name="settings_feedback_desc">Поделитесь вашими мыслями или предложениями</string>
+
     <string name="settings_feedback_email_toast">Email для отзывов: support@lovecounter.app</string>
     <string name="settings_reset_data_title">Сброс данных приложения</string>
     <string name="settings_manage_profile_btn">Настроить историю и моменты</string>
@@ -398,9 +412,16 @@
     <string name="reminder_time_label">Время уведомления</string>
     <string name="reminder_offsets_label">Когда напомнить</string>
     <string name="reminder_quick_options">Быстрые варианты</string>
+    <string name="reminder_time_at_format">В %1$s</string>
+    <string name="reminder_no_notifications_scheduled">Уведомления не запланированы</string>
+    <string name="reminder_next_notification_format">Следующее уведомление: %1$s</string>
+    <string name="reminder_next_notification_cycle">Уведомление запланировано на следующий цикл</string>
+    <string name="reminder_time_picker_at">в</string>
     <string name="reminder_custom_option">+ Свои дни</string>
     <string name="reminder_custom_dialog_title">Свое напоминание</string>
     <string name="reminder_custom_dialog_hint">Дней до события</string>
+    <string name="reminder_custom_preview_format">Вы получите уведомление за %1$d дн. до даты.</string>
+    <string name="reminder_custom_error_invalid">Пожалуйста, введите корректное количество дней.</string>
     <string name="reminder_smart_suggestions_title">Предложено для %1$s</string>
     <string name="reminder_apply_suggestion">Применить</string>
     <string name="reminder_summary_header">Напоминания</string>
@@ -576,6 +597,9 @@
     <string name="widget_days_together_label">дней вместе</string>
     <string name="widget_days_until_event">дней до %1$s</string>
     <string name="widget_days_until_lower">%1$s дн. до %2$s</string>
+    <string name="widget_size_medium">3x2 / 4x2</string>
+    <string name="widget_preview_duration">3 года · 5 месяцев · 18 дней</string>
+    <string name="widget_size_small">2x1 / 1x1</string>
 
     <!-- Widget Configuration -->
     <string name="widget_config_title">Настройка виджета</string>
@@ -621,4 +645,90 @@
     <string name="timeframe_today">Сегодня</string>
     <string name="timeframe_days_to_go">Осталось %1$d дн.</string>
     <string name="timeframe_months_to_go">Осталось %1$d мес.</string>
+
+    <!-- Theme Modes -->
+    <string name="theme_mode_system">По умолчанию</string>
+    <string name="theme_mode_system_desc">Использовать системные настройки</string>
+    <string name="theme_mode_light">Светлая</string>
+    <string name="theme_mode_light_desc">Теплые оттенки слоновой кости</string>
+    <string name="theme_mode_dark">Темная</string>
+    <string name="theme_mode_dark_desc">Уютная атмосфера ночного эспрессо</string>
+
+    <!-- Accent Color Styles -->
+    <string name="accent_gold_title">Золотистое шампанское</string>
+    <string name="accent_gold_sub">Теплая элегантность золота</string>
+    <string name="accent_rose_title">Теплая роза</string>
+    <string name="accent_rose_sub">Глубокий романтический розовый</string>
+    <string name="accent_berry_title">Насыщенная ягода</string>
+    <string name="accent_berry_sub">Богатый сливовый и винный</string>
+    <string name="accent_forest_title">Лесной шалфей</string>
+    <string name="accent_forest_sub">Спокойный эвкалипт и хвоя</string>
+    <string name="accent_midnight_title">Полночный синий</string>
+    <string name="accent_midnight_sub">Безмятежные звездные сумерки</string>
+
+    <!-- Date Format Options -->
+    <string name="date_format_mdy">Месяц День, Год</string>
+    <string name="date_format_dmy">День Месяц Год</string>
+    <string name="date_format_slash_mdy">ММ/ДД/ГГГГ</string>
+    <string name="date_format_slash_dmy">ДД/ММ/ГГГГ</string>
+
+    <!-- First Day of Week Options -->
+    <string name="first_day_system">Как в системе</string>
+    <string name="first_day_monday">Понедельник</string>
+    <string name="first_day_sunday">Воскресенье</string>
+    <string name="date_format_desc_dialog">Выберите, как будут отображаться особые даты</string>
+    <string name="first_day_desc_dialog">День начала недель в календаре</string>
+    <string name="share_card_default_badge">ПРАЗДНУЙТЕ КАЖДЫЙ МОМЕНТ</string>
+    <string name="share_card_custom_note_label">Личное посвящение / Заметка</string>
+
+    <!-- Reminder Offsets -->
+    <string name="reminder_offset_today">В день события</string>
+    <string name="reminder_offset_1d">За 1 день</string>
+    <string name="reminder_offset_3d">За 3 дня</string>
+    <string name="reminder_offset_1w">За 1 неделю</string>
+    <string name="reminder_offset_2w">За 2 недели</string>
+    <string name="reminder_offset_1m">За 1 месяц</string>
+    <string name="reminder_offset_weeks_before">За %1$d нед.</string>
+    <string name="reminder_offset_days_before">За %1$d дн.</string>
+
+    <!-- Short Labels -->
+    <string name="reminder_short_today">В этот день</string>
+    <string name="reminder_short_1d">За 1д</string>
+    <string name="reminder_short_3d">За 3д</string>
+    <string name="reminder_short_1w">За 1н</string>
+    <string name="reminder_short_2w">За 2н</string>
+    <string name="reminder_short_1m">За 1м</string>
+    <string name="reminder_short_days_before">За %1$dд</string>
+
+    <!-- Notifications -->
+    <string name="notif_channel_name">Заветные моменты и годовщины</string>
+    <string name="notif_channel_desc">Мягкие напоминания о предстоящих годовщинах, днях рождения и важных событиях.</string>
+    <string name="notif_headline_anniversary">С годовщиной свадьбы! ✨</string>
+    <string name="notif_body_anniversary">Сегодня ваша годовщина с %1$s. Отпразднуйте вашу историю вместе.</string>
+    <string name="notif_headline_birthday">С днем рождения! 🎂</string>
+    <string name="notif_body_birthday">Сегодня %1$s. Пусть этот праздник будет незабываемым.</string>
+    <string name="notif_headline_first_date">С годовщиной первого свидания! ☕</string>
+    <string name="notif_body_first_date">Празднуем день начала вашего пути. Цените каждое мгновение.</string>
+    <string name="notif_headline_engagement">С годовщиной помолвки! 💍</string>
+    <string name="notif_body_engagement">Празднуем волшебный момент, когда вы сказали «да».</string>
+    <string name="notif_headline_generic">Сегодня %1$s ✨</string>
+    <string name="notif_body_generic">Наступил особенный день. Отпразднуйте вашу историю любви сегодня.</string>
+    <string name="notif_body_partner_love">вашей половинкой</string>
+
+    <string name="notif_headline_anniversary_1d">Годовщина завтра 💕</string>
+    <string name="notif_body_anniversary_1d">Завтра ваша годовщина свадьбы. Особенный день уже почти здесь.</string>
+    <string name="notif_headline_birthday_1d">День рождения завтра 🎈</string>
+    <string name="notif_body_birthday_1d">Завтра %1$s. Готовьтесь праздновать!</string>
+    <string name="notif_headline_generic_1d">Особый день завтра ✨</string>
+    <string name="notif_body_generic_1d">Завтра %1$s. Значимый момент совсем близко.</string>
+
+    <string name="notif_headline_in_days">%1$s через %2$d дн.</string>
+    <string name="notif_body_in_3d">Ваш праздник приближается, осталось 3 дня. Самое время завершить подготовку.</string>
+    <string name="notif_headline_1w">1 неделя до %1$s 🗓️</string>
+    <string name="notif_body_1w">Ваше важное событие через 7 дней. Пора подготовить что-то особенное.</string>
+    <string name="notif_headline_2w">2 недели до %1$s ✨</string>
+    <string name="notif_body_2w">Ваша годовщина через 14 дней. Достаточно времени, чтобы спланировать сюрприз.</string>
+    <string name="notif_headline_1m">1 месяц до %1$s 🌟</string>
+    <string name="notif_body_1m">Большое торжество через 30 дней. Отличное время, чтобы начать планировать.</string>
+    <string name="notif_body_generic_days">Значимый момент наступит через %1$d дн.</string>
 </resources>

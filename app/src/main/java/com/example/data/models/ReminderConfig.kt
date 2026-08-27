@@ -1,5 +1,7 @@
 package com.example.data.models
 
+import android.content.Context
+import com.example.R
 import java.time.LocalDate
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
@@ -16,28 +18,43 @@ data class ReminderOffset(
   val customLabel: String? = null
 ) {
   val displayLabel: String
-    get() = when {
-      customLabel != null -> customLabel
-      daysBefore == 0 -> "On the day"
-      daysBefore == 1 -> "1 day before"
-      daysBefore == 3 -> "3 days before"
-      daysBefore == 7 -> "1 week before"
-      daysBefore == 14 -> "2 weeks before"
-      daysBefore == 30 -> "1 month before"
-      daysBefore % 7 == 0 -> "${daysBefore / 7} weeks before"
-      else -> "$daysBefore days before"
+    @Deprecated("Use getDisplayLabel(context)")
+    get() = "Legacy label"
+
+  fun getDisplayLabel(context: Context): String {
+    if (customLabel != null) return customLabel
+    return when (daysBefore) {
+      0 -> context.getString(R.string.reminder_offset_today)
+      1 -> context.getString(R.string.reminder_offset_1d)
+      3 -> context.getString(R.string.reminder_offset_3d)
+      7 -> context.getString(R.string.reminder_offset_1w)
+      14 -> context.getString(R.string.reminder_offset_2w)
+      30 -> context.getString(R.string.reminder_offset_1m)
+      else -> {
+        if (daysBefore % 7 == 0) {
+          context.getString(R.string.reminder_offset_weeks_before, daysBefore / 7)
+        } else {
+          context.getString(R.string.reminder_offset_days_before, daysBefore)
+        }
+      }
     }
+  }
 
   val shortLabel: String
-    get() = when {
-      daysBefore == 0 -> "Day of"
-      daysBefore == 1 -> "1d before"
-      daysBefore == 3 -> "3d before"
-      daysBefore == 7 -> "1w before"
-      daysBefore == 14 -> "2w before"
-      daysBefore == 30 -> "1m before"
-      else -> "${daysBefore}d before"
+    @Deprecated("Use getShortLabel(context)")
+    get() = "Legacy short"
+
+  fun getShortLabel(context: Context): String {
+    return when (daysBefore) {
+      0 -> context.getString(R.string.reminder_short_today)
+      1 -> context.getString(R.string.reminder_short_1d)
+      3 -> context.getString(R.string.reminder_short_3d)
+      7 -> context.getString(R.string.reminder_short_1w)
+      14 -> context.getString(R.string.reminder_short_2w)
+      30 -> context.getString(R.string.reminder_short_1m)
+      else -> context.getString(R.string.reminder_short_days_before, daysBefore)
     }
+  }
 
   companion object {
     val ON_THE_DAY = ReminderOffset(0)
@@ -82,91 +99,94 @@ data class ReminderConfig(
       return localTime.format(formatter)
     }
 
-  val summaryText: String
-    get() {
-      if (!isEnabled || offsets.isEmpty()) {
-        return "No reminders set"
-      }
-      val sortedOffsets = offsets.sortedByDescending { it.daysBefore }
-      return sortedOffsets.joinToString(" · ") { it.displayLabel }
+  fun getSummaryText(context: Context): String {
+    if (!isEnabled || offsets.isEmpty()) {
+      return context.getString(R.string.reminder_no_reminders)
     }
+    val sortedOffsets = offsets.sortedByDescending { it.daysBefore }
+    return sortedOffsets.joinToString(" · ") { it.getDisplayLabel(context) }
+  }
+
+  @Deprecated("Use getSummaryText(context)")
+  val summaryText: String
+    get() = "Legacy summary"
 
   /**
    * Generates warm, contextual notification copy for this event and specific offset.
    */
-  fun getNotificationContent(story: StoryModel, offset: ReminderOffset): Pair<String, String> {
-    val title = story.displayTitle
+  fun getNotificationContent(context: Context, story: StoryModel, offset: ReminderOffset): Pair<String, String> {
+    val title = story.getDisplayTitle(context)
     val days = offset.daysBefore
 
     val (headline, body) = when {
       days == 0 -> {
         when (story.category) {
           EventCategory.WEDDING -> Pair(
-            "Happy Wedding Anniversary! ✨",
-            "Today is your anniversary with ${story.partnerName.ifBlank { "your love" }}. Celebrate your story together."
+            context.getString(R.string.notif_headline_anniversary),
+            context.getString(R.string.notif_body_anniversary, story.partnerName.ifBlank { context.getString(R.string.notif_body_partner_love) })
           )
           EventCategory.BIRTHDAY -> Pair(
-            "Happy Birthday! 🎂",
-            "Today is ${title}. Make it an unforgettable celebration."
+            context.getString(R.string.notif_headline_birthday),
+            context.getString(R.string.notif_body_birthday, title)
           )
           EventCategory.FIRST_DATE -> Pair(
-            "Happy First Date Anniversary! ☕",
-            "Celebrating the day your journey began. Cherish every memory."
+            context.getString(R.string.notif_headline_first_date),
+            context.getString(R.string.notif_body_first_date)
           )
           EventCategory.ENGAGEMENT -> Pair(
-            "Happy Engagement Anniversary! 💍",
-            "Celebrating the magical moment you said yes."
+            context.getString(R.string.notif_headline_engagement),
+            context.getString(R.string.notif_body_engagement)
           )
           else -> Pair(
-            "Today is $title ✨",
-            "A special day has arrived. Celebrate your love story today."
+            context.getString(R.string.notif_headline_generic, title),
+            context.getString(R.string.notif_body_generic)
           )
         }
       }
       days == 1 -> {
         when (story.category) {
           EventCategory.WEDDING -> Pair(
-            "Anniversary Tomorrow 💕",
-            "Tomorrow is your wedding anniversary. A special day is almost here."
+            context.getString(R.string.notif_headline_anniversary_1d),
+            context.getString(R.string.notif_body_anniversary_1d)
           )
           EventCategory.BIRTHDAY -> Pair(
-            "Birthday Tomorrow 🎈",
-            "Tomorrow is ${title}. Get ready to celebrate!"
+            context.getString(R.string.notif_headline_birthday_1d),
+            context.getString(R.string.notif_body_birthday_1d, title)
           )
           else -> Pair(
-            "Special Day Tomorrow ✨",
-            "Tomorrow is $title. A meaningful moment is right around the corner."
+            context.getString(R.string.notif_headline_generic_1d),
+            context.getString(R.string.notif_body_generic_1d, title)
           )
         }
       }
       days == 3 -> {
         Pair(
-          "$title is in 3 days",
-          "Your celebration is approaching in 3 days. Time to finalize any special plans."
+          context.getString(R.string.notif_headline_in_days, title, 3),
+          context.getString(R.string.notif_body_in_3d)
         )
       }
       days == 7 -> {
         Pair(
-          "1 week until $title 🗓️",
-          "Your special milestone is coming up in 7 days. Time to prepare something special."
+          context.getString(R.string.notif_headline_1w, title),
+          context.getString(R.string.notif_body_1w)
         )
       }
       days == 14 -> {
         Pair(
-          "2 weeks until $title ✨",
-          "Your anniversary is in 14 days. Plenty of time to plan a wonderful surprise."
+          context.getString(R.string.notif_headline_2w, title),
+          context.getString(R.string.notif_body_2w)
         )
       }
       days == 30 -> {
         Pair(
-          "1 month until $title 🌟",
-          "A major celebration is in 30 days. Perfect time to plan ahead together."
+          context.getString(R.string.notif_headline_1m, title),
+          context.getString(R.string.notif_body_1m)
         )
       }
       else -> {
         Pair(
-          "$title is in $days days",
-          "A special moment is coming up in $days days."
+          context.getString(R.string.notif_headline_in_days, title, days),
+          context.getString(R.string.notif_body_generic_days, days)
         )
       }
     }

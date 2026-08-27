@@ -19,7 +19,10 @@ import com.example.data.models.StoryModel
 object ReminderNotificationHelper {
 
   const val CHANNEL_ID = "cherish_smart_reminders_channel"
+  
+  @Deprecated("Use string resource")
   const val CHANNEL_NAME = "Cherished Moments & Anniversaries"
+  @Deprecated("Use string resource")
   const val CHANNEL_DESCRIPTION = "Gentle reminders for upcoming anniversaries, birthdays, and special milestones."
 
   const val EXTRA_STORY_ID = "com.example.cherish.EXTRA_STORY_ID"
@@ -34,10 +37,10 @@ object ReminderNotificationHelper {
       if (existingChannel == null) {
         val channel = NotificationChannel(
           CHANNEL_ID,
-          CHANNEL_NAME,
+          context.getString(R.string.notif_channel_name),
           NotificationManager.IMPORTANCE_HIGH
         ).apply {
-          description = CHANNEL_DESCRIPTION
+          description = context.getString(R.string.notif_channel_desc)
           enableLights(true)
           lightColor = Color.parseColor("#C69255") // Champagne gold
           enableVibration(true)
@@ -66,7 +69,7 @@ object ReminderNotificationHelper {
       }
     }
 
-    val (title, body) = story.reminderConfig.getNotificationContent(story, offset)
+    val (title, body) = story.reminderConfig.getNotificationContent(context, story, offset)
 
     // Tap intent opening MainActivity with specific story
     val intent = Intent(context, MainActivity::class.java).apply {

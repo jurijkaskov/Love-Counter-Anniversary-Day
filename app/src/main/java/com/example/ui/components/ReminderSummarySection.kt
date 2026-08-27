@@ -23,6 +23,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
@@ -38,6 +39,7 @@ fun ReminderSummarySection(
   onConfigureClick: () -> Unit,
   modifier: Modifier = Modifier
 ) {
+  val context = LocalContext.current
   val extColors = LocalCherishExtendedColors.current
   val isEnabled = reminderConfig.isEnabled && reminderConfig.offsets.isNotEmpty()
 
@@ -87,7 +89,7 @@ fun ReminderSummarySection(
         Column {
           Text(
             text = if (isEnabled) {
-              reminderConfig.summaryText
+              reminderConfig.getSummaryText(context)
             } else {
               stringResource(R.string.reminder_no_reminders)
             },
@@ -97,7 +99,7 @@ fun ReminderSummarySection(
 
           if (isEnabled) {
             Text(
-              text = "At ${reminderConfig.formattedTime}",
+              text = stringResource(R.string.reminder_time_at_format, reminderConfig.formattedTime),
               style = MaterialTheme.typography.bodySmall,
               color = extColors.textMuted
             )

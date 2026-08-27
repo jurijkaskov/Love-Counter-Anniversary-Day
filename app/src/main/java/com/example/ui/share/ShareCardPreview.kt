@@ -40,7 +40,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
+import com.example.R
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -189,7 +191,7 @@ fun ShareCardPreview(
           verticalArrangement = Arrangement.Center
         ) {
           // 1. Top Subtitle Badge
-          val badgeText = payload.subtitle?.uppercase() ?: "CELEBRATE EVERY MOMENT"
+          val badgeText = payload.subtitle?.uppercase() ?: stringResource(R.string.share_card_default_badge).uppercase()
           Box(
             modifier = Modifier
               .clip(RoundedCornerShape(12.dp))

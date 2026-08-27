@@ -84,7 +84,7 @@ fun FirstDayOfWeekDialog(
 
           Column {
             Text(
-              text = "First Day of the Week",
+              text = stringResource(R.string.settings_first_day_title),
               style = MaterialTheme.typography.titleLarge.copy(
                 fontFamily = FontFamily.Serif,
                 fontWeight = FontWeight.SemiBold
@@ -92,7 +92,7 @@ fun FirstDayOfWeekDialog(
               color = MaterialTheme.colorScheme.onSurface
             )
             Text(
-              text = "Calendar and countdown schedule week start",
+              text = stringResource(R.string.first_day_desc_dialog),
               style = MaterialTheme.typography.bodySmall,
               color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -131,7 +131,7 @@ fun FirstDayOfWeekDialog(
                 horizontalArrangement = Arrangement.SpaceBetween
               ) {
                 Text(
-                  text = option.title,
+                  text = stringResource(option.titleResId),
                   style = MaterialTheme.typography.titleSmall.copy(
                     fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Medium
                   ),

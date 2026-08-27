@@ -96,8 +96,8 @@ fun CustomReminderOffsetDialog(
               daysText = input
             }
           },
-          label = { Text("Days before event") },
-          placeholder = { Text("e.g. 5") },
+          label = { Text(stringResource(R.string.reminder_custom_dialog_hint)) },
+          placeholder = { Text("5") },
           singleLine = true,
           keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
           colors = OutlinedTextFieldDefaults.colors(
@@ -116,9 +116,9 @@ fun CustomReminderOffsetDialog(
 
         Text(
           text = if (daysNumber > 0) {
-            "You will be notified $daysNumber days prior to the date."
+            stringResource(R.string.reminder_custom_preview_format, daysNumber)
           } else {
-            "Please enter a valid number of days."
+            stringResource(R.string.reminder_custom_error_invalid)
           },
           style = MaterialTheme.typography.bodySmall,
           color = extColors.textMuted,

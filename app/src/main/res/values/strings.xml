@@ -158,6 +158,20 @@
     <string name="settings_privacy_bullet1">• All your data is stored locally on your device in secure app storage.</string>
     <string name="settings_privacy_bullet2">• No accounts, passwords, or personal credentials are required to celebrate your moments.</string>
     <string name="settings_privacy_bullet3">• You can export your data at any time in portable JSON format, or delete it completely whenever you choose.</string>
+    <string name="settings_reset_confirm_title">Reset Application Data</string>
+    <string name="settings_reset_confirm_subtitle">Irreversible action</string>
+    <string name="settings_reset_confirm_msg">Are you sure you want to remove all locally stored data? This will delete all your love stories, timeline moments, milestones, and task checklists from this device.</string>
+    <string name="settings_reset_export_hint">You can export a backup first before resetting.</string>
+    <string name="settings_reset_all_btn">Reset All</string>
+    <string name="settings_date_format_desc">Display format for dates &amp; countdowns</string>
+    <string name="settings_first_day_title">First Day of the Week</string>
+    <string name="settings_first_day_desc">Starting day for calendars</string>
+    <string name="settings_reminder_time_desc">Default time for moment notifications</string>
+    <string name="settings_notification_permission_desc">Tap to grant notification permission in system settings</string>
+    <string name="settings_preview_widgets_btn">Preview &amp; Configure Widgets</string>
+    <string name="settings_privacy_policy_desc">How your relationship data is protected</string>
+    <string name="settings_feedback_desc">Share thoughts, ideas, or suggestions</string>
+
     <string name="settings_feedback_email_toast">Feedback email: support@lovecounter.app</string>
     <string name="settings_reset_data_title">Reset Application Data</string>
     <string name="settings_manage_profile_btn">Customize Story &amp; Moments</string>
@@ -398,9 +412,16 @@
     <string name="reminder_time_label">Notification Time</string>
     <string name="reminder_offsets_label">When to Remind</string>
     <string name="reminder_quick_options">Quick Options</string>
+    <string name="reminder_time_at_format">At %1$s</string>
+    <string name="reminder_no_notifications_scheduled">No notifications scheduled</string>
+    <string name="reminder_next_notification_format">Next notification: %1$s</string>
+    <string name="reminder_next_notification_cycle">Next notification scheduled for upcoming cycle</string>
+    <string name="reminder_time_picker_at">at</string>
     <string name="reminder_custom_option">+ Custom Days</string>
     <string name="reminder_custom_dialog_title">Custom Reminder</string>
     <string name="reminder_custom_dialog_hint">Days before event</string>
+    <string name="reminder_custom_preview_format">You will be notified %1$d days prior to the date.</string>
+    <string name="reminder_custom_error_invalid">Please enter a valid number of days.</string>
     <string name="reminder_smart_suggestions_title">Suggested for %1$s</string>
     <string name="reminder_apply_suggestion">Apply</string>
     <string name="reminder_summary_header">Reminders</string>
@@ -576,6 +597,9 @@
     <string name="widget_days_together_label">days together</string>
     <string name="widget_days_until_event">days until %1$s</string>
     <string name="widget_days_until_lower">%1$s days until %2$s</string>
+    <string name="widget_size_medium">3x2 / 4x2</string>
+    <string name="widget_preview_duration">3 years · 5 months · 18 days</string>
+    <string name="widget_size_small">2x1 / 1x1</string>
 
     <!-- Widget Configuration -->
     <string name="widget_config_title">Configure Widget</string>
@@ -621,4 +645,90 @@
     <string name="timeframe_today">Today</string>
     <string name="timeframe_days_to_go">%1$d days to go</string>
     <string name="timeframe_months_to_go">%1$d Months to go</string>
+
+    <!-- Theme Modes -->
+    <string name="theme_mode_system">Default</string>
+    <string name="theme_mode_system_desc">Follows your device settings</string>
+    <string name="theme_mode_light">Light</string>
+    <string name="theme_mode_light_desc">Warm ivory and soft cream</string>
+    <string name="theme_mode_dark">Dark</string>
+    <string name="theme_mode_dark_desc">Warm espresso night ambiance</string>
+
+    <!-- Accent Color Styles -->
+    <string name="accent_gold_title">Champagne Gold</string>
+    <string name="accent_gold_sub">Warm golden elegance</string>
+    <string name="accent_rose_title">Warm Rose</string>
+    <string name="accent_rose_sub">Deep romantic rosewood</string>
+    <string name="accent_berry_title">Deep Berry</string>
+    <string name="accent_berry_sub">Rich plum and wine</string>
+    <string name="accent_forest_title">Forest Sage</string>
+    <string name="accent_forest_sub">Calm eucalyptus and evergreen</string>
+    <string name="accent_midnight_title">Midnight Blue</string>
+    <string name="accent_midnight_sub">Serene starry twilight</string>
+
+    <!-- Date Format Options -->
+    <string name="date_format_mdy">Month Day, Year</string>
+    <string name="date_format_dmy">Day Month Year</string>
+    <string name="date_format_slash_mdy">MM/DD/YYYY</string>
+    <string name="date_format_slash_dmy">DD/MM/YYYY</string>
+
+    <!-- First Day of Week Options -->
+    <string name="first_day_system">System Default</string>
+    <string name="first_day_monday">Monday</string>
+    <string name="first_day_sunday">Sunday</string>
+    <string name="date_format_desc_dialog">Choose how special dates are displayed</string>
+    <string name="first_day_desc_dialog">Starting day for calendars and timelines</string>
+    <string name="share_card_default_badge">CELEBRATE EVERY MOMENT</string>
+    <string name="share_card_custom_note_label">Personal Dedication / Note</string>
+
+    <!-- Reminder Offsets -->
+    <string name="reminder_offset_today">On the day</string>
+    <string name="reminder_offset_1d">1 day before</string>
+    <string name="reminder_offset_3d">3 days before</string>
+    <string name="reminder_offset_1w">1 week before</string>
+    <string name="reminder_offset_2w">2 weeks before</string>
+    <string name="reminder_offset_1m">1 month before</string>
+    <string name="reminder_offset_weeks_before">%1$d weeks before</string>
+    <string name="reminder_offset_days_before">%1$d days before</string>
+
+    <!-- Short Labels -->
+    <string name="reminder_short_today">Day of</string>
+    <string name="reminder_short_1d">1d before</string>
+    <string name="reminder_short_3d">3d before</string>
+    <string name="reminder_short_1w">1w before</string>
+    <string name="reminder_short_2w">2w before</string>
+    <string name="reminder_short_1m">1m before</string>
+    <string name="reminder_short_days_before">%1$dd before</string>
+
+    <!-- Notifications -->
+    <string name="notif_channel_name">Cherished Moments &amp; Anniversaries</string>
+    <string name="notif_channel_desc">Gentle reminders for upcoming anniversaries, birthdays, and special milestones.</string>
+    <string name="notif_headline_anniversary">Happy Wedding Anniversary! ✨</string>
+    <string name="notif_body_anniversary">Today is your anniversary with %1$s. Celebrate your story together.</string>
+    <string name="notif_headline_birthday">Happy Birthday! 🎂</string>
+    <string name="notif_body_birthday">Today is %1$s. Make it an unforgettable celebration.</string>
+    <string name="notif_headline_first_date">Happy First Date Anniversary! ☕</string>
+    <string name="notif_body_first_date">Celebrating the day your journey began. Cherish every memory.</string>
+    <string name="notif_headline_engagement">Happy Engagement Anniversary! 💍</string>
+    <string name="notif_body_engagement">Celebrating the magical moment you said yes.</string>
+    <string name="notif_headline_generic">Today is %1$s ✨</string>
+    <string name="notif_body_generic">A special day has arrived. Celebrate your love story today.</string>
+    <string name="notif_body_partner_love">your love</string>
+
+    <string name="notif_headline_anniversary_1d">Anniversary Tomorrow 💕</string>
+    <string name="notif_body_anniversary_1d">Tomorrow is your wedding anniversary. A special day is almost here.</string>
+    <string name="notif_headline_birthday_1d">Birthday Tomorrow 🎈</string>
+    <string name="notif_body_birthday_1d">Tomorrow is %1$s. Get ready to celebrate!</string>
+    <string name="notif_headline_generic_1d">Special Day Tomorrow ✨</string>
+    <string name="notif_body_generic_1d">Tomorrow is %1$s. A meaningful moment is right around the corner.</string>
+
+    <string name="notif_headline_in_days">%1$s is in %2$d days</string>
+    <string name="notif_body_in_3d">Your celebration is approaching in 3 days. Time to finalize any special plans.</string>
+    <string name="notif_headline_1w">1 week until %1$s 🗓️</string>
+    <string name="notif_body_1w">Your special milestone is coming up in 7 days. Time to prepare something special.</string>
+    <string name="notif_headline_2w">2 weeks until %1$s ✨</string>
+    <string name="notif_body_2w">Your anniversary is in 14 days. Plenty of time to plan a wonderful surprise.</string>
+    <string name="notif_headline_1m">1 month until %1$s 🌟</string>
+    <string name="notif_body_1m">A major celebration is in 30 days. Perfect time to plan ahead together.</string>
+    <string name="notif_body_generic_days">A special moment is coming up in %1$d days.</string>
 </resources>

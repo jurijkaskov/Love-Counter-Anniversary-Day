@@ -1,19 +1,20 @@
 package com.example.data.models
 
+import com.example.R
 import androidx.compose.ui.graphics.Color
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.Locale
 
-enum class ThemeMode(val title: String, val description: String) {
-  SYSTEM("Default", "Follows your device settings"),
-  LIGHT("Light", "Warm ivory and soft cream"),
-  DARK("Dark", "Warm espresso night ambiance")
+enum class ThemeMode(val titleResId: Int, val descResId: Int) {
+  SYSTEM(R.string.theme_mode_system, R.string.theme_mode_system_desc),
+  LIGHT(R.string.theme_mode_light, R.string.theme_mode_light_desc),
+  DARK(R.string.theme_mode_dark, R.string.theme_mode_dark_desc)
 }
 
 enum class AccentColorStyle(
-  val title: String,
-  val subtitle: String,
+  val titleResId: Int,
+  val subtitleResId: Int,
   val lightPrimaryHex: Long,
   val lightContainerHex: Long,
   val darkPrimaryHex: Long,
@@ -21,8 +22,8 @@ enum class AccentColorStyle(
   val goldHighlightHex: Long
 ) {
   CHAMPAGNE_GOLD(
-    title = "Champagne Gold",
-    subtitle = "Warm golden elegance",
+    titleResId = R.string.accent_gold_title,
+    subtitleResId = R.string.accent_gold_sub,
     lightPrimaryHex = 0xFFC99252,
     lightContainerHex = 0xFFFBF2E6,
     darkPrimaryHex = 0xFFE4AD70,
@@ -30,8 +31,8 @@ enum class AccentColorStyle(
     goldHighlightHex = 0xFFC99252
   ),
   WARM_ROSE(
-    title = "Warm Rose",
-    subtitle = "Deep romantic rosewood",
+    titleResId = R.string.accent_rose_title,
+    subtitleResId = R.string.accent_rose_sub,
     lightPrimaryHex = 0xFFB8644A,
     lightContainerHex = 0xFFFCEEEA,
     darkPrimaryHex = 0xFFDE8C75,
@@ -39,8 +40,8 @@ enum class AccentColorStyle(
     goldHighlightHex = 0xFFD4826B
   ),
   DEEP_BERRY(
-    title = "Deep Berry",
-    subtitle = "Rich plum and wine",
+    titleResId = R.string.accent_berry_title,
+    subtitleResId = R.string.accent_berry_sub,
     lightPrimaryHex = 0xFF8E3E63,
     lightContainerHex = 0xFFFAEDF2,
     darkPrimaryHex = 0xFFD2769E,
@@ -48,8 +49,8 @@ enum class AccentColorStyle(
     goldHighlightHex = 0xFFE594B8
   ),
   FOREST(
-    title = "Forest Sage",
-    subtitle = "Calm eucalyptus and evergreen",
+    titleResId = R.string.accent_forest_title,
+    subtitleResId = R.string.accent_forest_sub,
     lightPrimaryHex = 0xFF3D6B56,
     lightContainerHex = 0xFFEDF5F1,
     darkPrimaryHex = 0xFF6BB08F,
@@ -57,8 +58,8 @@ enum class AccentColorStyle(
     goldHighlightHex = 0xFF88C9A8
   ),
   MIDNIGHT_BLUE(
-    title = "Midnight Blue",
-    subtitle = "Serene starry twilight",
+    titleResId = R.string.accent_midnight_title,
+    subtitleResId = R.string.accent_midnight_sub,
     lightPrimaryHex = 0xFF355070,
     lightContainerHex = 0xFFEDF2F8,
     darkPrimaryHex = 0xFF6D94C7,
@@ -76,14 +77,14 @@ enum class AccentColorStyle(
 }
 
 enum class DateFormatOption(
-  val label: String,
+  val labelResId: Int,
   val pattern: String,
   val example: String
 ) {
-  MONTH_DAY_YEAR("Month Day, Year", "MMMM d, yyyy", "June 14, 2027"),
-  DAY_MONTH_YEAR("Day Month Year", "d MMMM yyyy", "14 June 2027"),
-  SLASH_MDY("MM/DD/YYYY", "MM/dd/yyyy", "06/14/2027"),
-  SLASH_DMY("DD/MM/YYYY", "dd/MM/yyyy", "14/06/2027");
+  MONTH_DAY_YEAR(R.string.date_format_mdy, "MMMM d, yyyy", "June 14, 2027"),
+  DAY_MONTH_YEAR(R.string.date_format_dmy, "d MMMM yyyy", "14 June 2027"),
+  SLASH_MDY(R.string.date_format_slash_mdy, "MM/dd/yyyy", "06/14/2027"),
+  SLASH_DMY(R.string.date_format_slash_dmy, "dd/MM/yyyy", "14/06/2027");
 
   fun format(date: LocalDate): String {
     return try {
@@ -95,10 +96,10 @@ enum class DateFormatOption(
   }
 }
 
-enum class FirstDayOfWeekOption(val title: String) {
-  SYSTEM("System Default"),
-  MONDAY("Monday"),
-  SUNDAY("Sunday")
+enum class FirstDayOfWeekOption(val titleResId: Int) {
+  SYSTEM(R.string.first_day_system),
+  MONDAY(R.string.first_day_monday),
+  SUNDAY(R.string.first_day_sunday)
 }
 
 data class UserSettings(

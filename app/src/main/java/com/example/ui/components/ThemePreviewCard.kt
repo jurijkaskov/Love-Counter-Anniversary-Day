@@ -26,10 +26,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.R
 import com.example.data.models.AccentColorStyle
 import com.example.data.models.ThemeMode
 import com.example.ui.theme.LocalCherishExtendedColors
@@ -64,7 +66,7 @@ fun ThemePreviewCard(
         verticalAlignment = Alignment.CenterVertically
       ) {
         Text(
-          text = "Theme Preview",
+          text = stringResource(R.string.settings_theme_preview),
           style = MaterialTheme.typography.labelSmall.copy(
             letterSpacing = 1.sp,
             fontWeight = FontWeight.SemiBold
@@ -77,7 +79,7 @@ fun ThemePreviewCard(
           shape = RoundedCornerShape(12.dp)
         ) {
           Text(
-            text = "${accentStyle.title} • ${themeMode.title}",
+            text = "${stringResource(accentStyle.titleResId)} • ${stringResource(themeMode.titleResId)}",
             style = MaterialTheme.typography.labelSmall.copy(
               fontWeight = FontWeight.Bold,
               fontSize = 11.sp
@@ -121,7 +123,7 @@ fun ThemePreviewCard(
 
           Column(modifier = Modifier.weight(1f)) {
             Text(
-              text = "Together for 1,234 days",
+              text = "${stringResource(R.string.countdown_together_for)} 1,234 ${stringResource(R.string.countdown_days_label)}",
               style = MaterialTheme.typography.titleSmall.copy(
                 fontFamily = FontFamily.Serif,
                 fontWeight = FontWeight.SemiBold
@@ -129,7 +131,7 @@ fun ThemePreviewCard(
               color = MaterialTheme.colorScheme.onSurface
             )
             Text(
-              text = "Next: Anniversary in 100 days",
+              text = stringResource(R.string.widget_footer_next_anniversary, stringResource(R.string.model_anniversary_suffix), 100),
               style = MaterialTheme.typography.bodySmall.copy(fontSize = 12.sp),
               color = primaryAccent
             )

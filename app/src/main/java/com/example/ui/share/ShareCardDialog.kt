@@ -139,7 +139,7 @@ fun ShareCardDialog(
           ) {
             Icon(
               imageVector = Icons.Default.Close,
-              contentDescription = "Close",
+              contentDescription = stringResource(R.string.btn_close),
               tint = MaterialTheme.colorScheme.onSurfaceVariant
             )
           }
@@ -320,7 +320,7 @@ fun ShareCardDialog(
               style = MaterialTheme.typography.bodySmall
             )
           },
-          label = { Text("Personal Dedication / Note", style = MaterialTheme.typography.labelSmall) },
+          label = { Text(stringResource(R.string.share_card_custom_note_label), style = MaterialTheme.typography.labelSmall) },
           maxLines = 2,
           shape = RoundedCornerShape(16.dp),
           colors = OutlinedTextFieldDefaults.colors(
