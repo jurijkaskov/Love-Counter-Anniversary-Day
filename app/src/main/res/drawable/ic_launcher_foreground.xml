@@ -5,57 +5,188 @@
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
-    <!-- Centered within 66dp safe zone (21dp to 87dp) -->
-    <!-- Intertwined infinity heart and rings motif -->
-    <!-- Ambient soft shadow -->
-    <path
-        android:pathData="M54,74 C47,68 34,57 34,44 C34,36.5 40,31 47.5,31 C51.2,31 53.5,33 54,34 C54.5,33 56.8,31 60.5,31 C68,31 74,36.5 74,44 C74,57 61,68 54,74 Z"
-        android:fillColor="#155C3A21" />
 
-    <!-- Main Outer Heart Outline -->
+    <!-- ALL ELEMENTS CENTERED STRICTLY WITHIN 66dp SAFE ZONE (21dp to 87dp) -->
+
+    <!-- 1. Ambient Drop Shadow for 3D Depth -->
     <path
-        android:pathData="M54,71 C47.5,65.5 35,55 35,43 C35,36 40.5,31 47.5,31 C51.3,31 53.2,33.2 54,34.2 C54.8,33.2 56.7,31 60.5,31 C67.5,31 73,36 73,43 C73,55 60.5,65.5 54,71 Z"
+        android:pathData="M43,77 C35,69 22,57 22,43 C22,34 29,28 37,28 C42,28 46,31 48,34 C50,31 54,28 59,28 C67,28 74,34 74,43 C74,57 61,69 53,77 Z"
+        android:fillColor="#45100018" />
+    <path
+        android:pathData="M61,74 C54,67 44,56 44,45 C44,37 50,31 57,31 C61,31 64.5,33.5 66,36 C67.5,33.5 71,31 75,31 C82,31 88,37 88,45 C88,56 78,67 71,74 Z"
+        android:fillColor="#40100018" />
+
+    <!-- 2. Golden Companion Heart (Right/Intertwined) - 3D Gold Volume -->
+    <path
+        android:pathData="M64,72 C57.5,65.5 48,55 48,44.5 C48,37 53.5,31.5 60.5,31.5 C64.5,31.5 67.8,33.8 69.5,36.5 C71.2,33.8 74.5,31.5 78.5,31.5 C85.5,31.5 91,37 91,44.5 C91,55 81.5,65.5 75,72 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startX="50"
+                android:startY="32"
+                android:endX="90"
+                android:endY="72"
+                android:type="linear">
+                <item android:offset="0.0" android:color="#FFF9C4" />
+                <item android:offset="0.25" android:color="#FFE082" />
+                <item android:offset="0.6" android:color="#FFB300" />
+                <item android:offset="0.85" android:color="#FF8F00" />
+                <item android:offset="1.0" android:color="#D84315" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Golden Heart Gloss Arc -->
+    <path
+        android:pathData="M78,33.5 C83.5,33.5 88,38 88,44 C88,49 84,55 78,61"
+        android:strokeWidth="2.2"
+        android:strokeLineCap="round"
+        android:strokeAlpha="0.75">
+        <aapt:attr name="android:strokeColor">
+            <gradient
+                android:startX="78"
+                android:startY="33"
+                android:endX="88"
+                android:endY="55"
+                android:type="linear">
+                <item android:offset="0.0" android:color="#FFFFFF" />
+                <item android:offset="0.7" android:color="#FFE082" />
+                <item android:offset="1.0" android:color="#00FFD54F" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- 3. Primary Passion Ruby Heart (Left/Front) - Rich 3D Gradient -->
+    <path
+        android:pathData="M46,75 C37.5,67 24,54.5 24,41 C24,31.5 31.5,25 40,25 C45.5,25 49.5,28.5 51.5,32 C53.5,28.5 57.5,25 63,25 C71.5,25 79,31.5 79,41 C79,54.5 65.5,67 57,75 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startX="28"
+                android:startY="25"
+                android:endX="72"
+                android:endY="75"
+                android:type="linear">
+                <item android:offset="0.0" android:color="#FF527B" />
+                <item android:offset="0.22" android:color="#FF1744" />
+                <item android:offset="0.58" android:color="#D50000" />
+                <item android:offset="0.85" android:color="#A00037" />
+                <item android:offset="1.0" android:color="#5C001E" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- 4. Ruby Heart 3D Inner Glow & Gloss Sheen Highlights -->
+    <!-- Top-left glossy bubble reflection -->
+    <path
+        android:pathData="M39.5,27 C34,27 28,31.5 27,37.5 C26.2,42 27.5,47 31,52"
         android:strokeWidth="3.2"
+        android:strokeLineCap="round"
+        android:strokeAlpha="0.85">
+        <aapt:attr name="android:strokeColor">
+            <gradient
+                android:startX="39"
+                android:startY="27"
+                android:endX="27"
+                android:endY="48"
+                android:type="linear">
+                <item android:offset="0.0" android:color="#FFFFFFFF" />
+                <item android:offset="0.6" android:color="#90FF80AB" />
+                <item android:offset="1.0" android:color="#00FF527B" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Subtle specular dot on left apex -->
+    <path
+        android:pathData="M37,30 A2,2 0 1,1 36.9,30 Z"
+        android:fillColor="#FFFFFFFF" />
+
+    <!-- 5. Interlocking Infinity Ribbon / Golden Bond Accent -->
+    <path
+        android:pathData="M51.5,41 C54.5,45.5 60,53 66.5,53 C73,53 77.5,48.5 77.5,43 C77.5,38 73.5,35 69.5,36.5 C66.5,38 63,42 59,47 C55,52 49,58.5 44,58.5 C39,58.5 35.5,55 35.5,50.5 C35.5,46 39.5,41 44.5,37"
+        android:strokeWidth="3.4"
         android:strokeLineCap="round"
         android:strokeLineJoin="round">
         <aapt:attr name="android:strokeColor">
             <gradient
                 android:startX="35"
-                android:startY="31"
-                android:endX="73"
-                android:endY="71"
+                android:startY="36"
+                android:endX="78"
+                android:endY="58"
                 android:type="linear">
-                <item android:offset="0.0" android:color="#9B583C" />
-                <item android:offset="0.5" android:color="#C57D5D" />
-                <item android:offset="1.0" android:color="#D4A373" />
+                <item android:offset="0.0" android:color="#FFD54F" />
+                <item android:offset="0.35" android:color="#FFF9C4" />
+                <item android:offset="0.7" android:color="#FFB300" />
+                <item android:offset="1.0" android:color="#FF6F00" />
             </gradient>
         </aapt:attr>
     </path>
 
-    <!-- Interlocking Inner Loop Accent -->
+    <!-- Golden Infinity Ribbon Core Shine -->
     <path
-        android:pathData="M54,61 C49.5,56.5 42,49 42,42 C42,37.5 45.5,34.5 49.5,34.5 C52.2,34.5 53.5,36 54,37 C54.5,36 55.8,34.5 58.5,34.5 C62.5,34.5 66,37.5 66,42 C66,49 58.5,56.5 54,61 Z"
-        android:strokeWidth="2.2"
-        android:strokeLineCap="round"
-        android:strokeLineJoin="round">
+        android:pathData="M51.5,41 C54.5,45.5 60,53 66.5,53 C73,53 77.5,48.5 77.5,43"
+        android:strokeWidth="1.4"
+        android:strokeLineCap="round">
         <aapt:attr name="android:strokeColor">
             <gradient
-                android:startX="42"
-                android:startY="34"
-                android:endX="66"
-                android:endY="61"
+                android:startX="51"
+                android:startY="41"
+                android:endX="78"
+                android:endY="45"
                 android:type="linear">
-                <item android:offset="0.0" android:color="#D4A373" />
-                <item android:offset="1.0" android:color="#E8A598" />
+                <item android:offset="0.0" android:color="#00FFFFFF" />
+                <item android:offset="0.5" android:color="#FFFFFFFF" />
+                <item android:offset="1.0" android:color="#FFE082" />
             </gradient>
         </aapt:attr>
     </path>
 
-    <!-- Little sparkle / star highlight -->
+    <!-- 6. Super Eye-Catching Golden Diamond Starburst (Top Right) -->
+    <!-- Starburst Glow Halo -->
     <path
-        android:pathData="M69,30 C69.2,32 70,32.8 72,33 C70,33.2 69.2,34 69,36 C68.8,34 68,33.2 66,33 C68,32.8 68.8,32 69,30 Z"
-        android:fillColor="#D4A373" />
+        android:pathData="M73,19 A7,7 0 1,1 72.9,19 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:centerX="73"
+                android:centerY="26"
+                android:gradientRadius="8"
+                android:type="radial">
+                <item android:offset="0.0" android:color="#B0FFFFFF" />
+                <item android:offset="0.45" android:color="#60FFD54F" />
+                <item android:offset="1.0" android:color="#00FFD54F" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <!-- 4-Point Crisp Starburst -->
     <path
-        android:pathData="M39,36 C39.1,37.2 39.6,37.8 41,38 C39.6,38.2 39.1,38.8 39,40 C38.9,38.8 38.4,38.2 37,38 C38.4,37.8 38.9,37.2 39,36 Z"
-        android:fillColor="#C57D5D" />
+        android:pathData="M73,19 C73.5,23.5 75.5,25.5 80,26 C75.5,26.5 73.5,28.5 73,33 C72.5,28.5 70.5,26.5 66,26 C70.5,25.5 72.5,23.5 73,19 Z"
+        android:fillColor="#FFFFFFFF" />
+    <path
+        android:pathData="M73,22.5 C73.3,24.8 74.8,25.7 77,26 C74.8,26.3 73.3,27.2 73,29.5 C72.7,27.2 71.2,26.3 69,26 C71.2,25.7 72.7,24.8 73,22.5 Z"
+        android:fillColor="#FFF9C4" />
+
+    <!-- 7. Accent Diamond Sparkle (Top Left) -->
+    <path
+        android:pathData="M27,24 C27.3,26.5 28.5,27.7 31,28 C28.5,28.3 27.3,29.5 27,32 C26.7,29.5 25.5,28.3 23,28 C25.5,27.7 26.7,26.5 27,24 Z"
+        android:fillColor="#FFE082" />
+
+    <!-- 8. Mini Sparkle (Bottom Right) -->
+    <path
+        android:pathData="M77,65 C77.2,66.8 78,67.6 80,68 C78,68.4 77.2,69.2 77,71 C76.8,69.2 76,68.4 74,68 C76,67.6 76.8,66.8 77,65 Z"
+        android:fillColor="#FFFFFFFF" />
+
+    <!-- 9. Floating Love Ember / Mini Heart at Top Center -->
+    <path
+        android:pathData="M51.5,23.5 C49.5,20.8 46,21.5 45.5,23.5 C45,25.5 48.5,28 51.5,30 C54.5,28 58,25.5 57.5,23.5 C57,21.5 53.5,20.8 51.5,23.5 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startX="45"
+                android:startY="21"
+                android:endX="58"
+                android:endY="30"
+                android:type="linear">
+                <item android:offset="0.0" android:color="#FFE082" />
+                <item android:offset="1.0" android:color="#FF5252" />
+            </gradient>
+        </aapt:attr>
+    </path>
 </vector>
